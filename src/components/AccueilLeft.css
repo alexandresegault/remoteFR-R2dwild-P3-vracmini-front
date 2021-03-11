@@ -1,0 +1,21 @@
+.accueil {
+  width: 40vw;
+  border: 1px solid black;
+}
+
+.accueil-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.section-left {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 22vh;
+
+}

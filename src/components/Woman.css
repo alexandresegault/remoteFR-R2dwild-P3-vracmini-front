@@ -1,0 +1,8 @@
+.woman {
+  width:20vw;
+  height:90vh;
+  border:1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
