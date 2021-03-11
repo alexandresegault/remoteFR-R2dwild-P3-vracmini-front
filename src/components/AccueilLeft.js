@@ -9,16 +9,16 @@ const AccueilLeft = () => {
   return (
     <div className='accueil accueil left'>
       <div className='section-left histoire-vrac'>
-        <img src={Img} alt='liens' />
+        <img src={Img} id='histoire' alt='liens' />
       </div>
       <div className='section-left ensemble-vracons'>
-        <img src={Img2} alt='liens' />
+        <img src={Img2} id='ensemble' alt='liens' />
       </div>
       <div className='section-left e-shop'>
-        <img src={Img3} alt='liens' />
+        <img src={Img3} id='shop' alt='liens' />
       </div>
       <div className='section-left vrac-community'>
-        <img src={Img4} alt='liens' />
+        <img src={Img4} id='community' alt='liens' />
       </div>
     </div>
   )

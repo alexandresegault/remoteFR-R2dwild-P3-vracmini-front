@@ -8,13 +8,13 @@ const AccueilRight = () => {
   return (
     <div className='accueil accueil right'>
       <div className='section-right vracn-co'>
-        <img src={Img} alt='liens' />
+        <img src={Img} id='vrac' alt='liens' />
       </div>
-      <div className='section-right e-shop'>
-        <img src={Img2} alt='liens' />
+      <div className='section-right aux-fourneaux'>
+        <img src={Img2} id='fourneaux' alt='liens' />
       </div>
       <div className='section-right contact'>
-        <img src={Img3} alt='liens' />
+        <img src={Img3} id='contact' alt='liens' />
       </div>
     </div>
   )
