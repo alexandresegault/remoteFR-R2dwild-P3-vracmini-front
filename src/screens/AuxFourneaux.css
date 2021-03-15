@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.Menu_fourneaux{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.Menu_fourneaux :link{
+  text-decoration: none;
+  color: black;
+}
+
+.visible-aliments{
+  display: flex;
+  flex-direction: column;
+  font-style:italic;
+}
+
+.invisible-aliments{
+  display: none;
+}
