@@ -1,0 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@1,300&display=swap');
+@font-face {
+    font-family: "Rounded Elegance";
+    src: url('../police/Rounded\ Elegance.ttf') format("truetype");
+}
+.list{
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+}
+.title{
+    font-family: 'Rounded Elegance';
+    color: white;
+    background-color: rgb(129, 98, 14);
+    width: 100%;
+    width: fit-content;
+}
+.visibleListCat{
+    list-style: none;
+}
+.invisibleListCat{
+    display: none;
+}
+.listArticlePodcast{
+    font-size: 30px;
+    border: solid;
+    border-color: black;
+    width: 400px;
+    height: 100%;
+    display: flex;
+}
+.displayButton{
+    cursor: pointer;
+}
+.cat{
+    text-decoration: none;
+    color: black;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.activeCat{
+    text-decoration: none;
+    color: green;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 750;
+}
