@@ -8,8 +8,8 @@ export default function NavBar() {
     <nav className='navbar'>
       <div className='content-navbar'>
         <Search />
-        <Burger_menu />
         <h1 className='title'>MINIMAL</h1>
+        <Burger_menu />
       </div>
     </nav>
   )
