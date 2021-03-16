@@ -90,3 +90,45 @@
   text-align: left;
   font-size: 20px;
 }
+
+/* responsive */
+@media only screen and (max-width: 800px) {
+  .all_fourneaux{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .left_side_menu{
+    margin: 0;
+    padding-top: 0;
+  }
+
+  .right_side_content{
+    margin-right: 0;
+  }
+
+  .img_fourneaux{
+    width: 70%;
+  }
+
+  .content_fourneaux{
+    font-size: 16px;
+    padding-top: 10px;
+  }
+
+  .title_fourneaux{
+    font-size: 35px;
+    margin: 0;
+  }
+
+  .visible-aliments{
+    font-size: 16px;
+  }
+
+  .visible-aliments :link{
+    padding: 0;
+  }
+
+}
