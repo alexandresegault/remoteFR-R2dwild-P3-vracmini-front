@@ -1,11 +1,8 @@
 .navbar {
-  top: 0px;
   background-color:#D7EAD1;
   max-width: 100%;
   width: 100%;
-  transition: position 0.2s ease-in;
   display: flex;
-  
 }
 
 .title {

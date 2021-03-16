@@ -29,6 +29,9 @@
  background: #464646 ;
  font-weight: bold;
 }
+.nav-pages:hover {
+  opacity: 0.7;
+}
 .nav-pages-selected {
   color: black;
   background-color: #d0d0d0;
