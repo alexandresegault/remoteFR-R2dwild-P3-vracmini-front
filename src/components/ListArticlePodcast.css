@@ -35,12 +35,12 @@
 .displayButton{
     cursor: pointer;
 }
-.cat{
+.cat-inactive{
     text-decoration: none;
     color: black;
     font-family: 'Open Sans Condensed', sans-serif;
 }
-.activeCat{
+.cat-active{
     text-decoration: none;
     color: green;
     font-family: 'Open Sans Condensed', sans-serif;

@@ -4,74 +4,63 @@ import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 
 export default function ListArticlePodcast() {
-  const [categorie, setCategorie] = useState([])
-  const [showPodcast, setShowPodcast] = useState(false)
-  const [showArticle, setShowArticle] = useState(false)
-
+  const [categories, setCategorie] = useState([])
+  const [showMediaType, setShowMediaType] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(-1)
+  const [activeCategorie, setActiveCategorie] = useState('none')
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/categorie_podcast_article')
       .then(res => setCategorie(res.data))
   }, [])
+  const getCategories = () => {
+    const mediaTypes = ['podcast', 'article et chroniques']
+    return mediaTypes.map((mediaType, index) => {
+      return (
+        <li key={(mediaType, index)}>
+          <p
+            className='displayButton'
+            onClick={() => {
+              setShowMediaType(!showMediaType)
+            }}
+          >
+            <strong>{mediaType}</strong>
+          </p>
+          <ul
+            className={
+              showMediaType === true ? 'visibleListCat' : 'invisibleListCat'
+            }
+          >
+            {categories.map((cat, index) => {
+              const currentCategorie = mediaType
+              return (
+                <NavLink
+                  to={`/${currentCategorie}/:id`}
+                  key={index}
+                  className={`cat-${
+                    currentCategorie + index === activeCategorie + activeIndex
+                      ? 'active'
+                      : 'inactive'
+                  }`}
+                  onClick={() => {
+                    setActiveIndex(index)
+                    setActiveCategorie(currentCategorie)
+                  }}
+                >
+                  <li>{cat.name}</li>
+                </NavLink>
+              )
+            })}
+          </ul>
+        </li>
+      )
+    })
+  }
   return (
     <div className='listArticlePodcast'>
       <ul className='list'>
         <li className='title'>vrac n'co</li>
-        <li>
-          <p
-            className='displayButton'
-            onClick={() => {
-              setShowPodcast(!showPodcast)
-            }}
-          >
-            <strong>Podcast</strong>
-          </p>
-          <ul
-            className={
-              showPodcast === true ? 'visibleListCat' : 'invisibleListCat'
-            }
-          >
-            {categorie.map((cat, index) => (
-              <NavLink
-                to='/Podcast/:id'
-                activeClassName='activeCat'
-                key={index}
-                className='cat'
-              >
-                <li onClick={() => {}}>{cat.name}</li>
-              </NavLink>
-            ))}
-          </ul>
-        </li>
-        <li>
-          <strong>
-            <p
-              className='displayButton'
-              onClick={() => {
-                setShowArticle(!showArticle)
-              }}
-            >
-              Articles et <br></br>
-              chroniques
-            </p>
-          </strong>
-          <ul
-            className={
-              showArticle === true ? 'visibleListCat' : 'invisibleListCat'
-            }
-          >
-            {categorie.map((cat, index) => (
-              <NavLink
-                to='/Article/:id'
-                activeClassName='activeCat'
-                key={index}
-                className='cat'
-              >
-                <li>{cat.name}</li>
-              </NavLink>
-            ))}
-          </ul>
-        </li>
+        {getCategories()}
       </ul>
     </div>
   )
