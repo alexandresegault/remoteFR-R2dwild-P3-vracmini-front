@@ -3,23 +3,23 @@
 .all_fourneaux{
   display: flex;
   justify-content: space-around;
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin-top: 100px;
 }
 .left_side_menu{
-  border: 1px solid red;
-  width: 50%;
-}
-
-.right_side_content{
-  border: 1px solid green;
-  width: 50%;
-}
-
-.Menu_fourneaux{
+  padding-top: 60px;
+  margin-left: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Open Sans Condensed', sans-serif;
- 
+  font-size: 20px;
+}
+
+.right_side_content{
+ margin-right: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .categories_fourneaux{
@@ -28,16 +28,14 @@
   align-items: flex-start;
 }
 
-
-.Menu_fourneaux :link{
+.left_side_menu :link{
   text-decoration: none;
   color: black;
   padding: 5px;
   text-align: left;
- 
 }
 
-.Menu_fourneaux p{
+.left_side_menu p{
   margin: 0;
   padding: 5px;
   text-align: left;
@@ -46,6 +44,11 @@
   display: flex;
   flex-direction: column;
   font-style:italic;
+  font-size: 18px;
+}
+
+.visible-aliments :link{
+  padding: 2px;
 }
 
 .invisible-aliments{
@@ -55,28 +58,35 @@
 .title_fourneaux{
   color:  #F8DBAF;
   font-family: 'Open Sans Condensed', sans-serif;
-  
-
+  font-size: 40px;
 }
 
 .img_fourneaux{
-  width: 300px;
+  width: 400px;
+  margin-top: 40px;
 }
 
 .arrow-down {
     transition: all 1s;
-    transform: rotate(0deg);
+    transform: rotate(90deg);
     font-size: 150%;
     font-weight: bold;
   }
 
-
 .arrow-right {
-  transition: all 1s;
-  transform: rotate(90deg);
   font-size: 150%;
   font-weight: bold;
 }
-.aliments-curieux {
+
+.curieux_aliments {
   cursor: pointer;
+  display: flex;
+  font-weight: bold;
+}
+
+.content_fourneaux{
+  padding-top: 50px;
+  width: 350px;
+  text-align: left;
+  font-size: 20px;
 }
