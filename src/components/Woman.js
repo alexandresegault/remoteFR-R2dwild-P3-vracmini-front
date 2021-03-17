@@ -1,6 +1,6 @@
 import React from 'react'
 
-import img from '../Photos/Personnage-1-reduit.png'
+import img from '../img/personnage1Reduit.png'
 
 import './Woman.css'
 

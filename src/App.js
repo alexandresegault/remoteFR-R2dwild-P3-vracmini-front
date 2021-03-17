@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Accueil from './screens/Accueil'
-import AdminInterfaceAccueil from './admin/AdminInterfaceAccueil.js'
+import Home from './screens/Home'
+import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
 import AuxFourneaux from './screens/AuxFourneaux'
 import Header from './components/Header'
 
@@ -14,10 +14,10 @@ function App() {
     <div className='App'>
       {displayHeader ? <Header /> : null}
       <Switch>
-        <Route exact path='/' component={Accueil} />
+        <Route exact path='/' component={Home} />
         <Route path='/aux_fourneaux' component={AuxFourneaux} />
         <Route path='/admin'>
-          <AdminInterfaceAccueil setDisplayHeader={setDisplayHeader} />
+          <AdminInterfaceHome setDisplayHeader={setDisplayHeader} />
         </Route>
       </Switch>
     </div>
