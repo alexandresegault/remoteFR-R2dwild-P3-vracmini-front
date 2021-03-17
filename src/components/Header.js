@@ -4,6 +4,7 @@ import Search from './Search'
 import Burger_menu from './Burger_menu'
 import user from '../img/userGreen.png'
 import { Link } from 'react-router-dom'
+
 const Header = () => {
   return (
     <div className='header'>

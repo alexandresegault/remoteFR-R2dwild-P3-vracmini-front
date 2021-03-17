@@ -1,12 +1,18 @@
 import { Switch, Route } from 'react-router-dom'
-import './AdminInterfaceAccueil.css'
 import MenuInterface from './MenuInterface'
 import InterfacePages from './InterfacePages'
 import InterfaceArticles from './InterfaceArticles'
 import InterfacePodcasts from './InterfacePodcasts'
 import InterfaceRecipes from './InterfaceRecipes'
 import InterfaceAliments from './InterfaceAliments'
-const AdminInterfaceAccueil = () => {
+import { useEffect } from 'react'
+import './AdminInterfaceAccueil.css'
+import PropTypes from 'prop-types'
+
+const AdminInterfaceAccueil = prevProps => {
+  useEffect(() => {
+    prevProps.setDisplayHeader('none')
+  })
   return (
     <div className='interface-accueil'>
       <MenuInterface />
@@ -20,6 +26,9 @@ const AdminInterfaceAccueil = () => {
       </Switch>
     </div>
   )
+}
+AdminInterfaceAccueil.PropTypes = {
+  setDisplayHeader: PropTypes.string.isRequired
 }
 
 export default AdminInterfaceAccueil
