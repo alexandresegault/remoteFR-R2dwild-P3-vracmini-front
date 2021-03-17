@@ -1,0 +1,41 @@
+.logo_burger_menu {
+  height: 50px;
+  width: 50px;  
+}
+  
+  @media screen and (min-width:1024px) {
+    .logo_burger_menu {
+      display : none;
+    }
+}
+  
+  .navbar_ul_header {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 20px;
+}
+  
+  .container_logo_burger_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
+  
+  .invisible {
+    position:absolute;
+    left:-150vw;
+}
+    
+  .visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E1D2C9;
+    position:absolute;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+}

@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import { Switch, Route } from 'react-router-dom'
+
+import Accueil from './screens/Accueil'
+import AdminInterfaceAccueil from './admin/AdminInterfaceAccueil.js'
+import AuxFourneaux from './screens/AuxFourneaux'
+import Header from './components/Header'
+
+import './App.css'
 
 function App() {
+  const [displayHeader, setDisplayHeader] = useState(true)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {displayHeader ? <Header /> : null}
+      <Switch>
+        <Route exact path='/' component={Accueil} />
+        <Route path='/aux_fourneaux' component={AuxFourneaux} />
+        <Route path='/admin'>
+          <AdminInterfaceAccueil setDisplayHeader={setDisplayHeader} />
+        </Route>
+      </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

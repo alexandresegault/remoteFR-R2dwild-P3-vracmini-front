@@ -1,0 +1,35 @@
+#btnSend {
+  border-radius: 0px 20px 20px 0px;
+  background: #F0D8B8;
+  border: 2px solid #F0D8B8;
+  height: 30px;
+  cursor: pointer;
+}
+
+#btnSend:focus {
+  outline-style: none;
+}
+
+.logo-search {
+  height: 20px;
+}
+
+#site-search{
+  height: 30px;
+  border-radius: 20px 0px 0px 20px;
+  border: 2px solid #F0D8B8;
+}
+
+#site-search::placeholder {
+  font-size: 110%;
+  padding-left: 10px;
+}
+
+#site-search:focus {
+  outline-style: none;
+  padding-left:10px;
+}
+
+.container-search {
+  display: flex;
+}
