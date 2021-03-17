@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Img from '../Photos/Personnage-1-reduit.png'
 import './Woman.css'
-import Img from '../Photos/Personnage.JPG'
 
 const Woman = () => {
   return (

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './AccueilLeft.css'
 import Img from '../Photos/histoire en vrac.png'
 import Img2 from '../Photos/ensemble vracons.png'

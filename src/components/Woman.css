@@ -1,8 +1,19 @@
 .woman {
   width:20vw;
   height:90vh;
-  border:1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid black;
+}
+
+#woman-accueil{
+   height: 90vh;
+   border: 1px solid black;
+}
+
+@media screen and (max-width: 770px){
+  #woman-accueil{
+
+  }
 }
