@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './AccueilRight.css'
+
 import Img from '../Photos/vracn co.png'
 import Img2 from '../Photos/au fourneaux.png'
 import Img3 from '../Photos/contact.png'
+
+import './AccueilRight.css'
 
 const AccueilRight = () => {
   return (

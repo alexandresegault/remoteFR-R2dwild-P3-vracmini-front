@@ -1,8 +1,10 @@
 import React from 'react'
-import './Accueil.css'
+
 import AccueilRight from '../components/AccueilRight'
 import AccueilLeft from '../components/AccueilLeft'
 import Woman from '../components/Woman'
+
+import './Accueil.css'
 
 const Accueil = () => {
   return (

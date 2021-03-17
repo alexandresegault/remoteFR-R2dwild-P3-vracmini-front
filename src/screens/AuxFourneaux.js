@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import './AuxFourneaux.css'
 import { Link } from 'react-router-dom'
+
 import axios from 'axios'
+
+import './AuxFourneaux.css'
 
 const AuxFourneaux = () => {
   const [showAliments, setShowAliments] = useState(false)
@@ -26,9 +28,9 @@ const AuxFourneaux = () => {
             <h1 className='title_fourneaux'>{auxFourneaux[0].title}</h1>
             <div className='categories_fourneaux'>
               <div className='curieux_aliments'>
-                <span className={showAliments ? 'arrow-down' : 'arrow-right'}>
-                  &gt;
-                </span>
+                <span
+                  className={showAliments ? 'arrow-down' : 'arrow-right'}
+                ></span>
                 <p onClick={() => setShowAliments(!showAliments)}>
                   Les curieux aliments
                 </p>

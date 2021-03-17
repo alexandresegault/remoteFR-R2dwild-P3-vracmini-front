@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import logo_menu_burger from '../img/logo_menu_burger.svg'
-import './Burger_menu.css'
 
-const Burger_menu = () => {
+import logo_menu_burger from '../img/logo_menu_burger.svg'
+
+import './BurgerMenu.css'
+
+const BurgerMenu = () => {
   const [visible, setVisible] = useState(false)
 
   const handleClick = () => {
@@ -37,4 +39,4 @@ const Burger_menu = () => {
   )
 }
 
-export default Burger_menu
+export default BurgerMenu

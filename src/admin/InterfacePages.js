@@ -1,8 +1,11 @@
-import './InterfacePages.css'
 import { NavLink, Switch, Route } from 'react-router-dom'
+
 import PageAboutAdmin from './PageAboutAdmin'
-import PageVracCoAdmin from './PageVracCoAdmin'
 import PageFourneauxAdmin from './PageFourneauxAdmin'
+import PageVracCoAdmin from './PageVracCoAdmin'
+
+import './InterfacePages.css'
+
 const InterfacePages = () => {
   return (
     <div className='interface-pages'>
