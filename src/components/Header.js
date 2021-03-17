@@ -1,11 +1,22 @@
 import React from 'react'
 import './Header.css'
-import NavBar from '../components/NavBar'
+import Search from './Search'
+import Burger_menu from './Burger_menu'
+import user from '../img/userGreen.png'
 
-export default function Header() {
+const Header = () => {
   return (
     <div className='header'>
-      <NavBar />
+      <div className='content-navbar'>
+        <Search />
+        <Burger_menu />
+      </div>
+      <h1 className='title-website'>
+        <span className='yellow'>m</span>ini<span className='yellow'>m</span>al
+      </h1>
+      <img src={user} alt='' className='user-logo' />
     </div>
   )
 }
+
+export default Header
