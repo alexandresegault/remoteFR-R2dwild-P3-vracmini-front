@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './AccueilLeft.css'
+
 import Img from '../Photos/histoire en vrac.png'
 import Img2 from '../Photos/ensemble vracons.png'
 import Img3 from '../Photos/e-shop.png'
 import Img4 from '../Photos/vrac community.png'
+
+import './AccueilLeft.css'
 
 const AccueilLeft = () => {
   return (

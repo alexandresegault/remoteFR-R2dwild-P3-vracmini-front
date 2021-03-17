@@ -1,16 +1,19 @@
 import React from 'react'
-import './Header.css'
-import Search from './Search'
-import Burger_menu from './Burger_menu'
-import user from '../img/userGreen.png'
 import { Link } from 'react-router-dom'
+
+import Search from './Search'
+import BurgerMenu from './BurgerMenu'
+
+import user from '../img/userGreen.png'
+
+import './Header.css'
 
 const Header = () => {
   return (
     <div className='header'>
       <div className='content-navbar'>
         <Search />
-        <Burger_menu />
+        <BurgerMenu />
       </div>
       <h1 className='title-website'>
         <Link to='/'>

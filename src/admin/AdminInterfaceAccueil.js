@@ -1,11 +1,11 @@
+import { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import MenuInterface from './MenuInterface'
-import InterfacePages from './InterfacePages'
+import InterfaceAliments from './InterfaceAliments'
 import InterfaceArticles from './InterfaceArticles'
+import InterfacePages from './InterfacePages'
 import InterfacePodcasts from './InterfacePodcasts'
 import InterfaceRecipes from './InterfaceRecipes'
-import InterfaceAliments from './InterfaceAliments'
-import { useEffect } from 'react'
+import MenuInterface from './MenuInterface'
 import './AdminInterfaceAccueil.css'
 
 const AdminInterfaceAccueil = prevProps => {

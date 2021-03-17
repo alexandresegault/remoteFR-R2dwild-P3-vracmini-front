@@ -2,17 +2,17 @@
   font-family: "Rounded Elegance";
   src: url("./Police/Rounded_Elegance.ttf");
 }
-
-
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .yellow {
   color : #F0D8B8
 }
+
+
+

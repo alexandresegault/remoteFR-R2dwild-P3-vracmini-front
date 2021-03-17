@@ -4,16 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #woman-accueil{
    height: 90vh;
-
 }
 
-@media screen and (max-width: 770px){
-  #woman-accueil{
-
-  }
-}

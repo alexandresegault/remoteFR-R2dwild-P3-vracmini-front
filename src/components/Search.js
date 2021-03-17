@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+
 import search from '../img/logoSearch3.png'
+
 import './Search.css'
 
 const Search = () => {
   const [ask, setAsk] = useState('')
   const onSearch = e => {
     setAsk(e.target.value)
-    console.log(ask)
   }
   return (
     <div className='container-search'>
@@ -24,4 +25,5 @@ const Search = () => {
     </div>
   )
 }
+
 export default Search
