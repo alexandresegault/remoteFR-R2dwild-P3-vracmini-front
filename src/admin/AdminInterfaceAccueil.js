@@ -18,7 +18,6 @@ const AdminInterfaceAccueil = prevProps => {
       <MenuInterface />
       <Switch>
         <Route path='/admin/pages' component={InterfacePages} />
-
         <Route exact path='/admin/recipes' component={InterfaceRecipes} />
         <Route exact path='/admin/aliments' component={InterfaceAliments} />
         <Route exact path='/admin/podcasts' component={InterfacePodcasts} />
