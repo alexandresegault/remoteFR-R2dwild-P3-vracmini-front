@@ -7,15 +7,14 @@ import InterfaceRecipes from './InterfaceRecipes'
 import InterfaceAliments from './InterfaceAliments'
 import { useEffect } from 'react'
 import './AdminInterfaceAccueil.css'
-import PropTypes from 'prop-types'
 
 const AdminInterfaceAccueil = prevProps => {
   useEffect(() => {
-    prevProps.setDisplayHeader('none')
-  })
+    prevProps.setDisplayHeader(false)
+  }, [])
   return (
     <div className='interface-accueil'>
-      <MenuInterface />
+      <MenuInterface setDisplayHeader={prevProps.setDisplayHeader} />
       <Switch>
         <Route path='/admin/pages' component={InterfacePages} />
         <Route exact path='/admin/recipes' component={InterfaceRecipes} />
@@ -25,9 +24,6 @@ const AdminInterfaceAccueil = prevProps => {
       </Switch>
     </div>
   )
-}
-AdminInterfaceAccueil.PropTypes = {
-  setDisplayHeader: PropTypes.string.isRequired
 }
 
 export default AdminInterfaceAccueil

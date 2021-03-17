@@ -13,7 +13,10 @@ const Header = () => {
         <Burger_menu />
       </div>
       <h1 className='title-website'>
-        <span className='yellow'>m</span>ini<span className='yellow'>m</span>al
+        <Link to='/'>
+          <span className='yellow'>m</span>ini<span className='yellow'>m</span>
+          al
+        </Link>
       </h1>
       <Link to='/admin'>
         <img src={user} alt='' className='user-logo' />

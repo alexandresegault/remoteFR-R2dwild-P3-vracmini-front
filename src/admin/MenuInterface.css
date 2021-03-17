@@ -1,3 +1,8 @@
+.menu-interface {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .menu-interface ul {
 list-style-type: none;
 display: flex;
@@ -30,4 +35,16 @@ width: 100%;
 .nav-admin-selected {
   color: black;
   background-color: #d0d0d0;
+}
+
+.deconnexion-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px 10px 20px 10px;
+}
+.menu-interface a {
+  text-decoration: none;
+  color: black;
 }

@@ -23,3 +23,7 @@
   letter-spacing: 5px;
 }
 
+.title-website a {
+  text-decoration: none;
+  color: black;
+}

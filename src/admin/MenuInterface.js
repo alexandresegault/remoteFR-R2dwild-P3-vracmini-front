@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import './MenuInterface.css'
 
-const MenuInterface = () => {
+const MenuInterface = prevProps => {
   return (
     <div className='menu-interface'>
       <ul>
@@ -51,6 +51,11 @@ const MenuInterface = () => {
           </NavLink>
         </li>
       </ul>
+      <Link to='/' onClick={() => prevProps.setDisplayHeader(true)}>
+        <div className='deconnexion-admin'>
+          <p>Déconnexion</p>
+        </div>
+      </Link>
     </div>
   )
 }
