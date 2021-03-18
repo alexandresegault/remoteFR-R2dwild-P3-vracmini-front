@@ -19,11 +19,14 @@ const InterfaceAliments = () => {
           id='thisContent'
           init={{
             height: 500,
-            menubar: false,
+            menubar: true,
+            quickbars_image_toolbar:
+              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
             plugins: [
               'advlist autolink lists link image',
               'charmap print preview anchor help',
               'searchreplace visualblocks code',
+              'a_tinymce_plugin',
               'insertdatetime media table paste wordcount'
             ],
             toolbar:
