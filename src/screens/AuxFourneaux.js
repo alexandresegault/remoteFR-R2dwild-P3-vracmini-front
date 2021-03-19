@@ -23,14 +23,14 @@ const AuxFourneaux = () => {
   return (
     <div>
       {isLoading ? (
-        <div className='all_fourneaux'>
-          <div className='left_side_menu'>
-            <h1 className='title_fourneaux'>{auxFourneaux[0].title}</h1>
-            <div className='categories_fourneaux'>
-              <div className='curieux_aliments'>
-                <span
-                  className={showAliments ? 'arrow-down' : 'arrow-right'}
-                ></span>
+        <div className='all-fourneaux'>
+          <div className='left-side-menu'>
+            <h1 className='title-fourneaux'>{auxFourneaux[0].title}</h1>
+            <div className='categories-fourneaux'>
+              <div className='curieux-aliments'>
+                <span className={showAliments ? 'arrow-down' : 'arrow-right'}>
+                  &gt;
+                </span>
                 <p onClick={() => setShowAliments(!showAliments)}>
                   Les curieux aliments
                 </p>
@@ -50,27 +50,27 @@ const AuxFourneaux = () => {
                 <Link>Les farines</Link>
                 <Link>Les sucres</Link>
               </div>
-              <div className='curieux_aliments'>
+              <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
                 <Link>Recettes en vrac</Link>
               </div>
-              <div className='curieux_aliments'>
+              <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
                 <Link>Guide des quantités</Link>
               </div>
-              <div className='curieux_aliments'>
+              <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
                 <Link>Guide des conversions</Link>
               </div>
             </div>
           </div>
-          <div className='right_side_content'>
+          <div className='right-side-content'>
             <img
-              className='img_fourneaux'
-              src='https://drive.google.com/uc?id=1bXOU75Kts--c-LiIFLANeDrAsIoBwg5O'
+              className='img-fourneaux'
+              src='https://drive.google.com/uc?id=1EzICHn4SvPastfOLNuuO5Ww0LtexjAwF'
               alt='coupe de légumes'
             />
-            <p className='content_fourneaux'>{auxFourneaux[0].content}</p>
+            <p className='content-fourneaux'>{auxFourneaux[0].content}</p>
           </div>
         </div>
       ) : (
