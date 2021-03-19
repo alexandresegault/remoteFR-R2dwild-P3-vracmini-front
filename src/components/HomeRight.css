@@ -1,8 +1,8 @@
-.accueil {
+.home {
   width: 40vw;
 }
 
-.accueil-right{
+.home-right{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,9 @@
   margin-bottom: 10%;
   height: 55%;
 }
-
+.aux-fourneaux a{
+  height: 100%;
+}
 #fourneaux{
   margin-right: 40%;
   margin-bottom: 7%;
@@ -39,7 +41,9 @@
     height: 30%;
     margin-right: 0%;
   }
-
+  .aux-fourneaux a{
+    height: 100%;
+  }
   #fourneaux{
     height: 35%;
     margin-right: 0%;
