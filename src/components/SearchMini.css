@@ -1,0 +1,15 @@
+#btnSendMini {
+  border-radius: 0px 20px 20px 0px;
+  background: #F0D8B8;
+  border: 2px solid #F0D8B8;
+  height: 50px;
+  cursor: pointer;
+}
+
+#btnSend:focus {
+  outline-style: none;
+}
+
+.logo-search {
+  height: 20px;
+}
