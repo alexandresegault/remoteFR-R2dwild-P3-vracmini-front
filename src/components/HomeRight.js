@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import img from '../Photos/vracn co.png'
-import img2 from '../Photos/au fourneaux.png'
-import img3 from '../Photos/contact.png'
+import img from '../img/vracNCo.png'
+import img2 from '../img/auFourneaux.png'
+import img3 from '../img/contact.png'
 
-import './AccueilRight.css'
+import './HomeRight.css'
 
-const AccueilRight = () => {
+const HomeRight = () => {
   return (
-    <div className='accueil accueil right'>
+    <div className='home home right'>
       <div className='section-right vracn-co'>
         <img src={img} id='vrac' alt='liens' />
       </div>
@@ -25,4 +25,4 @@ const AccueilRight = () => {
   )
 }
 
-export default AccueilRight
+export default HomeRight

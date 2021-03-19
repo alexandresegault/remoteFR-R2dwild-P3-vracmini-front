@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import logo_menu_burger from '../img/logo_menu_burger.svg'
+import logoMenuBurger from '../img/logoMenuBurger.svg'
 
 import './BurgerMenu.css'
 
@@ -13,8 +13,8 @@ const BurgerMenu = () => {
 
   return (
     <div>
-      <div className='container_logo_burger_menu' onClick={handleClick}>
-        <img className='logo_burger_menu' src={logo_menu_burger} />
+      <div className='container-logo-burger-menu' onClick={handleClick}>
+        <img className='logo-burger-menu' src={logoMenuBurger} />
       </div>
 
       <div className='burger-menu'>
@@ -23,7 +23,7 @@ const BurgerMenu = () => {
             <div className='close-menu-burger' onClick={handleClick}>
               X
             </div>
-            <ul className='navbar_ul_header'>
+            <ul className='navbar-ul-header'>
               <li>L'histoire en vrac</li>
               <li>Ensemble Vrac'ons</li>
               <li>Vrac'n co</li>

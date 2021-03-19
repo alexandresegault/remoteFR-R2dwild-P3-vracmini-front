@@ -1,15 +1,15 @@
-.logo_burger_menu {
+.logo-burger-menu {
   height: 50px;
   width: 50px;  
 }
   
   @media screen and (min-width:1024px) {
-    .logo_burger_menu {
+    .logo-burger-menu {
       display : none;
     }
 }
   
-  .navbar_ul_header {
+  .navbar-ul-header {
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   font-size: 20px;
 }
   
-  .container_logo_burger_menu {
+  .container-logo-burger-menu {
   display: flex;
   flex-direction: column;
   justify-content: right;

@@ -6,14 +6,14 @@ import InterfacePages from './InterfacePages'
 import InterfacePodcasts from './InterfacePodcasts'
 import InterfaceRecipes from './InterfaceRecipes'
 import MenuInterface from './MenuInterface'
-import './AdminInterfaceAccueil.css'
+import './AdminInterfaceHome.css'
 
-const AdminInterfaceAccueil = prevProps => {
+const AdminInterfaceHome = prevProps => {
   useEffect(() => {
     prevProps.setDisplayHeader(false)
   }, [])
   return (
-    <div className='interface-accueil'>
+    <div className='interface-home'>
       <MenuInterface setDisplayHeader={prevProps.setDisplayHeader} />
       <Switch>
         <Route path='/admin/pages' component={InterfacePages} />
@@ -26,4 +26,4 @@ const AdminInterfaceAccueil = prevProps => {
   )
 }
 
-export default AdminInterfaceAccueil
+export default AdminInterfaceHome
