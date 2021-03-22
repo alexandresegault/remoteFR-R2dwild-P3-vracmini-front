@@ -1,6 +1,6 @@
 import './LogoBurger.css'
 
-const BurgerMenu = prevProps => {
+const LogoBurger = prevProps => {
   return (
     <div>
       <div id='logo-burger' onClick={prevProps.handleClick}>
@@ -12,4 +12,4 @@ const BurgerMenu = prevProps => {
   )
 }
 
-export default BurgerMenu
+export default LogoBurger
