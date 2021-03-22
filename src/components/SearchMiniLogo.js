@@ -1,15 +1,15 @@
 import search from '../img/logoSearch3.png'
 
-import './SearchMini.css'
+import './SearchMiniLogo.css'
 
-const SearchMini = () => {
+const SearchMiniLogo = prevProps => {
   return (
     <div className='search-mini'>
-      <button id='btnSendMini'>
+      <button onClick={prevProps.handleClickSearchMini} id='btn-send-mini'>
         <img src={search} alt='rechercher' className='logo-search' />
       </button>
     </div>
   )
 }
 
-export default SearchMini
+export default SearchMiniLogo

@@ -12,7 +12,7 @@ const BurgerMenu = prevProps => {
               to='/'
               className=''
               activeClassName=''
-              onClick={prevProps.handleClick}
+              onClick={prevProps.handleClickBurger}
             >
               L'histoire en Vrac
             </NavLink>
@@ -22,7 +22,7 @@ const BurgerMenu = prevProps => {
               to='/'
               className=''
               activeClassName=''
-              onClick={prevProps.handleClick}
+              onClick={prevProps.handleClickBurger}
             >
               Vrac'n Co
             </NavLink>
@@ -32,7 +32,7 @@ const BurgerMenu = prevProps => {
               to='/aux_fourneaux'
               className=''
               activeClassName=''
-              onClick={prevProps.handleClick}
+              onClick={prevProps.handleClickBurger}
             >
               Aux Fourneaux
             </NavLink>
@@ -42,7 +42,7 @@ const BurgerMenu = prevProps => {
               to='/'
               className=''
               activeClassName=''
-              onClick={prevProps.handleClick}
+              onClick={prevProps.handleClickBurger}
             >
               4
             </NavLink>
@@ -52,7 +52,7 @@ const BurgerMenu = prevProps => {
               to='/'
               className=''
               activeClassName=''
-              onClick={prevProps.handleClick}
+              onClick={prevProps.handleClickBurger}
             >
               5
             </NavLink>
