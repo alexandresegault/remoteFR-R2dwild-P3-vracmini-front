@@ -19,7 +19,7 @@ const Search = () => {
         placeholder='Rechercher'
         onChange={onSearch}
       ></input>
-      <button id='btnSend'>
+      <button id='btn-send'>
         <img src={search} alt='rechercher' className='logo-search' />
       </button>
     </div>

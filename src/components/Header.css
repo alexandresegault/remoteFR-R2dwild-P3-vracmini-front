@@ -32,6 +32,9 @@
   width: 50px;
   cursor: pointer;
 }
+.user-logo:hover {
+  opacity: 0.7;
+}
 .content-navbar {
   display: flex;;
   position: absolute;
@@ -67,7 +70,7 @@
   z-index: 9999;
 }
 
-@media (max-width: 820px){
+@media screen and (max-width: 820px){
   #logo-menu-burger {
     visibility: visible;
    
@@ -91,5 +94,10 @@
   }
   .search-full-bar{
     display: none;
+  }
+}
+@media screen and (max-width: 430px){
+  .title-website {
+    font-size: 120%;
   }
 }

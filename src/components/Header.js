@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Search from './Search'
-import SearchMini from './SearchMini'
+import SearchMiniLogo from './SearchMiniLogo'
+import SearchMiniPage from './SearchMiniPage'
 import LogoBurger from './LogoBurger'
 import BurgerMenu from './BurgerMenu'
 
@@ -13,8 +14,10 @@ import './Header.css'
 const Header = () => {
   const [openBurger, setOpenBurger] = useState(false)
   const [burgerContent, setBurgerContent] = useState('hide')
+  const [openSearchMini, setOpenSearchMini] = useState(false)
+  const [searchPage, setSearchPage] = useState('none')
 
-  const handleChange = () => {
+  const handleChangeBurger = () => {
     if (openBurger === true) {
       setBurgerContent('visible-menu')
     } else if (burgerContent === 'hide') {
@@ -25,26 +28,46 @@ const Header = () => {
   }
 
   useEffect(() => {
-    handleChange()
+    handleChangeBurger()
   }, [openBurger])
 
-  const handleClick = () => {
+  const handleClickBurger = () => {
     setOpenBurger(!openBurger)
+    setOpenSearchMini(false)
   }
+  const handleClickSearchMini = () => {
+    setOpenSearchMini(!openSearchMini)
+  }
+
+  const handleChangeSearchMini = () => {
+    if (openSearchMini === true) {
+      setSearchPage('visible-page')
+    } else if (searchPage === 'none') {
+      return
+    } else {
+      setSearchPage('invisible-page')
+    }
+  }
+  useEffect(() => {
+    handleChangeSearchMini()
+  }, [openSearchMini])
 
   return (
     <div className='header'>
       <div className='menu-container'>
+        <SearchMiniPage
+          handleClickSearchMini={handleClickSearchMini}
+          searchPage={searchPage}
+        />
         <BurgerMenu
-          handleChange={handleChange}
-          handleClick={handleClick}
+          handleClickBurger={handleClickBurger}
           burgerContent={burgerContent}
         />
       </div>
       <div className='header-content'>
         <div className='search-content'>
           <div className='search-mini'>
-            <SearchMini />
+            <SearchMiniLogo handleClickSearchMini={handleClickSearchMini} />
           </div>
           <div className='search-full-bar'>
             <Search />
@@ -60,11 +83,10 @@ const Header = () => {
           </h1>
         </div>
         <div className='content-burger-user'>
-          <div id='logo-menu-burger'>
+          <div id={openSearchMini ? null : 'logo-menu-burger'}>
             <LogoBurger
               openBurger={openBurger}
-              setOpenBurger={setOpenBurger}
-              handleClick={handleClick}
+              handleClickBurger={handleClickBurger}
             />
           </div>
           <Link to='/admin'>
