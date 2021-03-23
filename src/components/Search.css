@@ -1,12 +1,15 @@
-#btnSend {
+#btn-send {
   border-radius: 0px 20px 20px 0px;
   background: #F0D8B8;
   border: 2px solid #F0D8B8;
   height: 30px;
   cursor: pointer;
 }
+#btn-send:hover {
+  opacity:0.7;
+}
 
-#btnSend:focus {
+#btn-send:focus {
   outline-style: none;
 }
 
