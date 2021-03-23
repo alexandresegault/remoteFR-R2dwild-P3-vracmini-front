@@ -7,6 +7,7 @@ import AuxFourneaux from './screens/AuxFourneaux'
 import Header from './components/Header'
 
 import './App.css'
+import Contact from './screens/Contact'
 
 function App() {
   const [displayHeader, setDisplayHeader] = useState(true)
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/aux_fourneaux' component={AuxFourneaux} />
+        <Route path='/contact' component={Contact} />
         <Route path='/admin'>
           <AdminInterfaceHome setDisplayHeader={setDisplayHeader} />
         </Route>

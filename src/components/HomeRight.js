@@ -19,7 +19,9 @@ const HomeRight = () => {
         </Link>
       </div>
       <div className='section-right contact'>
-        <img src={img3} id='contact' alt='liens' />
+        <Link to='/contact'>
+          <img src={img3} id='contact' alt='liens' />
+        </Link>
       </div>
     </div>
   )
