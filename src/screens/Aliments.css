@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.all-aliments{
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-ingredient{
+  border: 5px solid #F0D8B8;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 10px;
+}
+
+.name-ingredient{
+  color:  #F8DBAF;
+  font-size: 26px;
+}
+
+.title-ingredient{
+  padding-top: 20px;
+}
+
+.description-aliment{
+text-align: justify;
+font-size: 20px;
+}
