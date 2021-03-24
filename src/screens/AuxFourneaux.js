@@ -40,7 +40,9 @@ const AuxFourneaux = () => {
                   showAliments ? 'visible-aliments' : 'invisible-aliments'
                 }
               >
-                <Link to='/aux_fourneaux/curieux_aliments/1'>Les légumineuses</Link>
+                <Link to='/aux_fourneaux/curieux_aliments/1'>
+                  Les légumineuses
+                </Link>
                 <Link>Les céréales</Link>
                 <Link>Les oléagineux</Link>
                 <Link>Les graines</Link>
