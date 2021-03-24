@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import './AuxFourneaux.css'
 
-const AuxFourneaux = () => {
+const AuxFourneaux = prevProps => {
   const [showAliments, setShowAliments] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -19,7 +19,7 @@ const AuxFourneaux = () => {
       .then(response => setAuxFourneaux(response.data))
       .then(res => setIsLoading(true))
   }, [])
-
+  console.log(prevProps.match.params)
   return (
     <div>
       {isLoading ? (
