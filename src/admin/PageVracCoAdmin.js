@@ -9,27 +9,38 @@ import './PageVracCoAdmin.css'
 const PageVracCoAdmin = () => {
   const [vracCo, setVracCo] = useState('')
   const [contentVracCo, setContentVracCo] = useState('')
+  const [title, setTitle] = useState('')
   useEffect(() => {
-    axios
-      .get('http://localhost:4242/api/vracn_co')
-      .then(response => setVracCo(response.data))
+    axios.get('http://localhost:4242/api/vracn_co').then(response => {
+      setVracCo(response.data[0])
+    })
   }, [])
   const handleEditorChange = e => {
     setContentVracCo(e.target.getContent())
+    console.log(contentVracCo)
   }
-  const { content } = vracCo
+  const handleChangeTitle = event => {
+    event.preventDefault()
+    const finalTitle = {
+      name: title
+    }
+    axios.put('http://localhost:4242/api/vracn_co', finalTitle)
+  }
+
   return (
     <div className='page-vrac-co-admin'>
       <div className='content-page-vrac-co'>
         <div className='title-page'>
-          <form>
+          <form onSubmit={handleChangeTitle}>
             <label>Titre de la Page : </label>
             <input
               type='text'
               id='title-page-input'
               name='title'
               placeholder={vracCo.name}
+              onChange={event => setTitle(event.target.value)}
             />
+            <button type='submit'>Modifier</button>
           </form>
         </div>
         <div className='img-page'>
@@ -49,7 +60,7 @@ const PageVracCoAdmin = () => {
           id='thisContent'
           init={{
             height: 500,
-            placeholder: { content },
+            placeholder: `${vracCo.content}`,
             menubar: true,
             quickbars_image_toolbar:
               'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
