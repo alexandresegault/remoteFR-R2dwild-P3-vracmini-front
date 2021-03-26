@@ -24,21 +24,21 @@ const PageVracCoAdmin = () => {
     const finalTitle = {
       name: title
     }
-    axios.put('http://localhost:4242/api/vracn_co', finalTitle)
+    axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalTitle)
   }
   const handleChangeContent = event => {
     event.preventDefault()
     const finalContent = {
       content: content
     }
-    axios.put('http://localhost:4242/api/vracn_co', finalContent)
+    axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalContent)
   }
   const handleChangeImg = event => {
     event.preventDefault()
     const finalImg = {
       img_url: imgUrl
     }
-    axios.put('http://localhost:4242/api/vracn_co', finalImg)
+    axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalImg)
   }
 
   // ***FONCTION TINY NICO***
