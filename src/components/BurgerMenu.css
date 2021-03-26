@@ -1,20 +1,22 @@
-.menu-list, #menu-page  {
+.menu-list {
     display: flex;
     flex-direction: column;
-    align-items: center;  
+    align-items: left;  
     list-style-type: none;
   }
   .menu-list a {
       text-decoration: none;
   }
   #menu-page {
+    padding-top: 150px;
     position: absolute;
     left: -110%;
     width: 100vw;
     height: 110vh;
     z-index: 1000;
-    background: #ffffff;
+    background: #fffefe;
   }
+  
   .visible-menu {
     animation: 0.5s slideRight ease-in forwards;
     transition-delay: 0;
@@ -23,3 +25,47 @@
     animation: 1s slideLeft ease-out forwards;
     transition-delay: 0;
   }
+
+  /* avec les pots */
+  .menu-burger-link{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+  }
+
+.img-burger{
+    width: 100px;
+}
+
+.woman-burger{
+  width: 100px;
+  height: 500px;
+}
+
+/* juste les liens */
+.menu-global{
+  display: flex;
+  justify-content: space-around;
+}
+.menu-link{
+  margin-top: 10px;
+}
+
+.buttons-users{
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.burger-inscription{
+  text-decoration: none;
+  padding: 5px;
+}
+
+.burger-connexion{
+  text-decoration: none;
+  padding: 10px;
+  background: #D7EAD1;
+  border-radius: 10px;
+}
