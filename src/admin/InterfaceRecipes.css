@@ -21,9 +21,42 @@
   font-size: 120%;
   background-color: rgb(87, 156, 87);
 }
+.btn-container a:hover {
+ opacity: 0.6;
+ transition:0.4s all;
+}
 .recipes-container {
   margin-top:20px;
   margin-left: 40px;
   width:100%;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe-card{
+  width:350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 5px;
+}
+.recipe-card p {
+  border: 1px solid black;
+  padding: 3px 10px 3px 10px;
+  background-color: white;
+}
+.recipe-card a {
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 3px 10px 3px 10px;
+  color: black;
+  background: rgb(214, 192, 68);
+  border-radius: 5px;
+  
+}
+.recipe-card:hover {
+  opacity: 0.6;
+  transition:0.4s all;
 }
