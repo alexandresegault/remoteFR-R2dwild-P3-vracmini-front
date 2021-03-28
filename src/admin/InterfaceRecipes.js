@@ -12,9 +12,6 @@ const InterfaceRecipes = () => {
       console.log(allRecipes)
     })
   }, [])
-  const updateRecipe = () => {
-    console.log('updateRecipe')
-  }
   const deleteRecipe = () => {
     console.log('deleteRecipe')
   }
@@ -36,8 +33,11 @@ const InterfaceRecipes = () => {
             allRecipes.map((recipe, i) => (
               <div key={i} className='recipe-card'>
                 <p key={i}>{recipe.name}</p>
-                <button onClick={updateRecipe}>Modifier</button>
-                <button onClick={deleteRecipe}>Supprimer</button>
+                <div>
+                  <Link to={`/admin/recipes/${recipe.id}`}>
+                    Modifier / Supprimer
+                  </Link>
+                </div>
               </div>
             ))
           ) : (

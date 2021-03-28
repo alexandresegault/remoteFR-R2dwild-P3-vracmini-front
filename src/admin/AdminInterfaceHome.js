@@ -8,6 +8,7 @@ import InterfacePages from './InterfacePages'
 import InterfacePodcasts from './InterfacePodcasts'
 import InterfaceRecipes from './InterfaceRecipes'
 import MenuInterface from './MenuInterface'
+import RecipesDetail from './RecipesDetail'
 import './AdminInterfaceHome.css'
 
 const AdminInterfaceHome = prevProps => {
@@ -30,6 +31,7 @@ const AdminInterfaceHome = prevProps => {
           path='/admin/recipes/add_categorie'
           component={AddCategorieRecipe}
         />
+        <Route path='/admin/recipes/:id' component={RecipesDetail} />
         <Route exact path='/admin/aliments' component={InterfaceAliments} />
         <Route exact path='/admin/podcasts' component={InterfacePodcasts} />
         <Route exact path='/admin/articles' component={InterfaceArticles} />
