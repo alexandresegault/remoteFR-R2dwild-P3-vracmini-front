@@ -7,6 +7,8 @@ const AddCategorieRecipe = () => {
   const [categorie, setCategorie] = useState('')
   const [id, setId] = useState('')
   const [name, setName] = useState('')
+  const [newName, setNewName] = useState('')
+
   const addCategorie = () => {
     const finalCategorie = {
       name: name
@@ -34,7 +36,7 @@ const AddCategorieRecipe = () => {
             onChange={event => setName(event.target.value)}
           />
           <div className='btn-recipes'>
-            <button type='submit'>Ajouter la recette</button>
+            <button type='submit'>Ajouter la categorie</button>
             <button>
               <Link to='/admin/recipes'>Voir toute les recettes</Link>
             </button>
@@ -53,11 +55,21 @@ const AddCategorieRecipe = () => {
                   setId(cat.id)
                   console.log(id)
                 }}
+                onChange={e => setNewName(e.target.value)}
               />
-              <div className='cat-card-btn'>
-                <button>Modifier</button>
-                <button>Supprimer</button>
-              </div>
+              <button
+                onClick={() => {
+                  let finalName = {
+                    name: newName
+                  }
+                  axios.put(
+                    `http://localhost:4242/api/aux_fourneaux/categorie_recipes/${id}`,
+                    finalName
+                  )
+                }}
+              >
+                Modifier
+              </button>
             </div>
           ))
         ) : (

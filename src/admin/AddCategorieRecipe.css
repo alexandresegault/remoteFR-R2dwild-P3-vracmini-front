@@ -8,6 +8,10 @@
   display: flex;
 flex-direction: column;
 }
+.categorie-recipes a {
+  text-decoration: none;
+  color:black;
+}
 .all-categories {
   display: flex;
   flex-wrap: wrap;

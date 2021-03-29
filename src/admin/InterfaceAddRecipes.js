@@ -10,7 +10,7 @@ const InterfaceAddRecipes = () => {
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
-  // const [categorie, setCategorie] = useState(1)
+  const [categorie, setCategorie] = useState('')
 
   const addRecipe = () => {
     const finalRecipe = {
@@ -62,6 +62,11 @@ const InterfaceAddRecipes = () => {
           name='cook-time'
           onChange={event => setNbrPerson(event.target.value)}
         />
+        <label>Categorie de la recette : </label>
+        <select>
+          <option>Ok</option>
+          <option>Bpu</option>
+        </select>
         <div classNme='btn-container'>
           <button type='submit'>Ajouter la recette</button>
           <button>
