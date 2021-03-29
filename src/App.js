@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from './screens/Home'
 import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
 import AuxFourneaux from './screens/AuxFourneaux'
 import Header from './components/Header'
+import Home from './screens/Home'
 
 import './App.css'
 import Contact from './screens/Contact'

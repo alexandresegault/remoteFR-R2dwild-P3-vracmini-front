@@ -1,41 +1,25 @@
-.logo-burger-menu {
-  height: 50px;
-  width: 50px;  
-}
-  
-  @media screen and (min-width:1024px) {
-    .logo-burger-menu {
-      display : none;
-    }
-}
-  
-  .navbar-ul-header {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 20px;
-}
-  
-  .container-logo-burger-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: right;
-}
-  
-  .invisible {
-    position:absolute;
-    left:-150vw;
-}
-    
-  .visible {
+.menu-list, #menu-page  {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #E1D2C9;
-    position:absolute;
-    top: 0;
-    left:0;
+    flex-direction: column;
+    align-items: center;  
+    list-style-type: none;
+  }
+  .menu-list a {
+      text-decoration: none;
+  }
+  #menu-page {
+    position: absolute;
+    left: -110%;
     width: 100vw;
-    height: 100vh;
-}
+    height: 110vh;
+    z-index: 1000;
+    background: #ffffff;
+  }
+  .visible-menu {
+    animation: 0.5s slideRight ease-in forwards;
+    transition-delay: 0;
+  }
+  .invisible-menu {
+    animation: 1s slideLeft ease-out forwards;
+    transition-delay: 0;
+  }
