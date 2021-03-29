@@ -19,6 +19,7 @@ const InterfaceAliments = () => {
           id='thisContent'
           init={{
             height: 500,
+            placeholder: 'Quentin kaiser est petit',
             menubar: true,
             quickbars_image_toolbar:
               'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',

@@ -11,14 +11,13 @@ const Search = () => {
   }
   return (
     <div className='container-search'>
-      <label htmlFor='site-search'></label>
       <input
         type='search'
         id='site-search'
         name='searchBar'
         placeholder='Rechercher'
         onChange={onSearch}
-      ></input>
+      />
       <button id='btn-send'>
         <img src={search} alt='rechercher' className='logo-search' />
       </button>

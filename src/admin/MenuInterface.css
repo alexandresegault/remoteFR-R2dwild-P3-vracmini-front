@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Roboto', sans-serif;
+  background: #7D7777;
+  
 }
 .menu-interface ul {
 list-style-type: none;

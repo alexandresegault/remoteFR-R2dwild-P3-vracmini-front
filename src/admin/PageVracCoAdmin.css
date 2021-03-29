@@ -1,0 +1,40 @@
+label {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.content-page-vrac-co {
+  display: flex;
+  flex-direction: column;
+  margin-left:40px;
+  margin-top: 10px;
+  background: #7D7777;
+}
+.content-page-vrac-co button {
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 2px 10px grey;
+  background: rgb(214, 192, 68)
+}
+.content-page-vrac-co button:hover {
+  opacity:0.6;
+  cursor: pointer;
+}
+#content-page-input {
+  width: 400px;
+  height: 450px;
+}
+
+#title-page-input,#img-url-input {
+  height: 30px;
+  width: 400px;
+  display: flex;
+}
+#content-input {
+  height:300px;
+  width:400px;
+  display: flex;
+  text-align: justify;
+}
