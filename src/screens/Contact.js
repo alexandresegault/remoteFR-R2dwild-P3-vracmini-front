@@ -1,5 +1,6 @@
 import React from 'react'
 import Form from '../components/Form.js'
+import Logo from '../components/Logo.js'
 import Woman from '../components/Woman.js'
 
 import './Contact.css'
@@ -17,6 +18,7 @@ export default function Contact() {
           ou via les réseaux sociaux en message privé.<br></br>Nous ferons le
           maximum pour y répondre dans les meilleurs délais.<br></br>A bientôt!
         </p>
+        <Logo />
         <Form />
       </div>
     </div>

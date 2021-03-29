@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
-
+import React, { useState } from 'react'
+import emailjs from 'emailjs-com'
+// init('user_VPjZRh5QyEXSnsw9fTRds')
 import './Form.css'
 
 const Form = () => {
@@ -11,8 +11,32 @@ const Form = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
-  }
 
+    emailjs
+      .send(
+        'service_hnqbq6o',
+        'template_1tlxhgf',
+        {
+          name,
+          email,
+          objet,
+          message
+        },
+        'user_VPjZRh5QyEXSnsw9fTRds'
+      )
+      .then(res => {
+        console.log('success !')
+        setName('')
+        setEmail('')
+        setObjet('')
+        setMessage('')
+      })
+      .catch(
+        err =>
+          (document.querySelector('.form-message').innerHTML =
+            "Une erreur s'est produite, veuillez réessayer.")
+      )
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -21,37 +45,35 @@ const Form = () => {
             className='input-contact'
             type='text'
             value={name}
-            placeholder='name'
-            onChange={e => setName(e.target.value)}
+            placeholder='Name'
+            onChange={event => setName(event.target.value)}
           />
           <input
             className='input-contact'
-            type='text'
+            type='email'
             value={email}
-            placeholder='email'
-            onChange={e => setEmail(e.target.value)}
+            placeholder='Email'
+            onChange={event => setEmail(event.target.value)}
           />
           <input
             className='input-contact'
             type='text'
             value={objet}
-            placeholder='objet'
-            onChange={e => setObjet(e.target.value)}
+            placeholder='Objet'
+            onChange={event => setObjet(event.target.value)}
           />
           <textarea
             type='text'
-            placeholder='message'
+            placeholder='Message'
             value={message}
             style={{ height: 100 }}
-            onChange={e => setMessage(e.target.value)}
+            onChange={event => setMessage(event.target.value)}
           />
         </label>
-        <input
-          className='button-send'
-          type='submit'
-          value='Envoyer'
-          onClick={handleSubmit}
-        />
+
+        <input className='button-send' type='submit' value='Envoyer' />
+
+        <div className='form-message'></div>
       </form>
     </div>
   )
