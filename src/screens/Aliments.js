@@ -9,7 +9,7 @@ const Aliments = prevProps => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4242/api/aux_fourneaux/categorie_aliments/aliments/?categories_aliments_id=${prevProps.match.params.id}`
+        `http://localhost:4242/api/aux_fourneaux/aliments/?categories_aliments_id=${prevProps.match.params.id}`
       )
       .then(response => setCategoryAlim(response.data))
       .then(res => setIsLoading(true))
@@ -19,8 +19,8 @@ const Aliments = prevProps => {
     <div>
       {isLoading ? (
         <div className='all-aliments'>
-          {categoryAlim.map(alim => (
-            <div className='card-ingredient'>
+          {categoryAlim.map((alim, i) => (
+            <div key={i} className='card-ingredient'>
               <h2 className='name-ingredient'>{alim.name}</h2>
               <h3 className='title-ingredient'>{alim.title}</h3>
               <p className='description-aliment'>{alim.content}</p>
