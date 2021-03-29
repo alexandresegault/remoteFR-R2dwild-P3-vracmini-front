@@ -53,7 +53,6 @@ const PageVracCoAdmin = () => {
         />
         <button type='submit'>Modifier</button>
       </form>
-
       <form onSubmit={handleChangeImg}>
         <label>Url Image : </label>
         <input

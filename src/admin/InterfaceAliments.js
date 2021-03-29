@@ -9,9 +9,11 @@ const InterfaceAliments = () => {
   const [titre, setTitre] = useState('')
   const [text, setText] = useState(null)
   const [urlImg, setUrlImg] = useState('')
+
   const handleEditorChange = e => {
     setText(e.target.getContent())
   }
+
   const send = () => {
     const result = {
       name: name,
@@ -20,11 +22,9 @@ const InterfaceAliments = () => {
       img_url: urlImg,
       categories_aliments_id: 1
     }
-    axios.post(
-      'http://localhost:4242/api/aux_fourneaux/categorie_aliments/aliments',
-      result
-    )
+    axios.post('http://localhost:4242/api/aux_fourneaux/aliments', result)
   }
+
   return (
     <div className='interface-aliments'>
       <div>

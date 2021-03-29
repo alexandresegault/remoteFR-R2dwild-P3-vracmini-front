@@ -19,14 +19,14 @@ const AuxFourneaux = () => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/')
       .then(response => setAuxFourneaux(response.data))
-      .then(setIsLoading(true))
+      .then(() => setIsLoading(true))
   }, [])
 
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
-      .then(setIsLoading2(true))
+      .then(() => setIsLoading2(true))
   }, [])
 
   return (
