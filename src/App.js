@@ -8,6 +8,7 @@ import Header from './components/Header'
 import Home from './screens/Home'
 
 import './App.css'
+import Contact from './screens/Contact'
 
 function App() {
   const [displayHeader, setDisplayHeader] = useState(true)
@@ -22,6 +23,8 @@ function App() {
           path='/aux_fourneaux/curieux_aliments/:id'
           component={Aliments}
         />
+    <Route path='/contact' component={Contact} />
+
         <Route path='/admin'>
           <AdminInterfaceHome setDisplayHeader={setDisplayHeader} />
         </Route>

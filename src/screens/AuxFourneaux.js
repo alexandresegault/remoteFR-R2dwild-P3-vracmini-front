@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import './AuxFourneaux.css'
 
-const AuxFourneaux = () => {
+const AuxFourneaux = prevProps => {
   const [showAliments, setShowAliments] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [categoriesAlim, setCategoriesAlim] = useState([])
@@ -21,14 +21,12 @@ const AuxFourneaux = () => {
       .then(response => setAuxFourneaux(response.data))
       .then(res => setIsLoading(true))
   }, [])
-
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categorie_aliments')
       .then(response => setCategoriesAlim(response.data))
       .then(res => setIsLoading2(true))
   }, [])
-
   return (
     <div>
       {isLoading ? (

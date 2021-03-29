@@ -1,0 +1,9 @@
+.logo {
+  height: 100px;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around
+}
+
