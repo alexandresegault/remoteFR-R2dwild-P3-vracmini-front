@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.all-fourneaux{
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+.left-side-menu{
+  padding-top: 40px;
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+
+.right-side-content{
+ margin-right: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.categories-fourneaux{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-side-menu :link{
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  text-align: left;
+}
+
+.left-side-menu p{
+  margin: 0;
+  padding: 5px;
+  text-align: left;
+}
+.visible-aliments{
+  display: flex;
+  flex-direction: column;
+  font-style:italic;
+  font-size: 18px;
+}
+
+.visible-aliments :link{
+  padding: 2px;
+}
+
+.invisible-aliments{
+  display: none;
+}
+
+.title-fourneaux{
+  color:  #F8DBAF;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 40px;
+}
+
+.img-fourneaux{
+  width: 250px;
+  margin: 0px 40px 30px -20px;
+
+}
+
+.arrow-down {
+    transition: all 1s;
+    transform: rotate(90deg);
+    font-size: 150%;
+    font-weight: bold;
+  }
+
+.arrow-right {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.curieux-aliments {
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+}
+
+.content-fourneaux{
+  padding-top: 30px;
+  width: 250px;
+  text-align: left;
+  font-size: 20px;
+}
+
+/* responsive */
+@media only screen and (max-width: 800px) {
+  .all-fourneaux{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .left-side-menu{
+    margin: 0;
+    padding-top: 0;
+  }
+
+  .right-side-content{
+    margin-right: 0;
+  }
+
+  .img-fourneaux{
+    width: 40%;
+    margin: 0;
+  }
+
+  .content-fourneaux{
+    font-size: 16px;
+    padding-top: 10px;
+  }
+
+  .title-fourneaux{
+    font-size: 35px;
+    margin: 0;
+  }
+
+  .visible-aliments{
+    font-size: 16px;
+  }
+
+  .visible-aliments :link{
+    padding: 0;
+  }
+}

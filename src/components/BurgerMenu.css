@@ -1,0 +1,25 @@
+.menu-list, #menu-page  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    list-style-type: none;
+  }
+  .menu-list a {
+      text-decoration: none;
+  }
+  #menu-page {
+    position: absolute;
+    left: -110%;
+    width: 100vw;
+    height: 110vh;
+    z-index: 1000;
+    background: #ffffff;
+  }
+  .visible-menu {
+    animation: 0.5s slideRight ease-in forwards;
+    transition-delay: 0;
+  }
+  .invisible-menu {
+    animation: 1s slideLeft ease-out forwards;
+    transition-delay: 0;
+  }
