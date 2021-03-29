@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from '../components/Form.js'
 import Logo from '../components/Logo.js'
-import Woman from '../components/Woman.js'
+import Woman from '../img/personnage.jpg'
 
 import './Contact.css'
 
@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <div className='container-contact'>
       <div className='img-woman'>
-        <Woman />
+        <img src={Woman} />
       </div>
       <div className='container-intro-contact'>
         <h1>Contact</h1>
