@@ -20,7 +20,7 @@ const RecipesDetail = prevProps => {
 
   const updateName = () => {
     const finalName = {
-      name: name
+      title: name
     }
     axios.put(
       `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
@@ -71,7 +71,7 @@ const RecipesDetail = prevProps => {
           type='text'
           id='name-recipe-input'
           name='name'
-          placeholder={recipe.name}
+          placeholder={recipe.title}
           onChange={event => setName(event.target.value)}
         />
         <button className='update-btn' type='submit'>

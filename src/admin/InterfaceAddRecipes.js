@@ -14,17 +14,17 @@ const InterfaceAddRecipes = () => {
   const [categorieList, setCategorieList] = useState('')
   useEffect(() => {
     axios
-      .get('http://localhost:4242/api/aux_fourneaux/categorie_recipes')
+      .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
       .then(res => setCategorieList(res.data))
   }, [])
   const addRecipe = () => {
     const finalRecipe = {
-      name: name,
+      title: name,
       step: step,
       cook_time: cookTime,
       ingredients: ingredients,
       person_nb: nbrPerson,
-      categorie_recipes_id: categorie
+      categories_recipes_id: categorie
     }
     axios.post('http://localhost:4242/api/aux_fourneaux/recipes', finalRecipe)
   }
@@ -68,7 +68,7 @@ const InterfaceAddRecipes = () => {
           onChange={event => setNbrPerson(event.target.value)}
         />
         <label>Categorie de la recette : </label>
-        <select onChange={event => setCategorie(event.target.value)}>
+        <select onChange={event => setCategorie(Number(event.target.value))}>
           {categorieList
             ? categorieList.map((cat, i) => (
                 <option value={cat.id} key={i}>

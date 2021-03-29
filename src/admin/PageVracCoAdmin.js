@@ -10,7 +10,6 @@ const PageVracCoAdmin = () => {
   const [vracCo, setVracCo] = useState('')
   const [imgUrl, setImgUrl] = useState('')
   const [content, setContent] = useState('')
-  // const [contentVracCo, setContentVracCo] = useState('')
   const [title, setTitle] = useState('')
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const PageVracCoAdmin = () => {
   const handleChangeTitle = event => {
     event.preventDefault()
     const finalTitle = {
-      name: title
+      title: title
     }
     axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalTitle)
   }
@@ -36,17 +35,11 @@ const PageVracCoAdmin = () => {
   const handleChangeImg = event => {
     event.preventDefault()
     const finalImg = {
-      img_url: imgUrl
+      url_img: imgUrl
     }
     axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalImg)
   }
 
-  // ***FONCTION TINY NICO***
-
-  // const handleEditorChange = e => {
-  //   setContentVracCo(e.target.getContent())
-  //   console.log(contentVracCo)
-  // }
   return (
     <div className='content-page-vrac-co'>
       <form onSubmit={handleChangeTitle}>
@@ -55,7 +48,7 @@ const PageVracCoAdmin = () => {
           type='text'
           id='title-page-input'
           name='title'
-          placeholder={vracCo.name}
+          placeholder={vracCo.title}
           onChange={event => setTitle(event.target.value)}
         />
         <button type='submit'>Modifier</button>
@@ -67,7 +60,7 @@ const PageVracCoAdmin = () => {
           type='text'
           id='img-url-input'
           name='url_img'
-          placeholder={vracCo.img_url}
+          placeholder={vracCo.url_img}
           onChange={event => setImgUrl(event.target.value)}
         />
         <button type='submit'>Modifier</button>
@@ -88,29 +81,3 @@ const PageVracCoAdmin = () => {
 }
 
 export default PageVracCoAdmin
-
-{
-  /* <Editor
-  apiKey={ApiKey}
-  onChange={handleEditorChange}
-  id='thisContent'
-  init={{
-    height: 500,
-    placeholder: `${vracCo.content}`,
-    menubar: true,
-    quickbars_image_toolbar:
-      'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-    plugins: [
-      'advlist autolink lists link image',
-      'charmap print preview anchor help',
-      'searchreplace visualblocks code',
-      'a_tinymce_plugin',
-      'insertdatetime media table paste wordcount'
-    ],
-    toolbar:
-      'undo redo | formatselect | bold italic | \
-      alignleft aligncenter alignright | \
-      bullist numlist outdent indent | help'
-  }}
-/> */
-}
