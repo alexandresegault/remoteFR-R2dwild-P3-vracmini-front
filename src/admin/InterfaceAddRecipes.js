@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -11,7 +11,12 @@ const InterfaceAddRecipes = () => {
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
   const [categorie, setCategorie] = useState('')
-
+  const [categorieList, setCategorieList] = useState('')
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/aux_fourneaux/categorie_recipes')
+      .then(res => setCategorieList(res.data))
+  }, [])
   const addRecipe = () => {
     const finalRecipe = {
       name: name,
@@ -19,7 +24,7 @@ const InterfaceAddRecipes = () => {
       cook_time: cookTime,
       ingredients: ingredients,
       person_nb: nbrPerson,
-      categorie_recipes_id: 1
+      categorie_recipes_id: categorie
     }
     axios.post('http://localhost:4242/api/aux_fourneaux/recipes', finalRecipe)
   }
@@ -63,9 +68,14 @@ const InterfaceAddRecipes = () => {
           onChange={event => setNbrPerson(event.target.value)}
         />
         <label>Categorie de la recette : </label>
-        <select>
-          <option>Ok</option>
-          <option>Bpu</option>
+        <select onChange={event => setCategorie(event.target.value)}>
+          {categorieList
+            ? categorieList.map((cat, i) => (
+                <option value={cat.id} key={i}>
+                  {cat.name}
+                </option>
+              ))
+            : null}
         </select>
         <div classNme='btn-container'>
           <button type='submit'>Ajouter la recette</button>
