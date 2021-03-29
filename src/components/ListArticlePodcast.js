@@ -9,35 +9,38 @@ export default function ListArticlePodcast() {
   const [activeCategorie, setActiveCategorie] = useState('none')
   const [activeMediaType, setActiveMediaType] = useState(-1)
   const [activeIndex, setActiveIndex] = useState(-1)
+  const [vracnco, setVracnco] = useState([])
+
   useEffect(() => {
     axios
-      .get('http://localhost:4242/api/categorie_podcast_article')
+      .get('http://localhost:4242/api/vracn_co')
+      .then(res => setVracnco(res.data))
+  }, [])
+  console.log(vracnco)
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/categories_podcasts_articles')
       .then(res => setCategories(res.data))
   }, [])
   useEffect(() => {
     axios
       .get(
-        'http://localhost:4242/api/categorie_podcast_article/podcasts_article'
+        `http://localhost:4242/api/podcasts_articles/`
       )
       .then(res => setList(res.data))
-  })
+  }, [])
   const activePodcast = () => {
     setActiveMediaType(1)
-    setActiveCategorie('active')
   }
   const activeArticle = () => {
     setActiveMediaType(0)
-    setActiveCategorie('active')
-
-    console.log(list[1].isPodcast)
-    console.log(list)
   }
   const getCategories = () => {
     return categories.map((categorie, index) => (
       <div
         onClick={() => {
           setActiveIndex(index)
-          setActiveCategorie(categorie.name)
+          setActiveCategorie(categorie.id)
         }}
         key={index}
         className={activeIndex === index ? 'active-categorie-vracnco' : 'categorie-vracnco'}
@@ -66,31 +69,19 @@ export default function ListArticlePodcast() {
 
   return (
     <div className='listArticlePodcast'>
-      {activeCategorie !== 'none' || activeMediaType !== -1 ? (
+      {activeMediaType !== -1 ? (
         ''
       ) : (
         <div className='accueil-vracnco'>
           <div className='title-vracnco'>
-            Montre moi ton assiette, je te dirais qui tu es
+            {vracnco.title}
           </div>
           <img
             className='img-accueil'
-            src='https://drive.google.com/uc?id=1jBYA77oYe_5inl3JzpNXHDMtD1KQS3hQ'
+            src={vracnco.url_img}
           ></img>
           <div className='texte-a'>
-            Le vrac, oui, {"c'est"} un mode de consommation, mais pas que Le
-            vrac va au delà, impliquant une certaine philosophie de
-            vie:bien-être simplicité,santé, essentiel... Cela vous parle ? Comme
-            tous sujets qui tiennent à coeur, nous voulons la meilleur
-            information, qui est souvent la plus sumple et la plus efficace,sans
-            fioriture, sans poudre au yeux
-          </div>
-          <div className='texte-b'>
-            Des gestes simples à adopter, des conseils pour un quotidien plus
-            doux, par ici! Nous avons solicité des experts autour de différentes
-            thématiques, telles que la nutrition, le bien être ou encore le
-            jardiange. Podcast, articles, venez découvrir les conseils de nos
-            coach
+           {vracnco.content}
           </div>
         </div>
       )}
