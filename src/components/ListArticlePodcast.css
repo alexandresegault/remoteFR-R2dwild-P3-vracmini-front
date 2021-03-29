@@ -55,14 +55,17 @@
     height: 75px;
     background-color: black;
 }
-.categories{
+.categories-vracnco{
     margin-top: 15px;
     line-height: 100px;
     display: flex;
     justify-content: center;
     color: black;
 }
-.categorie{
+.inactive-categories-vracno{
+    display: none;
+}
+.categorie-vracnco{
     text-decoration: none;
     color: black;
     width: 375px;
@@ -72,7 +75,7 @@
     border-color:white;
     border-top: solid black;
 }
-.active-categorie{
+.active-categorie-vracnco{
     text-decoration: none;
     color: black;
     width: 375px;
@@ -81,7 +84,7 @@
     border: solid;
     border-color: black;
 }
-.accueil{
+.accueil-vracnco{
     font-family:'open sans condensed';
     font-size: 36px;
     display: flex;
@@ -91,11 +94,11 @@
     height: 60%;
 }
 .img-accueil{
-    height: 50%;
+    width: 400px;
 }
-.title{
+.title-vracnco{
     font-weight: bold;
-    font-size: 60px;
+    font-size: 36px;
     margin-bottom: 70px;
     text-align: center;
     width: 100%;
@@ -105,11 +108,13 @@
     width: 30%;
     height: 35%;
     line-height: 40px;
+    font-size: 20px;
 }
 .texte-b{
     width: 62%;
     margin-top: 35px;
     margin-left: 6em;
+    font-size: 20px;
 }
 .list{
     display: flex;

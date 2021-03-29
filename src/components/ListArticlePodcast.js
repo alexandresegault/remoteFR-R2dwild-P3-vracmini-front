@@ -40,7 +40,7 @@ export default function ListArticlePodcast() {
           setActiveCategorie(categorie.name)
         }}
         key={index}
-        className={activeIndex === index ? 'active-categorie' : 'categorie'}
+        className={activeIndex === index ? 'active-categorie-vracnco' : 'categorie-vracnco'}
       >
         {categorie.name}
       </div>
@@ -69,8 +69,8 @@ export default function ListArticlePodcast() {
       {activeCategorie !== 'none' || activeMediaType !== -1 ? (
         ''
       ) : (
-        <div className='accueil'>
-          <div className='title'>
+        <div className='accueil-vracnco'>
+          <div className='title-vracnco'>
             Montre moi ton assiette, je te dirais qui tu es
           </div>
           <img
@@ -109,7 +109,7 @@ export default function ListArticlePodcast() {
           Articles
         </div>
       </div>
-      <div className='categories'>{getCategories()}</div>
+      <div className={activeMediaType === -1 ? 'inactive-categories-vracno':'categories-vracnco'}>{getCategories()}</div>
       {activeCategorie !== 'none' || activeMediaType !== -1 ? (
         <div className='list'>{getList()}</div>
       ) : (
