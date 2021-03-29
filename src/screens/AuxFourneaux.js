@@ -8,7 +8,9 @@ import './AuxFourneaux.css'
 const AuxFourneaux = prevProps => {
   const [showAliments, setShowAliments] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
+  const [categoriesAlim, setCategoriesAlim] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoading2, setIsLoading2] = useState(false)
   const [img] = useState(
     'https://drive.google.com/file/d/1bXOU75Kts--c-LiIFLANeDrAsIoBwg5O/view?usp=sharing'
   )
@@ -19,7 +21,12 @@ const AuxFourneaux = prevProps => {
       .then(response => setAuxFourneaux(response.data))
       .then(res => setIsLoading(true))
   }, [])
-  console.log(prevProps.match.params)
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/aux_fourneaux/categorie_aliments')
+      .then(response => setCategoriesAlim(response.data))
+      .then(res => setIsLoading2(true))
+  }, [])
   return (
     <div>
       {isLoading ? (
@@ -35,21 +42,25 @@ const AuxFourneaux = prevProps => {
                   Les curieux aliments
                 </p>
               </div>
-              <div
-                className={
-                  showAliments ? 'visible-aliments' : 'invisible-aliments'
-                }
-              >
-                <Link>Les légumineuses</Link>
-                <Link>Les céréales</Link>
-                <Link>Les oléagineux</Link>
-                <Link>Les graines</Link>
-                <Link>Les huiles</Link>
-                <Link>Les vinaigres</Link>
-                <Link>Les fruits secs</Link>
-                <Link>Les farines</Link>
-                <Link>Les sucres</Link>
-              </div>
+              {isLoading2 ? (
+                <div
+                  className={
+                    showAliments ? 'visible-aliments' : 'invisible-aliments'
+                  }
+                >
+                  {categoriesAlim.map(cat => (
+                    <Link
+                      to={{
+                        pathname: `/aux_fourneaux/curieux_aliments/${cat.id}`
+                      }}
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div> En chargement </div>
+              )}
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
                 <Link>Recettes en vrac</Link>
