@@ -1,0 +1,27 @@
+.add-categorie-recipes form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.categorie-recipes {
+  width:100%;
+  display: flex;
+flex-direction: column;
+}
+.all-categories {
+  display: flex;
+  flex-wrap: wrap;
+  margin:30px;
+}
+.categorie-card {
+  margin:40px;
+  padding:10px;
+  border:1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cat-card-btn {
+  display: flex;
+  justify-content: center;
+}
