@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
@@ -11,6 +11,7 @@ import './App.css'
 
 function App() {
   const [displayHeader, setDisplayHeader] = useState(true)
+
   return (
     <div className='App'>
       {displayHeader ? <Header /> : null}

@@ -1,0 +1,19 @@
+.content-page-fourneaux button {
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 2px 10px grey;
+  background: rgb(214, 192, 68)
+}
+.content-page-fourneaux button:hover{
+  opacity:0.6;
+  cursor: pointer;
+}
+.content-page-fourneaux{
+  display: flex;
+  flex-direction: column;
+  margin-left:40px;
+  margin-top: 10px;
+  background: #7D7777;
+}
