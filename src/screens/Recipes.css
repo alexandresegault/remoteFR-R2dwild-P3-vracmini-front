@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.all-recipes{
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-recipe{
+  border: 5px solid #F0D8B8;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 10px;
+}
+
+.name-recipe{
+  color:  #F8DBAF;
+  font-size: 26px;
+}
+
+.title-recipe{
+  padding-top: 20px;
+}
+
+.description-recipe{
+text-align: justify;
+font-size: 20px;
+}
