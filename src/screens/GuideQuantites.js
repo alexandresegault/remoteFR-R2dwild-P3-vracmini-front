@@ -123,8 +123,12 @@ const GuideQuantites = () => {
         </div>
       </div>
       <div className='infos-indications-global'>
-      <div className='infos-indications'>Quantités indicatives conseillées pour un repas, en plat principal.</div>
-      <div className='infos-indications'>Quantités indicatives conseillées pour un repas, en plat principal.</div>
+        <div className='infos-indications'>
+          Quantités indicatives conseillées pour un repas, en plat principal.
+        </div>
+        <div className='infos-indications'>
+          Quantités indicatives conseillées pour un repas, en plat principal.
+        </div>
       </div>
     </div>
   )
