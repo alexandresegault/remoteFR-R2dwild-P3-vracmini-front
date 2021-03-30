@@ -9,14 +9,14 @@ export default function ListArticlePodcast() {
   const [activeCategorie, setActiveCategorie] = useState('none')
   const [activeMediaType, setActiveMediaType] = useState(-1)
   const [activeIndex, setActiveIndex] = useState(-1)
-  const [vracnco, setVracnco] = useState([])
+  const [vracnCo, setVracnCo] = useState([])
 
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/vracn_co')
-      .then(res => setVracnco(res.data))
+      .then(res => setVracnCo(res.data))
   }, [])
-  console.log(vracnco)
+  console.log(vracnCo)
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/categories_podcasts_articles')
@@ -74,14 +74,14 @@ export default function ListArticlePodcast() {
       ) : (
         <div className='accueil-vracnco'>
           <div className='title-vracnco'>
-            {vracnco.title}
+            {vracnCo[0].title}
           </div>
           <img
             className='img-accueil'
-            src={vracnco.url_img}
+            src={vracnCo[0].url_img}
           ></img>
           <div className='texte-a'>
-           {vracnco.content}
+           {vracnCo[0].content}
           </div>
         </div>
       )}
