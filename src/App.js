@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
@@ -6,6 +6,7 @@ import Aliments from './screens/Aliments'
 import AuxFourneaux from './screens/AuxFourneaux'
 import Header from './components/Header'
 import Home from './screens/Home'
+import GuideQuantites from './screens/GuideQuantites'
 
 import './App.css'
 import Contact from './screens/Contact'
@@ -23,8 +24,11 @@ function App() {
           path='/aux_fourneaux/curieux_aliments/:id'
           component={Aliments}
         />
-    <Route path='/contact' component={Contact} />
-
+        <Route path='/contact' component={Contact} />
+        <Route
+          path='/aux_fourneaux/guide_quantites'
+          component={GuideQuantites}
+        />
         <Route path='/admin'>
           <AdminInterfaceHome setDisplayHeader={setDisplayHeader} />
         </Route>
