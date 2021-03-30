@@ -23,7 +23,7 @@ const AuxFourneaux = prevProps => {
   }, [])
   useEffect(() => {
     axios
-      .get('http://localhost:4242/api/aux_fourneaux/categorie_aliments')
+      .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
       .then(res => setIsLoading2(true))
   }, [])
