@@ -4,19 +4,20 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 export default function ListArticlePodcast() {
+  const [vracnCo, setVracnCo] = useState([])
   const [categories, setCategories] = useState([])
   const [list, setList] = useState([])
-  const [activeCategorie, setActiveCategorie] = useState('none')
   const [activeMediaType, setActiveMediaType] = useState(-1)
   const [activeIndex, setActiveIndex] = useState(-1)
-  const [vracnCo, setVracnCo] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/vracn_co')
-      .then(res => setVracnCo(res.data))
+      .then(res => setVracnCo(res.data[0]))
+      .then(setIsLoading(true))
   }, [])
-  console.log(vracnCo)
+
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/categories_podcasts_articles')
@@ -24,11 +25,11 @@ export default function ListArticlePodcast() {
   }, [])
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:4242/api/podcasts_articles/`
-      )
+      .get(`http://localhost:4242/api/podcasts_articles?id=${activeIndex}`)
       .then(res => setList(res.data))
-  }, [])
+  }, [activeIndex])
+  console.log(activeIndex)
+  console.log(list)
   const activePodcast = () => {
     setActiveMediaType(1)
   }
@@ -40,10 +41,13 @@ export default function ListArticlePodcast() {
       <div
         onClick={() => {
           setActiveIndex(index)
-          setActiveCategorie(categorie.id)
         }}
         key={index}
-        className={activeIndex === index ? 'active-categorie-vracnco' : 'categorie-vracnco'}
+        className={
+          activeIndex === index
+            ? 'active-categorie-vracnco'
+            : 'categorie-vracnco'
+        }
       >
         {categorie.name}
       </div>
@@ -59,52 +63,55 @@ export default function ListArticlePodcast() {
           key={index}
         >
           <div>
-            <img className='elem-image'>{e.url_img}</img>
-            <h1>{e.name}</h1>
+            {/* <img className='elem-image'></img> */}
+            <h1>{e.title}</h1>
             <p>{e.content}</p>
           </div>
         </Link>
       ))
   }
-
-  return (
-    <div className='listArticlePodcast'>
-      {activeMediaType !== -1 ? (
-        ''
-      ) : (
-        <div className='accueil-vracnco'>
-          <div className='title-vracnco'>
-            {vracnCo[0].title}
-          </div>
-          <img
-            className='img-accueil'
-            src={vracnCo[0].url_img}
-          ></img>
-          <div className='texte-a'>
-           {vracnCo[0].content}
-          </div>
-        </div>
-      )}
-      <div className='mediatype'>
-        <div
-          onClick={activePodcast}
-          className={activeMediaType === 1 ? 'active-podcast' : 'podcast'}
-        >
-          Podcasts
-        </div>
-        <div className='separate'></div>
-        <div
-          onClick={activeArticle}
-          className={activeMediaType === 0 ? 'active-article' : 'article'}
-        >
-          Articles
-        </div>
+  const accueil = () => {
+    return (
+      <div className='accueil-vracnco'>
+        <div className='title-vracnco'>{vracnCo.title}</div>
+        <img className='img-accueil' src={vracnCo.url_img}></img>
+        <div className='texte-a'>{vracnCo.content}</div>
       </div>
-      <div className={activeMediaType === -1 ? 'inactive-categories-vracno':'categories-vracnco'}>{getCategories()}</div>
-      {activeCategorie !== 'none' || activeMediaType !== -1 ? (
-        <div className='list'>{getList()}</div>
+    )
+  }
+  return (
+    <div>
+      {isLoading ? (
+        <div className='listArticlePodcast'>
+          {activeMediaType !== -1 ? '' : accueil()}
+          <div className='mediatype'>
+            <div
+              onClick={activePodcast}
+              className={activeMediaType === 1 ? 'active-podcast' : 'podcast'}
+            >
+              Podcasts
+            </div>
+            <div className='separate'></div>
+            <div
+              onClick={activeArticle}
+              className={activeMediaType === 0 ? 'active-article' : 'article'}
+            >
+              Articles
+            </div>
+          </div>
+          <div
+            className={
+              activeMediaType === -1
+                ? 'inactive-categories-vracno'
+                : 'categories-vracnco'
+            }
+          >
+            {getCategories()}
+          </div>
+          {activeIndex !== -1 ? <div className='list'>{getList()}</div> : ''}
+        </div>
       ) : (
-        ''
+        <div> En chargement </div>
       )}
     </div>
   )
