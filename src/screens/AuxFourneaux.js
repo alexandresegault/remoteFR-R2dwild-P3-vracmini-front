@@ -9,6 +9,7 @@ const AuxFourneaux = prevProps => {
   const [showAliments, setShowAliments] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [categoriesAlim, setCategoriesAlim] = useState([])
+  const [content, setContent] = useState('Rien')
   const [isLoading, setIsLoading] = useState(false)
   const [isLoading2, setIsLoading2] = useState(false)
   const [img] = useState(
@@ -18,16 +19,21 @@ const AuxFourneaux = prevProps => {
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/')
-      .then(response => setAuxFourneaux(response.data))
+      .then(response => {
+        setAuxFourneaux(response.data)
+        setContent(response.data[0].content)
+      })
       .then(() => setIsLoading(true))
   }, [])
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
-      .then(response => setCategoriesAlim(response.data))
-      .then(res => setIsLoading2(false))
-
+      .then(response => {
+        setCategoriesAlim(response.data)
+      })
+      .then(() => setIsLoading2(false))
   }, [])
+
   return (
     <div>
       {isLoading ? (
@@ -69,7 +75,9 @@ const AuxFourneaux = prevProps => {
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link to='/aux_fourneaux/guide_quantites'>Guide des quantités</Link>
+                <Link to='/aux_fourneaux/guide_quantites'>
+                  Guide des quantités
+                </Link>
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
@@ -83,7 +91,12 @@ const AuxFourneaux = prevProps => {
               src='https://drive.google.com/uc?id=1EzICHn4SvPastfOLNuuO5Ww0LtexjAwF'
               alt='coupe de légumes'
             />
-            <p className='content-fourneaux'>{auxFourneaux[0].content}</p>
+            {isLoading ? (
+              <div
+                dangerouslySetInnerHTML={{ __html: content }}
+                className='content-fourneaux'
+              ></div>
+            ) : null}
           </div>
         </div>
       ) : (

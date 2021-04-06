@@ -20,7 +20,9 @@ const InterfaceRecipes = () => {
           <Link to='/admin/recipes/add'>Ajouter une recette</Link>
         </div>
         <div className='add-btn'>
-          <Link to='/admin/recipes/add_categorie'>Modifier une categorie</Link>
+          <Link to='/admin/recipes/add_categorie'>
+            Modifier / Voir les catégories
+          </Link>
         </div>
       </div>
       <div className='recipes-container'>

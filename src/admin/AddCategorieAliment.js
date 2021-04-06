@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './AddCategorieAliment.css'
 
-const AddCategorieRecipe = () => {
+const AddCategorieAliment = () => {
   const [categorie, setCategorie] = useState('')
   const [id, setId] = useState('')
-  const [name, setName] = useState('')
   const [newName, setNewName] = useState('')
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const AddCategorieRecipe = () => {
   return (
     <div className='categorie-aliments'>
       <button>
-        <Link to='/admin/aliments'>Voir toute les aliments</Link>
+        <Link to='/admin/aliments'>Voir tout les aliments</Link>
       </button>
       <div className='all-categories'>
         {categorie.length !== 0 ? (
@@ -39,7 +38,7 @@ const AddCategorieRecipe = () => {
                     name: newName
                   }
                   axios.put(
-                    `http://localhost:4242/api/aux_fourneaux/categories_recipes/${id}`,
+                    `http://localhost:4242/api/aux_fourneaux/categories_aliments/${id}`,
                     finalName
                   )
                 }}
@@ -56,4 +55,4 @@ const AddCategorieRecipe = () => {
   )
 }
 
-export default AddCategorieRecipe
+export default AddCategorieAliment

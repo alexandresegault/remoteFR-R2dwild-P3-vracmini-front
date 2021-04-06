@@ -1,9 +1,184 @@
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
+import axios from 'axios'
+import ApiKey from './ApiKey'
+import { Editor } from '@tinymce/tinymce-react'
+
 import './AlimentsDetail.css'
 
-const AlimentsDetail = () => {
+const AlimentsDetail = prevProps => {
+  const [aliment, setAliment] = useState('')
+  const [name, setName] = useState('')
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [urlImg, setUrlImg] = useState('')
+  const [categorie, setCategorie] = useState('')
+  const [categorieList, setCategorieList] = useState('')
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
+      .then(res => setCategorieList(res.data))
+  }, [])
+  // Function Tiny ///
+  const handleEditorChangeContent = e => {
+    setContent(e.target.getContent())
+  }
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`
+      )
+      .then(res => {
+        setAliment(res.data)
+      })
+  }, [])
+
+  const updateName = () => {
+    const finalName = {
+      title: name
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`,
+      finalName
+    )
+  }
+  const updateTitle = () => {
+    const finalTitle = {
+      title: title
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`,
+      finalTitle
+    )
+  }
+  const updateContent = () => {
+    const finalContent = {
+      content: content
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`,
+      finalContent
+    )
+  }
+  const updateUrlImg = () => {
+    const finalUrlImg = {
+      url_img: urlImg
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`,
+      finalUrlImg
+    )
+  }
+
+  const updateCategorie = () => {
+    const finalCategorie = {
+      categories_aliments_id: categorie
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`,
+      finalCategorie
+    )
+  }
   return (
-    <div>
-      <div></div>
+    <div className='update-aliment'>
+      <form onSubmit={updateName}>
+        <label>Nom Aliment</label>
+        <input
+          type='text'
+          id='name-aliment'
+          name='name-aliment'
+          placeholder={aliment.name}
+          onChange={event => setName(event.target.value)}
+        />
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateTitle}>
+        <label>Sous-titre</label>
+        <input
+          type='text'
+          id='title-aliment'
+          name='title-aliment'
+          placeholder={aliment.title}
+          onChange={event => setTitle(event.target.value)}
+        />
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateContent}>
+        <label>Ingredients : </label>
+        <div className='editor'>
+          {aliment ? (
+            <Editor
+              apiKey={ApiKey}
+              onChange={handleEditorChangeContent}
+              initialValue={aliment.content}
+              id='tinyContent'
+              init={{
+                height: 200,
+                menubar: true,
+                quickbars_image_toolbar:
+                  'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+                plugins: [
+                  'advlist autolink lists link image',
+                  'charmap print preview anchor help',
+                  'searchreplace visualblocks code',
+                  'a_tinymce_plugin',
+                  'insertdatetime media table paste wordcount'
+                ],
+                toolbar:
+                  'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+              }}
+            />
+          ) : null}
+        </div>
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateUrlImg}>
+        <label>Url Image </label>
+        <input
+          type='text'
+          id='url-img-aliment-input'
+          name='url-img'
+          placeholder={aliment.url_img}
+          onChange={event => setUrlImg(event.target.value)}
+        />
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateCategorie}>
+        <label>Categorie de la recette : </label>
+        <select
+          value={aliment.categories_aliments_id}
+          onChange={event => setCategorie(Number(event.target.value))}
+        >
+          {categorieList
+            ? categorieList.map((cat, i) => (
+                <option value={cat.id} key={i}>
+                  {cat.name}
+                </option>
+              ))
+            : null}
+        </select>
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <div classNme='btn-container'>
+        <button className='back-page'>
+          <Link to='/admin/aliments'>Voir tout les aliments</Link>
+        </button>
+      </div>
     </div>
   )
 }

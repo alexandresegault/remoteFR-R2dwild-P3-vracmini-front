@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import ApiKey from './ApiKey'
+import { Editor } from '@tinymce/tinymce-react'
+
 import './InterfaceAddRecipes.css'
 
 const InterfaceAddRecipes = () => {
@@ -12,11 +15,13 @@ const InterfaceAddRecipes = () => {
   const [nbrPerson, setNbrPerson] = useState('')
   const [categorie, setCategorie] = useState('')
   const [categorieList, setCategorieList] = useState('')
+
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
       .then(res => setCategorieList(res.data))
   }, [])
+
   const addRecipe = () => {
     const finalRecipe = {
       title: name,
@@ -27,6 +32,13 @@ const InterfaceAddRecipes = () => {
       categories_recipes_id: categorie
     }
     axios.post('http://localhost:4242/api/aux_fourneaux/recipes', finalRecipe)
+  }
+  // FUNCTION TINY
+  const handleEditorChangeStep = e => {
+    setStep(e.target.getContent())
+  }
+  const handleEditorChangeIngredients = e => {
+    setIngredients(e.target.getContent())
   }
 
   return (
@@ -40,11 +52,28 @@ const InterfaceAddRecipes = () => {
           onChange={event => setName(event.target.value)}
         />
         <label>Etapes : </label>
-        <textarea
-          type='text'
-          id='step-recipe-input'
-          name='step'
-          onChange={event => setStep(event.target.value)}
+        <Editor
+          apiKey={ApiKey}
+          onChange={handleEditorChangeStep}
+          id='tinyStep'
+          init={{
+            height: 200,
+            menubar: true,
+            placeholder: `${step}`,
+            quickbars_image_toolbar:
+              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+            plugins: [
+              'advlist autolink lists link image',
+              'charmap print preview anchor help',
+              'searchreplace visualblocks code',
+              'a_tinymce_plugin',
+              'insertdatetime media table paste wordcount'
+            ],
+            toolbar:
+              'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+          }}
         />
         <label>Temps préparation : </label>
         <input
@@ -54,11 +83,28 @@ const InterfaceAddRecipes = () => {
           onChange={event => setCookTime(event.target.value)}
         />
         <label>Ingredients : </label>
-        <textarea
-          type='text'
-          id='ingredients-recipe-input'
-          name='cook-time'
-          onChange={event => setIngredients(event.target.value)}
+        <Editor
+          apiKey={ApiKey}
+          onChange={handleEditorChangeIngredients}
+          id='tinyStep'
+          init={{
+            height: 200,
+            menubar: true,
+            placeholder: `${ingredients}`,
+            quickbars_image_toolbar:
+              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+            plugins: [
+              'advlist autolink lists link image',
+              'charmap print preview anchor help',
+              'searchreplace visualblocks code',
+              'a_tinymce_plugin',
+              'insertdatetime media table paste wordcount'
+            ],
+            toolbar:
+              'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+          }}
         />
         <label>Nbr de personnes : </label>
         <input

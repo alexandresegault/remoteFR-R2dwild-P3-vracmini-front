@@ -6,11 +6,12 @@ import { useState } from 'react'
 import './AddAliments.css'
 
 const AddAliments = () => {
-
   const [name, setName] = useState('')
-  const [titre, setTitre] = useState('')
+  const [title, setTitle] = useState('')
   const [text, setText] = useState(null)
   const [urlImg, setUrlImg] = useState('')
+  const [categorie, setCategorie] = useState('')
+  const [categorieList, setCategorieList] = useState('')
 
   const handleEditorChange = e => {
     setText(e.target.getContent())
@@ -19,16 +20,15 @@ const AddAliments = () => {
   const send = () => {
     const result = {
       name: name,
-      title: titre,
+      title: title,
       content: text,
-      img_url: urlImg,
-      categories_aliments_id: 1
+      url_img: urlImg,
+      categories_aliments_id: 10
     }
     axios.post('http://localhost:4242/api/aux_fourneaux/aliments', result)
   }
 
   return (
-
     <div className='interface-add-aliments'>
       <div>
         <label>Nom aliment :</label>
@@ -46,7 +46,7 @@ const AddAliments = () => {
           id='title-input'
           placeholder='Meet Substitute'
           name='title'
-          onChange={event => setTitre(event.target.value)}
+          onChange={event => setTitle(event.target.value)}
         />
         <label>URL image :</label>
         <input

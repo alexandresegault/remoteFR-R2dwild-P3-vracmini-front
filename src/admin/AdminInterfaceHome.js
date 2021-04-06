@@ -26,10 +26,7 @@ const AdminInterfaceHome = prevProps => {
       <Switch>
         <Route path='/admin/pages' component={InterfacePages} />
         <Route exact path='/admin/recipes' component={InterfaceRecipes} />
-        <Route
-          path='/admin/recipes/add'
-          component={InterfaceAddRecipes}
-        />
+        <Route path='/admin/recipes/add' component={InterfaceAddRecipes} />
         <Route
           path='/admin/recipes/add_categorie'
           component={AddCategorieRecipe}
@@ -38,10 +35,10 @@ const AdminInterfaceHome = prevProps => {
         <Route exact path='/admin/aliments' component={InterfaceAliments} />
         <Route path='/admin/aliments/add' component={AddAliments} />
         <Route
-          path='admin/aliments/add_categorie'
+          path='/admin/aliments/add_categorie'
           component={AddCategorieAliment}
         />
-        <Route path='admin/aliments/:id' component={AlimentsDetail} />
+        <Route path='/admin/aliments/:id' component={AlimentsDetail} />
         <Route exact path='/admin/podcasts' component={InterfacePodcasts} />
         <Route exact path='/admin/articles' component={InterfaceArticles} />
       </Switch>

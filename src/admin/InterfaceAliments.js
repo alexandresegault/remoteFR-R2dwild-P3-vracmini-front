@@ -14,14 +14,15 @@ const InterfaceAliments = () => {
   }, [])
 
   return (
-
     <div className='interface-aliments'>
       <div className='btn-container'>
         <div className='add-btn'>
-          <Link to='/admin/aliments/add'>Ajouter une recette</Link>
+          <Link to='/admin/aliments/add'>Ajouter un aliment</Link>
         </div>
         <div className='add-btn'>
-          <Link to='/admin/aliments/add_categorie'>Modifier une categorie</Link>
+          <Link to='/admin/aliments/add_categorie'>
+            Modifier / Voir les catégories
+          </Link>
         </div>
       </div>
 
@@ -30,10 +31,9 @@ const InterfaceAliments = () => {
           allAliments.length !== 0 ? (
             allAliments.map((alim, i) => (
               <div key={i} className='recipe-card'>
-                <p key={i}>{alim.title}</p>
+                <p key={i}>{alim.name}</p>
                 <div>
                   <Link to={`/admin/aliments/${alim.id}`}>
-
                     Modifier / Supprimer
                   </Link>
                 </div>
