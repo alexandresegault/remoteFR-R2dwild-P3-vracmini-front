@@ -1,28 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
-.all-recipes{
-  display: flex;
+.card-recipes{
+ 
+}
+
+.container-title {
+  display:  flex;
+  justify-content: space-around;
+  border : solid 1px red;
+  height: 20vh;
+
+}
+
+.img-recipe{
+  width: 150px;
+}
+
+.title-recipe{
+  color:  #F8DBAF;
+  font-size: 26px;
+  border: 1px solid black;
+}
+
+.container-symbols{
+  display :flex;
   justify-content: space-around;
 }
 
-.card-recipe{
+.symbol {
+  height : 70px;
+}
+
+
+.container-symbols {
+
+}
+
+.symbol {
+  display: flex;
+  justify-content: center;
+
+}
+
+.title-symbol {
+  vertical-align : text-bottom;
+
+}
+
+.container-recipes {
+
+}
+
+.ingredients-recipes{
+
+}
+
+.step-recipes{
+
+}
+
+.container-tips{
+  
+  border: solid 2px black;
+  border-radius: 10px;
+}
+
+.tips {
+  text-align : center;
+}
+
+
+
+
+
+/* .card-recipe{
   border: 5px solid #F0D8B8;
   width: 500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-conten: space-around;
   font-family: 'Open Sans Condensed', sans-serif;
   padding: 10px;
-}
+} */
 
-.name-recipe{
-  color:  #F8DBAF;
-  font-size: 26px;
-}
 
-.title-recipe{
-  padding-top: 20px;
-}
+
+
 
 .description-recipe{
 text-align: justify;

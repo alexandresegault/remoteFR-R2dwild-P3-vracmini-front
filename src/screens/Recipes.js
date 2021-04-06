@@ -1,41 +1,3 @@
-// import { useState, useEffect } from 'react'
-// import axios from 'axios'
-// import './Recipes.css'
-
-// const Recipes = prevProps => {
-//   const [recipes, setRecipes] = useState([])
-//   const [isLoading, setIsLoading] = useState(false)
-
-//   useEffect(() => {
-//     axios
-//       .get(
-//         `http://localhost:4242/api/aux_fourneaux/categorie_recettes/recettes=${prevProps.match.params.id}`
-//       )
-//       .then(response => setRecipes(response.data))
-//       .then(res => setIsLoading(true))
-//   }, [])
-
-//   return (
-//     <div>
-//       {isLoading ? (
-//         <div className='all-recipes'>
-//           {recipes.map(recipe => (
-//             <div className='card-recipe'>
-//               <h2 className='name-recipe'>{recipe.name}</h2>
-//               <h3 className='title-recipe'>{recipe.title}</h3>
-//               <p className='description-recipe'>{recipe.content}</p>
-//             </div>
-//           ))}
-//         </div>
-//       ) : (
-//         <div> En développement </div>
-//       )}
-//     </div>
-//   )
-// }
-
-// export default Recipes
-
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Recipes.css'
@@ -48,9 +10,7 @@ const Recipes = prevProps => {
 
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:4242/api/aux_fourneaux/recipes=${prevProps.match.params.id}`
-      )
+      .get(`http://localhost:4242/api/aux_fourneaux/recipes`)
       .then(response => setRecipes(response.data))
       .then(res => setIsLoading(true))
   }, [])
@@ -58,17 +18,23 @@ const Recipes = prevProps => {
   return (
     <div>
       {isLoading ? (
-        <div className='all-recipes'>
+        <div className='card-recipes'>
           {recipes.map(recipe => (
-            <div className='card-recipe'>
-              <h2 className='name-recipe'>{recipe.name}</h2>
-              <div className='container-img'>
-                <img src={recettes} />
-                <p className='nb-person-recipes'>{recipe.person_nb}</p>
-                <img src={recettes} />
-                <p className='time-recipes'>{recipe.cook_time}</p>
-                <img src={recettes} />
-                <p className='img-vitality'>Vitalité</p>
+            <div>
+              <div className='container-title'>
+                <h1 className='title-recipe'>{recipe.title}</h1>
+                <img className='img-recipe' src={recipe.url_img} />
+              </div>
+              <div className='container-symbols'>
+                <p>
+                  <img className='symbol' src={recettes} alt={name} />
+                  {`${recipe.person_nb} pers`}
+                </p>
+                <p>
+                  <img className='symbol' src={recettes} alt={name} />
+                  {`${recipe.cook_time} min`}
+                </p>
+                <img className='symbol' src={recettes} alt={name} />
               </div>
               <div className='container-recipes'>
                 <h3>Il vous faut</h3>
@@ -77,6 +43,12 @@ const Recipes = prevProps => {
                 <p className='step-recipes'>{recipe.step}</p>
               </div>
               <p>Bon ap'</p>
+              <div className='container-tips'>
+                <div className='tips'>
+                  <h3>Trucs et astuces</h3>
+                  <p>{recipe.tips}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

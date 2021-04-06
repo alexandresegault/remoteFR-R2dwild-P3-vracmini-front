@@ -6,6 +6,7 @@ import Aliments from './screens/Aliments'
 import AuxFourneaux from './screens/AuxFourneaux'
 import Header from './components/Header'
 import Home from './screens/Home'
+import Recipes from './screens/Recipes'
 
 import './App.css'
 import Contact from './screens/Contact'
@@ -23,7 +24,8 @@ function App() {
           path='/aux_fourneaux/curieux_aliments/:id'
           component={Aliments}
         />
-    <Route path='/contact' component={Contact} />
+        <Route path='/contact' component={Contact} />
+        <Route path='/aux_fourneaux/recipes' component={Recipes} />
 
         <Route path='/admin'>
           <AdminInterfaceHome setDisplayHeader={setDisplayHeader} />

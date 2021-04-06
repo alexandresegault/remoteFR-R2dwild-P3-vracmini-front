@@ -25,7 +25,7 @@ const AuxFourneaux = prevProps => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categorie_aliments')
       .then(response => setCategoriesAlim(response.data))
-      .then(res => setIsLoading2(true))
+      .then(res => setIsLoading2(false))
   }, [])
   return (
     <div>
