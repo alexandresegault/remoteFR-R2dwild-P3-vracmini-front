@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.tableau-style{
+  font-family: 'open sans condensed';
+  font-size: 28px;
+  /* border-collapse: collapse; */
+  height:30em;
+  width: 60%;
+  min-width: 400px;
+  box-shadow: 0 5px 50px rgba(0,0,0,0.15) ;
+  margin: 100px auto;
+}
+
+#entete{
+  background-color: rgb(185, 231, 154);
+  border: 2px solid #DEDCCC;
+}
+
+.lignes{
+  background-color:white;
+  border: 2px solid #DEDCCC;
+}
+td{
+  text-align: center;
+  min-width: 100px;
+  border: 1px solid #DEDCCC;
+}
+tbody{
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}

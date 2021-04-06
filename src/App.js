@@ -9,7 +9,7 @@ import Header from './components/Header'
 import Home from './screens/Home'
 import Recipes from './screens/Recipes'
 import GuideQuantites from './screens/GuideQuantites'
-
+import Conversion from './screens/Conversion'
 
 import './App.css'
 import Contact from './screens/Contact'
@@ -37,6 +37,10 @@ function App() {
         <Route path='/admin'>
           <AdminInterfaceHome setDisplayHeader={setDisplayHeader} />
         </Route>
+        <Route
+          path='/aux_fourneaux/tableau_de_conversion'
+          component={Conversion}
+        ></Route>
       </Switch>
     </div>
   )
