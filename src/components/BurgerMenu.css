@@ -1,25 +1,69 @@
-.menu-list, #menu-page  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  
-    list-style-type: none;
-  }
-  .menu-list a {
-      text-decoration: none;
-  }
-  #menu-page {
-    position: absolute;
-    left: -110%;
-    width: 100vw;
-    height: 110vh;
-    z-index: 1000;
-    background: #ffffff;
-  }
-  .visible-menu {
-    animation: 0.5s slideRight ease-in forwards;
-    transition-delay: 0;
-  }
-  .invisible-menu {
-    animation: 1s slideLeft ease-out forwards;
-    transition-delay: 0;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.buttons-users{
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.burger-connexion{
+  text-decoration: none;
+  padding: 10px;
+  background: #D7EAD1;
+  border-radius: 10px;
+}
+
+.burger-inscription{
+  text-decoration: none;
+  padding: 5px;
+}
+
+.invisible-menu {
+  animation: 1s slideLeft ease-out forwards;
+  transition-delay: 0;
+}
+
+.menu-global{
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu-link{
+  padding-bottom: 15px;
+  color: black;
+}
+
+.menu-link a{
+  text-decoration: none;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  align-items: left;  
+  list-style-type: none; 
+}
+
+#menu-page {
+  padding-top: 100px;
+  position: absolute;
+  left: -110%;
+  width: 100vw;
+  height: 150vh;
+  z-index: 1000;
+  background: #fffefe;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+}
+  
+.visible-menu {
+  animation: 0.5s slideRight ease-in forwards;
+  transition-delay: 0;
+}
+
+.woman-burger{
+  width: 80px;
+  height: 400px;
+}

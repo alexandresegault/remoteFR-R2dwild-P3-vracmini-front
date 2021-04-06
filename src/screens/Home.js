@@ -44,7 +44,9 @@ const Home = () => {
           </Link>
         </div>
         <div className='section-right contact'>
-          <img src={imgContact} alt='links' />
+          <Link to='/contact'>
+            <img src={imgContact} alt='liens' />
+          </Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,26 @@
+.container-contact {
+  display: flex;
+  justify-content: center;
+  margin: 100px auto 20px auto;
+}
+
+.container-intro-contact {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+h1{
+  text-align: center;
+}
+
+.intro-contact{
+ line-height: 35px;
+margin: 0 20px 0 20px;
+}
+
+@media screen and (max-width:500px){
+  .img-woman{
+display:none
+  }
+}
