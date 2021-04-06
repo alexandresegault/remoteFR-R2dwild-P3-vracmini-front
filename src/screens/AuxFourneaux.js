@@ -67,7 +67,7 @@ const AuxFourneaux = prevProps => {
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link>Guide des quantités</Link>
+                <Link to='/aux_fourneaux/guide_quantites'>Guide des quantités</Link>
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
