@@ -25,7 +25,7 @@ const AuxFourneaux = prevProps => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
-      .then(res => setIsLoading2(true))
+      .then(res => setIsLoading2(false))
   }, [])
   return (
     <div>
@@ -67,7 +67,7 @@ const AuxFourneaux = prevProps => {
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link>Guide des quantités</Link>
+                <Link to='/aux_fourneaux/guide_quantites'>Guide des quantités</Link>
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
