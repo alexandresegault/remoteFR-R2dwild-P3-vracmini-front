@@ -19,13 +19,14 @@ const AuxFourneaux = prevProps => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/')
       .then(response => setAuxFourneaux(response.data))
-      .then(res => setIsLoading(true))
+      .then(() => setIsLoading(true))
   }, [])
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
       .then(res => setIsLoading2(false))
+
   }, [])
   return (
     <div>
@@ -48,8 +49,9 @@ const AuxFourneaux = prevProps => {
                     showAliments ? 'visible-aliments' : 'invisible-aliments'
                   }
                 >
-                  {categoriesAlim.map(cat => (
+                  {categoriesAlim.map((cat, i) => (
                     <Link
+                      key={i}
                       to={{
                         pathname: `/aux_fourneaux/curieux_aliments/${cat.id}`
                       }}

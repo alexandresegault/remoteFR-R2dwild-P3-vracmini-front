@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
 import axios from 'axios'
+import ApiKey from './ApiKey'
+import { Editor } from '@tinymce/tinymce-react'
+
 import './RecipesDetail.css'
 
 const RecipesDetail = prevProps => {
@@ -10,6 +14,15 @@ const RecipesDetail = prevProps => {
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
+
+  // Function Tiny ///
+  const handleEditorChangeStep = e => {
+    setStep(e.target.getContent())
+  }
+  const handleEditorChangeIngredients = e => {
+    setIngredients(e.target.getContent())
+  }
+
   useEffect(() => {
     axios
       .get(
@@ -20,7 +33,7 @@ const RecipesDetail = prevProps => {
 
   const updateName = () => {
     const finalName = {
-      name: name
+      title: name
     }
     axios.put(
       `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
@@ -71,7 +84,7 @@ const RecipesDetail = prevProps => {
           type='text'
           id='name-recipe-input'
           name='name'
-          placeholder={recipe.name}
+          placeholder={recipe.title}
           onChange={event => setName(event.target.value)}
         />
         <button className='update-btn' type='submit'>
@@ -80,12 +93,28 @@ const RecipesDetail = prevProps => {
       </form>
       <form onSubmit={updateStep}>
         <label>Etapes : </label>
-        <textarea
-          type='text'
-          id='step-recipe-input'
-          name='step'
-          defaultValue={recipe.step}
-          onChange={event => setStep(event.target.value)}
+        <Editor
+          apiKey={ApiKey}
+          onChange={handleEditorChangeStep}
+          id='tinyStep'
+          init={{
+            height: 200,
+            initialValue: `${recipe.step}`,
+            menubar: true,
+            quickbars_image_toolbar:
+              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+            plugins: [
+              'advlist autolink lists link image',
+              'charmap print preview anchor help',
+              'searchreplace visualblocks code',
+              'a_tinymce_plugin',
+              'insertdatetime media table paste wordcount'
+            ],
+            toolbar:
+              'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+          }}
         />
         <button className='update-btn' type='submit'>
           Modifier
@@ -106,13 +135,32 @@ const RecipesDetail = prevProps => {
       </form>
       <form onSubmit={updateIngredients}>
         <label>Ingredients : </label>
-        <textarea
-          type='text'
-          id='ingredients-recipe-input'
-          name='cook-time'
-          defaultValue={recipe.ingredients}
-          onChange={event => setIngredients(event.target.value)}
-        />
+        <div className='editor'>
+          <Editor
+            apiKey={ApiKey}
+            onChange={handleEditorChangeIngredients}
+            value={recipe.ingredients}
+            initialValue={recipe.ingredients}
+            id='tinyContent'
+            init={{
+              height: 200,
+              menubar: true,
+              quickbars_image_toolbar:
+                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'a_tinymce_plugin',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+            }}
+          />
+        </div>
         <button className='update-btn' type='submit'>
           Modifier
         </button>

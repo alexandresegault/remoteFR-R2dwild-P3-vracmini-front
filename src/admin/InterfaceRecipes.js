@@ -12,9 +12,7 @@ const InterfaceRecipes = () => {
       console.log(allRecipes)
     })
   }, [])
-  const deleteRecipe = () => {
-    console.log('deleteRecipe')
-  }
+
   return (
     <div className='interface-recipes'>
       <div className='btn-container'>
@@ -22,9 +20,7 @@ const InterfaceRecipes = () => {
           <Link to='/admin/recipes/add'>Ajouter une recette</Link>
         </div>
         <div className='add-btn'>
-          <Link to='/admin/recipes/add_categorie'>
-            Ajouter / Modifier / Supprimer une categorie
-          </Link>
+          <Link to='/admin/recipes/add_categorie'>Modifier une categorie</Link>
         </div>
       </div>
       <div className='recipes-container'>
@@ -32,7 +28,7 @@ const InterfaceRecipes = () => {
           allRecipes.length !== 0 ? (
             allRecipes.map((recipe, i) => (
               <div key={i} className='recipe-card'>
-                <p key={i}>{recipe.name}</p>
+                <p key={i}>{recipe.title}</p>
                 <div>
                   <Link to={`/admin/recipes/${recipe.id}`}>
                     Modifier / Supprimer
