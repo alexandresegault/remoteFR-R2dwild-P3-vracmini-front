@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import './AuxFourneaux.css'
 
-const AuxFourneaux = () => {
+const AuxFourneaux = prevProps => {
   const [showAliments, setShowAliments] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [categoriesAlim, setCategoriesAlim] = useState([])
@@ -21,14 +21,13 @@ const AuxFourneaux = () => {
       .then(response => setAuxFourneaux(response.data))
       .then(() => setIsLoading(true))
   }, [])
-
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
-      .then(() => setIsLoading2(true))
-  }, [])
+      .then(res => setIsLoading2(false))
 
+  }, [])
   return (
     <div>
       {isLoading ? (
@@ -70,7 +69,7 @@ const AuxFourneaux = () => {
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link>Guide des quantités</Link>
+                <Link to='/aux_fourneaux/guide_quantites'>Guide des quantités</Link>
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>

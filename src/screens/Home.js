@@ -34,15 +34,19 @@ const Home = () => {
       </div>
       <div className='home home-right'>
         <div className='section-right vracn-co'>
-          <img src={imgVracNCo} alt='liens' />
+          <Link to='/vracnco'>
+            <img src={imgVracNCo} alt='links' />
+          </Link>
         </div>
         <div className='section-right aux-fourneaux'>
           <Link to='/aux_fourneaux'>
-            <img src={imgFourneaux} alt='liens' />
+            <img src={imgFourneaux} alt='links' />
           </Link>
         </div>
         <div className='section-right contact'>
-          <img src={imgContact} alt='liens' />
+          <Link to='/contact'>
+            <img src={imgContact} alt='liens' />
+          </Link>
         </div>
       </div>
     </div>
