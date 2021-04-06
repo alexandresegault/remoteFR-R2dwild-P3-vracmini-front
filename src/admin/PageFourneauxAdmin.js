@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import ApiKey from './ApiKey'
+import { Editor } from '@tinymce/tinymce-react'
 import './PageFourneauxAdmin.css'
 
 const PageFourneauxAdmin = () => {
@@ -24,6 +26,9 @@ const PageFourneauxAdmin = () => {
       `http://localhost:4242/api/aux_fourneaux/${fourneaux.id}`,
       finalTitle
     )
+  }
+  const handleEditorIntro = e => {
+    setContent(e.target.getContent())
   }
   const handleChangeContent = event => {
     event.preventDefault()
@@ -72,13 +77,32 @@ const PageFourneauxAdmin = () => {
       </form>
       <form onSubmit={handleChangeContent}>
         <label>Bloc Introduction : </label>
-        <textarea
-          type='text'
-          id='content-input'
-          name='content'
-          defaultValue={fourneaux.content}
-          onChange={event => setContent(event.target.value)}
-        />
+        {fourneaux ? (
+          <Editor
+            apiKey={ApiKey}
+            onChange={handleEditorIntro}
+            id='tinyIntro'
+            initialValue={fourneaux.content}
+            init={{
+              height: 200,
+              menubar: true,
+              quickbars_image_toolbar:
+                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'a_tinymce_plugin',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+            }}
+          />
+        ) : null}
+
         <button type='submit'>Modifier</button>
       </form>
     </div>
