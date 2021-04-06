@@ -2,9 +2,11 @@ import ApiKey from './ApiKey'
 import axios from 'axios'
 import { Editor } from '@tinymce/tinymce-react'
 import { useState } from 'react'
+
 import './AddAliments.css'
 
 const AddAliments = () => {
+
   const [name, setName] = useState('')
   const [titre, setTitre] = useState('')
   const [text, setText] = useState(null)
@@ -26,9 +28,11 @@ const AddAliments = () => {
   }
 
   return (
-    <div className='interface-aliments'>
+
+    <div className='interface-add-aliments'>
       <div>
         <label>Nom aliment :</label>
+
         <input
           type='text'
           id='name-categorie-input'
@@ -84,5 +88,4 @@ const AddAliments = () => {
     </div>
   )
 }
-
 export default AddAliments

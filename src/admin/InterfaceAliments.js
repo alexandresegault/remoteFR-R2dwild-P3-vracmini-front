@@ -14,6 +14,7 @@ const InterfaceAliments = () => {
   }, [])
 
   return (
+
     <div className='interface-aliments'>
       <div className='btn-container'>
         <div className='add-btn'>
@@ -23,21 +24,23 @@ const InterfaceAliments = () => {
           <Link to='/admin/aliments/add_categorie'>Modifier une categorie</Link>
         </div>
       </div>
-      <div className='aliments-container'>
+
+      <div className='recipes-container'>
         {allAliments ? (
           allAliments.length !== 0 ? (
-            allAliments.map((aliment, i) => (
-              <div key={i} className='aliment-card'>
-                <p key={i}>{aliment.name}</p>
+            allAliments.map((alim, i) => (
+              <div key={i} className='recipe-card'>
+                <p key={i}>{alim.title}</p>
                 <div>
-                  <Link to={`/admin/aliments/${aliment.id}`}>
+                  <Link to={`/admin/aliments/${alim.id}`}>
+
                     Modifier / Supprimer
                   </Link>
                 </div>
               </div>
             ))
           ) : (
-            <p>Loading</p>
+            <p>No aliments found</p>
           )
         ) : null}
       </div>

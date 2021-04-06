@@ -14,7 +14,14 @@ const RecipesDetail = prevProps => {
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
+  const [categorie, setCategorie] = useState('')
+  const [categorieList, setCategorieList] = useState('')
 
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
+      .then(res => setCategorieList(res.data))
+  }, [])
   // Function Tiny ///
   const handleEditorChangeStep = e => {
     setStep(e.target.getContent())
@@ -76,6 +83,15 @@ const RecipesDetail = prevProps => {
       finalNbrPerson
     )
   }
+  const updateCategorie = () => {
+    const finalCategorie = {
+      categories_recipes_id: categorie
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
+      finalCategorie
+    )
+  }
   return (
     <div className='update-recipe'>
       <form onSubmit={updateName}>
@@ -93,29 +109,31 @@ const RecipesDetail = prevProps => {
       </form>
       <form onSubmit={updateStep}>
         <label>Etapes : </label>
-        <Editor
-          apiKey={ApiKey}
-          onChange={handleEditorChangeStep}
-          id='tinyStep'
-          init={{
-            height: 200,
-            initialValue: `${recipe.step}`,
-            menubar: true,
-            quickbars_image_toolbar:
-              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-            plugins: [
-              'advlist autolink lists link image',
-              'charmap print preview anchor help',
-              'searchreplace visualblocks code',
-              'a_tinymce_plugin',
-              'insertdatetime media table paste wordcount'
-            ],
-            toolbar:
-              'undo redo | formatselect | bold italic | \
+        {recipe ? (
+          <Editor
+            apiKey={ApiKey}
+            onChange={handleEditorChangeStep}
+            id='tinyStep'
+            initialValue={recipe.step}
+            init={{
+              height: 200,
+              menubar: true,
+              quickbars_image_toolbar:
+                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'a_tinymce_plugin',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
               alignleft aligncenter alignright | \
               bullist numlist outdent indent | help'
-          }}
-        />
+            }}
+          />
+        ) : null}
         <button className='update-btn' type='submit'>
           Modifier
         </button>
@@ -136,30 +154,31 @@ const RecipesDetail = prevProps => {
       <form onSubmit={updateIngredients}>
         <label>Ingredients : </label>
         <div className='editor'>
-          <Editor
-            apiKey={ApiKey}
-            onChange={handleEditorChangeIngredients}
-            value={recipe.ingredients}
-            initialValue={recipe.ingredients}
-            id='tinyContent'
-            init={{
-              height: 200,
-              menubar: true,
-              quickbars_image_toolbar:
-                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-              plugins: [
-                'advlist autolink lists link image',
-                'charmap print preview anchor help',
-                'searchreplace visualblocks code',
-                'a_tinymce_plugin',
-                'insertdatetime media table paste wordcount'
-              ],
-              toolbar:
-                'undo redo | formatselect | bold italic | \
+          {recipe ? (
+            <Editor
+              apiKey={ApiKey}
+              onChange={handleEditorChangeIngredients}
+              initialValue={recipe.ingredients}
+              id='tinyContent'
+              init={{
+                height: 200,
+                menubar: true,
+                quickbars_image_toolbar:
+                  'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+                plugins: [
+                  'advlist autolink lists link image',
+                  'charmap print preview anchor help',
+                  'searchreplace visualblocks code',
+                  'a_tinymce_plugin',
+                  'insertdatetime media table paste wordcount'
+                ],
+                toolbar:
+                  'undo redo | formatselect | bold italic | \
               alignleft aligncenter alignright | \
               bullist numlist outdent indent | help'
-            }}
-          />
+              }}
+            />
+          ) : null}
         </div>
         <button className='update-btn' type='submit'>
           Modifier
@@ -174,6 +193,24 @@ const RecipesDetail = prevProps => {
           placeholder={recipe.person_nb}
           onChange={event => setNbrPerson(event.target.value)}
         />
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateCategorie}>
+        <label>Categorie de la recette : </label>
+        <select
+          value={recipe.categories_recipes_id}
+          onChange={event => setCategorie(Number(event.target.value))}
+        >
+          {categorieList
+            ? categorieList.map((cat, i) => (
+                <option value={cat.id} key={i}>
+                  {cat.name}
+                </option>
+              ))
+            : null}
+        </select>
         <button className='update-btn' type='submit'>
           Modifier
         </button>

@@ -1,3 +1,5 @@
+import './AlimentsDetail.css'
+
 const AlimentsDetail = () => {
   return (
     <div>

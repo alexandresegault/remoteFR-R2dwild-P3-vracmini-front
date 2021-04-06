@@ -37,7 +37,7 @@ const InterfaceRecipes = () => {
               </div>
             ))
           ) : (
-            <p>Loading</p>
+            <p>No recipes found</p>
           )
         ) : null}
       </div>
