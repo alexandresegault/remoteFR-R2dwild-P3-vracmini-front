@@ -2,9 +2,11 @@ import ApiKey from './ApiKey'
 import axios from 'axios'
 import { Editor } from '@tinymce/tinymce-react'
 import { useState } from 'react'
-import './InterfaceAliments.css'
 
-const InterfaceAliments = () => {
+import './AddAliments.css'
+
+const AddAliments = () => {
+
   const [name, setName] = useState('')
   const [titre, setTitre] = useState('')
   const [text, setText] = useState(null)
@@ -26,9 +28,11 @@ const InterfaceAliments = () => {
   }
 
   return (
+
     <div className='interface-add-aliments'>
       <div>
-        <label>Nom de l'aliment :</label>
+        <label>Nom aliment :</label>
+
         <input
           type='text'
           id='name-categorie-input'
@@ -44,7 +48,7 @@ const InterfaceAliments = () => {
           name='title'
           onChange={event => setTitre(event.target.value)}
         />
-        <label>URL de l'image :</label>
+        <label>URL image :</label>
         <input
           type='text'
           id='urlimg-input'
@@ -59,7 +63,6 @@ const InterfaceAliments = () => {
             id='thisContent'
             init={{
               height: 500,
-              initialValue: 'Place à la créativité',
               menubar: true,
               quickbars_image_toolbar:
                 'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
@@ -85,5 +88,4 @@ const InterfaceAliments = () => {
     </div>
   )
 }
-
-export default InterfaceAliments
+export default AddAliments

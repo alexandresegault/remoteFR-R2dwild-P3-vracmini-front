@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-import './InterfaceRecipes.css'
+import './InterfaceAliments.css'
 
 const InterfaceAliments = () => {
   const [allAliments, setAllAliments] = useState('')
@@ -14,7 +14,8 @@ const InterfaceAliments = () => {
   }, [])
 
   return (
-    <div className='interface-recipes'>
+
+    <div className='interface-aliments'>
       <div className='btn-container'>
         <div className='add-btn'>
           <Link to='/admin/aliments/add'>Ajouter une recette</Link>
@@ -23,6 +24,7 @@ const InterfaceAliments = () => {
           <Link to='/admin/aliments/add_categorie'>Modifier une categorie</Link>
         </div>
       </div>
+
       <div className='recipes-container'>
         {allAliments ? (
           allAliments.length !== 0 ? (
@@ -31,6 +33,7 @@ const InterfaceAliments = () => {
                 <p key={i}>{alim.title}</p>
                 <div>
                   <Link to={`/admin/aliments/${alim.id}`}>
+
                     Modifier / Supprimer
                   </Link>
                 </div>

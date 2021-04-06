@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
+
 import AddAliments from './AddAliments'
 import AddCategorieAliment from './AddCategorieAliment'
 import AddCategorieRecipe from './AddCategorieRecipe'
@@ -12,6 +13,7 @@ import InterfacePodcasts from './InterfacePodcasts'
 import InterfaceRecipes from './InterfaceRecipes'
 import MenuInterface from './MenuInterface'
 import RecipesDetail from './RecipesDetail'
+
 import './AdminInterfaceHome.css'
 
 const AdminInterfaceHome = prevProps => {
@@ -25,12 +27,10 @@ const AdminInterfaceHome = prevProps => {
         <Route path='/admin/pages' component={InterfacePages} />
         <Route exact path='/admin/recipes' component={InterfaceRecipes} />
         <Route
-          exact
           path='/admin/recipes/add'
           component={InterfaceAddRecipes}
         />
         <Route
-          exact
           path='/admin/recipes/add_categorie'
           component={AddCategorieRecipe}
         />
