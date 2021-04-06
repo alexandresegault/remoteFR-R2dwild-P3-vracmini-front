@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import Vracnco from './screens/Vracnco'
+import { useEffect, useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
@@ -20,6 +21,7 @@ function App() {
     <div className='App'>
       {displayHeader ? <Header /> : null}
       <Switch>
+        <Route path='/vracnco' component={Vracnco} />
         <Route exact path='/' component={Home} />
         <Route exact path='/aux_fourneaux' component={AuxFourneaux} />
         <Route
