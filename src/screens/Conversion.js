@@ -5,7 +5,7 @@ const Conversion = () => {
   return (
     <div>
       <table className='tableau-style'>
-        <thead id='entete'>
+        <thead className='entete'>
           <tr>
             <td>Cuillères Mesures Tupperware</td>
             <td>50 ml</td>
