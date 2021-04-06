@@ -14,35 +14,21 @@ const AddCategorieRecipe = () => {
       name: name
     }
     axios.post(
-      'http://localhost:4242/api/aux_fourneaux/categorie_recipes',
+      'http://localhost:4242/api/aux_fourneaux/categories_recipes',
       finalCategorie
     )
   }
 
   useEffect(() => {
     axios
-      .get('http://localhost:4242/api/aux_fourneaux/categorie_recipes')
+      .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
       .then(res => setCategorie(res.data))
   }, [])
   return (
     <div className='categorie-recipes'>
-      <div className='add-categorie-recipes'>
-        <form onSubmit={addCategorie}>
-          <label>Nom de la categorie : </label>
-          <input
-            type='text'
-            id='name-categorie-input'
-            name='name'
-            onChange={event => setName(event.target.value)}
-          />
-          <div className='btn-recipes'>
-            <button type='submit'>Ajouter la categorie</button>
-            <button>
-              <Link to='/admin/recipes'>Voir toute les recettes</Link>
-            </button>
-          </div>
-        </form>
-      </div>
+      <button>
+        <Link to='/admin/recipes'>Voir toute les recettes</Link>
+      </button>
       <div className='all-categories'>
         {categorie.length !== 0 ? (
           categorie.map((cat, i) => (
@@ -63,7 +49,7 @@ const AddCategorieRecipe = () => {
                     name: newName
                   }
                   axios.put(
-                    `http://localhost:4242/api/aux_fourneaux/categorie_recipes/${id}`,
+                    `http://localhost:4242/api/aux_fourneaux/categories_recipes/${id}`,
                     finalName
                   )
                 }}

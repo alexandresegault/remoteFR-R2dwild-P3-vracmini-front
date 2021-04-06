@@ -19,14 +19,14 @@ const AuxFourneaux = () => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/')
       .then(response => setAuxFourneaux(response.data))
-      .then(res => setIsLoading(true))
+      .then(() => setIsLoading(true))
   }, [])
 
   useEffect(() => {
     axios
-      .get('http://localhost:4242/api/aux_fourneaux/categorie_aliments')
+      .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
-      .then(res => setIsLoading2(true))
+      .then(() => setIsLoading2(true))
   }, [])
 
   return (
@@ -50,8 +50,9 @@ const AuxFourneaux = () => {
                     showAliments ? 'visible-aliments' : 'invisible-aliments'
                   }
                 >
-                  {categoriesAlim.map(cat => (
+                  {categoriesAlim.map((cat, i) => (
                     <Link
+                      key={i}
                       to={{
                         pathname: `/aux_fourneaux/curieux_aliments/${cat.id}`
                       }}
