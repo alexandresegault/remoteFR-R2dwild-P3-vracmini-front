@@ -22,6 +22,7 @@ function App() {
       {displayHeader ? <Header /> : null}
       <Switch>
         <Route path='/vracnco' component={Vracnco} />
+        <Route path='/vracnco/:id' component={Vracnco} />
         <Route exact path='/' component={Home} />
         <Route exact path='/aux_fourneaux' component={AuxFourneaux} />
         <Route
@@ -30,6 +31,7 @@ function App() {
         />
         <Route path='/contact' component={Contact} />
         <Route path='/aux_fourneaux/recipes' component={Recipes} />
+        <Route path='/aux_fourneaux/recipes/:id' component={Recipes} />
         <Route
           path='/aux_fourneaux/guide_quantites'
           component={GuideQuantites}
