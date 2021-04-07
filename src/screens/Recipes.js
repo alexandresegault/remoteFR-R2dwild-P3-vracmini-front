@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-key */
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Recipes.css'
 
 import recettes from '../img/livre-de-recettes.png'
 
-const Recipes = prevProps => {
+const Recipes = () => {
   const [recipes, setRecipes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -20,35 +21,43 @@ const Recipes = prevProps => {
       {isLoading ? (
         <div className='card-recipes'>
           {recipes.map(recipe => (
-            <div>
-              <div className='container-title'>
-                <h1 className='title-recipe'>{recipe.title}</h1>
-                <img className='img-recipe' src={recipe.url_img} />
-              </div>
-              <div className='container-symbols'>
-                <p>
-                  <img className='symbol' src={recettes} alt={name} />
-                  {`${recipe.person_nb} pers`}
-                </p>
-                <p>
-                  <img className='symbol' src={recettes} alt={name} />
-                  {`${recipe.cook_time} min`}
-                </p>
-                <img className='symbol' src={recettes} alt={name} />
+            <div className='card-container'>
+              <div className='card-header'>
+                <div className='container-title'>
+                  <h1 className='title-recipe'>{recipe.title}</h1>
+                  <div className='caracteristics'>
+                    <p>
+                      <img className='symbol' src={recettes} alt={name} />
+                      {`${recipe.person_nb} pers`}
+                    </p>
+                    <p>
+                      <img className='symbol' src={recettes} alt={name} />
+                      {recipe.cook_time}
+                    </p>
+                    <p>
+                      <img className='symbol' src={recettes} alt={name} />
+                      {recipe.cook_time}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <img className='img-recipe' src={recipe.url_img} />
+                </div>
               </div>
               <div className='container-recipes'>
-                <h3>Il vous faut</h3>
-                <p className='ingredients-recipes'>{recipe.ingredients}</p>
-                <h3>Marche à suivre</h3>
-                <p className='step-recipes'>{recipe.step}</p>
-              </div>
-              <p>Bon ap'</p>
-              <div className='container-tips'>
+                <div className='ingredients-recipes'>
+                  <h3>Il vous faut</h3>
+                  <p>{recipe.ingredients}</p>
+                </div>
                 <div className='tips'>
                   <h3>Trucs et astuces</h3>
                   <p>{recipe.tips}</p>
                 </div>
               </div>
+              <h3>Marche à suivre</h3>
+              <p className='step-recipes'>{recipe.step}</p>
+              <p>Bon ap'</p>
+              <div className='container-tips'></div>
             </div>
           ))}
         </div>
