@@ -31,14 +31,12 @@ const AlimentsDetail = prevProps => {
       .get(
         `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`
       )
-      .then(res => {
-        setAliment(res.data)
-      })
+      .then(res => setAliment(res.data[0]))
   }, [])
 
   const updateName = () => {
     const finalName = {
-      title: name
+      name: name
     }
     axios.put(
       `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`,
@@ -160,7 +158,7 @@ const AlimentsDetail = prevProps => {
         <label>Categorie de la recette : </label>
         <select
           value={aliment.categories_aliments_id}
-          onChange={event => setCategorie(Number(event.target.value))}
+          onChange={event => setCategorie(event.target.value)}
         >
           {categorieList
             ? categorieList.map((cat, i) => (
