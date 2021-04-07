@@ -26,7 +26,6 @@ const AuxFourneaux = prevProps => {
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
       .then(response => setCategoriesAlim(response.data))
       .then(res => setIsLoading2(false))
-
   }, [])
   return (
     <div>
@@ -69,11 +68,18 @@ const AuxFourneaux = prevProps => {
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link to='/aux_fourneaux/guide_quantites'>Guide des quantités</Link>
+                <Link to='/aux_fourneaux/guide_quantites'>
+                  Guide des quantités
+                </Link>
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link>Guide des conversions</Link>
+                <Link
+                  className='tableau-conversion'
+                  to='/aux_fourneaux/tableau_de_conversion'
+                >
+                  Guide des conversions
+                </Link>
               </div>
             </div>
           </div>

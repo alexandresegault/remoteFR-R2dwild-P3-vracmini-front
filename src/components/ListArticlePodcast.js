@@ -64,8 +64,8 @@ export default function ListArticlePodcast() {
         >
           <div>
             {/* <img className='elem-image'></img> */}
-            <h1 className="title-element">{e.title}</h1>
-            <p className="contenu-element">{e.content}</p>
+            <h1 className='title-element'>{e.title}</h1>
+            <p className='contenu-element'>{e.content}</p>
           </div>
         </Link>
       ))
