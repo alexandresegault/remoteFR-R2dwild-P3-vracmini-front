@@ -6,18 +6,7 @@ import './AddCategorieRecipe.css'
 const AddCategorieRecipe = () => {
   const [categorie, setCategorie] = useState('')
   const [id, setId] = useState('')
-  const [name, setName] = useState('')
   const [newName, setNewName] = useState('')
-
-  const addCategorie = () => {
-    const finalCategorie = {
-      name: name
-    }
-    axios.post(
-      'http://localhost:4242/api/aux_fourneaux/categories_recipes',
-      finalCategorie
-    )
-  }
 
   useEffect(() => {
     axios

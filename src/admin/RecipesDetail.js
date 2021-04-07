@@ -14,8 +14,9 @@ const RecipesDetail = prevProps => {
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
-  const [categorie, setCategorie] = useState('')
+  const [categorie, setCategorie] = useState(null)
   const [categorieList, setCategorieList] = useState('')
+  const [tips, setTips] = useState('')
 
   useEffect(() => {
     axios
@@ -29,13 +30,16 @@ const RecipesDetail = prevProps => {
   const handleEditorChangeIngredients = e => {
     setIngredients(e.target.getContent())
   }
-
+  const handleEditorChangeTips = e => {
+    setTips(e.target.getContent())
+  }
   useEffect(() => {
     axios
       .get(
         `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`
       )
       .then(res => setRecipe(res.data[0]))
+      .then(setCategorie(recipe.categories_recipes_id))
   }, [])
 
   const updateName = () => {
@@ -74,6 +78,15 @@ const RecipesDetail = prevProps => {
       finalIngredients
     )
   }
+  const updateTips = () => {
+    const finalTips = {
+      tips: tips
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
+      finalTips
+    )
+  }
   const updateNbrPerson = () => {
     const finalNbrPerson = {
       person_nb: nbrPerson
@@ -91,6 +104,7 @@ const RecipesDetail = prevProps => {
       `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
       finalCategorie
     )
+    console.log(categorie + 'apres')
   }
   return (
     <div className='update-recipe'>
@@ -115,6 +129,37 @@ const RecipesDetail = prevProps => {
             onChange={handleEditorChangeStep}
             id='tinyStep'
             initialValue={recipe.step}
+            init={{
+              height: 200,
+              menubar: true,
+              quickbars_image_toolbar:
+                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'a_tinymce_plugin',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+            }}
+          />
+        ) : null}
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateTips}>
+        <label>Astuce : </label>
+        {recipe ? (
+          <Editor
+            apiKey={ApiKey}
+            onChange={handleEditorChangeTips}
+            id='tinyTips'
+            initialValue={recipe.tips !== null ? recipe.tips : ''}
             init={{
               height: 200,
               menubar: true,
@@ -199,23 +244,28 @@ const RecipesDetail = prevProps => {
       </form>
       <form onSubmit={updateCategorie}>
         <label>Categorie de la recette : </label>
-        <select
-          value={recipe.categories_recipes_id}
-          onChange={event => setCategorie(Number(event.target.value))}
-        >
-          {categorieList
-            ? categorieList.map((cat, i) => (
-                <option value={cat.id} key={i}>
-                  {cat.name}
-                </option>
-              ))
-            : null}
-        </select>
+        {categorie !== null ? (
+          <select
+            value={recipe.categories_recipes_id}
+            onChange={event => {
+              setCategorie(event.target.value)
+            }}
+          >
+            {categorieList
+              ? categorieList.map((cat, i) => (
+                  <option value={cat.id} key={i}>
+                    {cat.name}
+                  </option>
+                ))
+              : null}
+          </select>
+        ) : null}
+
         <button className='update-btn' type='submit'>
           Modifier
         </button>
       </form>
-      <div classNme='btn-container'>
+      <div className='btn-container'>
         <button className='back-page'>
           <Link to='/admin/recipes'>Voir toute les recettes</Link>
         </button>

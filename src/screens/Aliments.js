@@ -9,9 +9,9 @@ const Aliments = prevProps => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4242/api/aux_fourneaux/aliments/?categories_aliments_id=${prevProps.match.params.id}`
+        `http://localhost:4242/api/aux_fourneaux/aliments?categories_aliments_id=${prevProps.match.params.id}`
       )
-      .then(response => setCategoryAlim(response.data))
+      .then(res => setCategoryAlim(res.data))
       .then(() => setIsLoading(true))
   }, [])
 

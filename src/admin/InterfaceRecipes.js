@@ -15,7 +15,7 @@ const InterfaceRecipes = () => {
 
   return (
     <div className='interface-recipes'>
-      <div className='btn-container'>
+      <div className='interface-btn-container'>
         <div className='add-btn'>
           <Link to='/admin/recipes/add'>Ajouter une recette</Link>
         </div>

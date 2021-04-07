@@ -10,7 +10,6 @@ import Home from './screens/Home'
 import Recipes from './screens/Recipes'
 import GuideQuantites from './screens/GuideQuantites'
 
-
 import './App.css'
 import Contact from './screens/Contact'
 
@@ -29,7 +28,7 @@ function App() {
           component={Aliments}
         />
         <Route path='/contact' component={Contact} />
-        <Route path='/aux_fourneaux/recipes' component={Recipes} />
+        <Route path='/aux_fourneaux/recipes/:id' component={Recipes} />
         <Route
           path='/aux_fourneaux/guide_quantites'
           component={GuideQuantites}

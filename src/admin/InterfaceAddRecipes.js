@@ -123,8 +123,10 @@ const InterfaceAddRecipes = () => {
               ))
             : null}
         </select>
-        <div classNme='btn-container'>
-          <button type='submit'>Ajouter la recette</button>
+        <div className='btn-container'>
+          <button id='btn-add-recipe' type='submit'>
+            Ajouter la recette
+          </button>
           <button>
             <Link to='/admin/recipes'>Voir toute les recettes</Link>
           </button>
