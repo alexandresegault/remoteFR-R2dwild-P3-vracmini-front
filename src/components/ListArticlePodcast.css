@@ -159,10 +159,9 @@
 .active-categorie-vracnco{
     font-size: 16px;
 }
-        
 .categorie-vracnco{
     font-size: 16px;
-}   
+}
 .list-element{
     width: 80%;
     height: 100%;
@@ -170,8 +169,7 @@
 }
 .title-element{
     font-size: 24px;
-} 
-
+}
 .title-vracnco{
     font-size: 30px;
 }
@@ -181,7 +179,6 @@
     margin-left: 0;
 }
 }
-
 @media screen and (max-width: 430px){
 .active-categorie-vracnco{
     font-size: 16px;
@@ -198,5 +195,4 @@
 .title-element{
     font-size: 24px;
 }
-
 }

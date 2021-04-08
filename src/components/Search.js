@@ -11,15 +11,20 @@ const Search = () => {
   const [searchAlims, setSearchAlims] = useState([])
   const [searchRecipes, setSearchRecipes] = useState([])
   const [resultContent, setResultContent] = useState('invisible-content')
-  const [openResult, setOpenResult] = useState(false)
   const onSearch = e => {
     setAsk(e.target.value)
+  }
+  const hideResult = () => {
+    setResultContent('invisible-results')
+  }
+  const setResult = () => {
     if (ask !== '') {
       setResultContent('visible-results')
-    } else {
-      setResultContent('invisible-results')
     }
   }
+  useEffect(() => {
+    ask !== '' ? setResult() : hideResult()
+  }, [ask])
   useEffect(() => {
     axios.all[
       (axios
@@ -41,6 +46,8 @@ const Search = () => {
     <div className='container-search'>
       <div className='search-bar'>
         <input
+          onBlur={hideResult}
+          onFocus={setResult}
           type='search'
           id='site-search'
           name='searchBar'

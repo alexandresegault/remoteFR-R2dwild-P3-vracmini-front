@@ -1,4 +1,4 @@
-import search from '../img/logoSearch3.png'
+import Search from './Search'
 
 import './SearchMiniPage.css'
 
@@ -10,17 +10,7 @@ const SearchMiniPage = prevProps => {
           <div className='close-bar1'></div>
           <div className='close-bar2'></div>
         </div>
-        <div className='search-bar-container'>
-          <input
-            type='search'
-            id='site-search'
-            name='search-bar'
-            placeholder='Rechercher'
-          ></input>
-          <button id='btn-send'>
-            <img src={search} alt='rechercher' className='logo-search' />
-          </button>
-        </div>
+        <Search />
       </div>
     </div>
   )

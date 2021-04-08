@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { NavLink, Link } from 'react-router-dom'
 
 import './BurgerMenu.css'

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { NavLink, Switch, Route } from 'react-router-dom'
 
 import PageAboutAdmin from './PageAboutAdmin'
