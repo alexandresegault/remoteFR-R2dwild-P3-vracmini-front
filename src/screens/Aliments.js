@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './Aliments.css'
 
@@ -18,12 +19,27 @@ const Aliments = prevProps => {
   return (
     <div>
       {isLoading ? (
-        <div className='all-aliments'>
+        <div className='list-aliments'>
           {categoryAlim.map((alim, i) => (
             <div key={i} className='card-ingredient'>
               <h2 className='name-ingredient'>{alim.name}</h2>
-              <h3 className='title-ingredient'>{alim.title}</h3>
-              <p className='description-aliment'>{alim.content}</p>
+              <img
+                src={alim.url_img}
+                className='img-ingredient'
+                alt={`image ${alim.name}`}
+              />
+              <h3>{alim.title}</h3>
+              <div>
+                <Link
+                  className='see-ingredient'
+                  key={i}
+                  to={{
+                    pathname: `/aux_fourneaux/curieux_aliments/detail/${alim.id}`
+                  }}
+                >
+                  En Savoir Plus
+                </Link>
+              </div>
             </div>
           ))}
         </div>

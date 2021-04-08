@@ -10,7 +10,7 @@ const AuxFourneaux = prevProps => {
   const [showRecipes, setShowRecipes] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [categoriesAlim, setCategoriesAlim] = useState([])
-  const [content, setContent] = useState('Rien')
+  const [content, setContent] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)
   const [isLoaded2, setIsLoaded2] = useState(false)
   const [isLoaded3, setIsLoaded3] = useState(false)
@@ -29,6 +29,7 @@ const AuxFourneaux = prevProps => {
       })
       .then(() => setIsLoaded(true))
   }, [])
+
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
@@ -37,6 +38,7 @@ const AuxFourneaux = prevProps => {
       })
       .then(() => setIsLoaded2(true))
   }, [])
+
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
@@ -45,6 +47,7 @@ const AuxFourneaux = prevProps => {
       })
       .then(() => setIsLoaded3(true))
   }, [])
+
   return (
     <div>
       {isLoaded ? (

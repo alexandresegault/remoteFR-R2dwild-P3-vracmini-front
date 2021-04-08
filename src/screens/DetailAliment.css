@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.aliment-page{
+  border: 5px solid #F0D8B8;
+  width: 70vw;
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 10px;
+}
+#title-aliment-detail {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom:20px;
+}
+#title-aliment-detail h2{
+  font-size: 350%;
+  color : #F8DBAF;
+}
+
+#title-aliment-detail h3{
+  font-size: 200%;
+  margin-right: 40px;
+}
+.title-aliment-container{
+
+}
+
+#content-aliment-detail {
+  border-top:1px solid rgb(207, 204, 204);
+  padding-top:20px;
+  margin: auto;
+ width: 80%;
+}
+
+#title-aliment-detail img{
+  width:500px;
+  border-radius:5px;
+}
+
+#tiny-content-aliment {
+  font-size: 28px;
+  padding-left: 10px;
+  margin:auto
+}
+
+
+

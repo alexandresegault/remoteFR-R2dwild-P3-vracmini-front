@@ -5,6 +5,8 @@ import { Switch, Route } from 'react-router-dom'
 import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
 import Aliments from './screens/Aliments'
 import AuxFourneaux from './screens/AuxFourneaux'
+import DetailAliment from './screens/DetailAliment'
+import DetailRecipe from './screens/DetailRecipe'
 import Header from './components/Header'
 import Home from './screens/Home'
 import Recipes from './screens/Recipes'
@@ -24,11 +26,20 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/aux_fourneaux' component={AuxFourneaux} />
         <Route
+          exact
           path='/aux_fourneaux/curieux_aliments/:id'
           component={Aliments}
         />
+        <Route
+          path='/aux_fourneaux/curieux_aliments/detail/:id'
+          component={DetailAliment}
+        />
         <Route path='/contact' component={Contact} />
-        <Route path='/aux_fourneaux/recipes/:id' component={Recipes} />
+        <Route exact path='/aux_fourneaux/recipes/:id' component={Recipes} />
+        <Route
+          path='/aux_fourneaux/recipes/detail/:id'
+          component={DetailRecipe}
+        />
         <Route
           path='/aux_fourneaux/guide_quantites'
           component={GuideQuantites}

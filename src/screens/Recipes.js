@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-key */
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './Recipes.css'
-
-// import recettes from '../img/livre-de-recettes.png'
 
 const Recipes = prevProps => {
   const [recipes, setRecipes] = useState([])
@@ -18,11 +17,20 @@ const Recipes = prevProps => {
       .then(() => setIsLoading(true))
   }, [])
   return (
-    <div>
+    <div className='recipe-list'>
       {isLoading
         ? recipes.map((recipe, i) => (
-            <div className='recipe-card' key={i}>
+            <div className='recipe-object' key={i}>
               <p>{recipe.title}</p>
+              <img src={recipe.url_img} alt={`recette ${recipe.title}`} />
+              <Link
+                key={i}
+                to={{
+                  pathname: `/aux_fourneaux/recipes/detail/${recipe.id}`
+                }}
+              >
+                En Savoir Plus
+              </Link>
             </div>
           ))
         : null}
