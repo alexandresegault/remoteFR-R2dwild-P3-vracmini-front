@@ -1,7 +1,7 @@
 import ApiKey from './ApiKey'
 import axios from 'axios'
 import { Editor } from '@tinymce/tinymce-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './AddAliments.css'
 
@@ -13,6 +13,12 @@ const AddAliments = () => {
   const [categorie, setCategorie] = useState('')
   const [categorieList, setCategorieList] = useState('')
 
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
+      .then(res => setCategorieList(res.data))
+  }, [])
+
   const handleEditorChange = e => {
     setText(e.target.getContent())
   }
@@ -23,7 +29,7 @@ const AddAliments = () => {
       title: title,
       content: text,
       url_img: urlImg,
-      categories_aliments_id: 10
+      categories_aliments_id: categorie
     }
     axios.post('http://localhost:4242/api/aux_fourneaux/aliments', result)
   }
@@ -79,6 +85,16 @@ const AddAliments = () => {
           }}
         />
       </div>
+      <label>Categorie de l'aliment : </label>
+      <select onChange={event => setCategorie(Number(event.target.value))}>
+        {categorieList
+          ? categorieList.map((cat, i) => (
+              <option value={cat.id} key={i}>
+                {cat.name}
+              </option>
+            ))
+          : null}
+      </select>
       <button className='send-button' onClick={() => send()}>
         Envoyer
       </button>

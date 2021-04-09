@@ -17,7 +17,7 @@
 #add-recipes select {
   margin-bottom: 30px;
 }
-.btn-container button {
+#add-recipes .btn-container button {
   width: 30%;
   padding: 15px;
   font-size: 110%;

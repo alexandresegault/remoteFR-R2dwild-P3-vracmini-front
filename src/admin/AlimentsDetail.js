@@ -15,6 +15,7 @@ const AlimentsDetail = prevProps => {
   const [urlImg, setUrlImg] = useState('')
   const [categorie, setCategorie] = useState('')
   const [categorieList, setCategorieList] = useState('')
+  const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     axios
@@ -80,6 +81,16 @@ const AlimentsDetail = prevProps => {
       finalCategorie
     )
   }
+  const deleteAliment = () => {
+    const validation = window.prompt('Tapez "Oui" pour confirmer')
+    if (validation == 'Oui') {
+      axios
+        .delete(
+          `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`
+        )
+        .then(setDeleted(true))
+    }
+  }
   return (
     <div className='update-aliment'>
       <form onSubmit={updateName}>
@@ -109,7 +120,7 @@ const AlimentsDetail = prevProps => {
         </button>
       </form>
       <form onSubmit={updateContent}>
-        <label>Ingredients : </label>
+        <label>Contenu : </label>
         <div className='editor'>
           {aliment ? (
             <Editor
@@ -155,7 +166,7 @@ const AlimentsDetail = prevProps => {
         </button>
       </form>
       <form onSubmit={updateCategorie}>
-        <label>Categorie de la recette : </label>
+        <label>Categorie de l'aliment : </label>
         <select
           value={aliment.categories_aliments_id}
           onChange={event => setCategorie(event.target.value)}
@@ -172,10 +183,19 @@ const AlimentsDetail = prevProps => {
           Modifier
         </button>
       </form>
-      <div classNme='btn-container'>
+      <div className='btn-container'>
         <button className='back-page'>
           <Link to='/admin/aliments'>Voir tout les aliments</Link>
         </button>
+        {deleted ? (
+          <button className='delete-btn'>
+            <Link to='/admin/aliments'>Supprimer l'aliment</Link>
+          </button>
+        ) : (
+          <button className='delete-btn' onClick={deleteAliment}>
+            Supprimer l'aliment
+          </button>
+        )}
       </div>
     </div>
   )
