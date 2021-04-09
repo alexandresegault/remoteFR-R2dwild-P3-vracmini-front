@@ -18,8 +18,7 @@ const PageVracCoAdmin = () => {
     })
   }, [])
 
-  const handleChangeTitle = event => {
-    event.preventDefault()
+  const handleChangeTitle = () => {
     const finalTitle = {
       title: title
     }
@@ -35,8 +34,7 @@ const PageVracCoAdmin = () => {
     axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalContent)
   }
 
-  const handleChangeImg = event => {
-    event.preventDefault()
+  const handleChangeImg = () => {
     const finalImg = {
       url_img: imgUrl
     }

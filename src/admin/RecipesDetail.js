@@ -11,6 +11,7 @@ const RecipesDetail = prevProps => {
   const [recipe, setRecipe] = useState('')
   const [name, setName] = useState('')
   const [step, setStep] = useState('')
+  const [img, setImg] = useState('')
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
@@ -18,12 +19,15 @@ const RecipesDetail = prevProps => {
   const [categorieList, setCategorieList] = useState('')
   const [tips, setTips] = useState('')
   const [deleted, setDeleted] = useState(false)
+
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
       .then(res => setCategorieList(res.data))
   }, [])
+
   // Function Tiny ///
+
   const handleEditorChangeStep = e => {
     setStep(e.target.getContent())
   }
@@ -55,7 +59,15 @@ const RecipesDetail = prevProps => {
         .then(setDeleted(true))
     }
   }
-
+  const updateImg = () => {
+    const finalImg = {
+      url_img: img
+    }
+    axios.put(
+      `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
+      finalImg
+    )
+  }
   const updateName = () => {
     const finalName = {
       title: name
@@ -110,6 +122,7 @@ const RecipesDetail = prevProps => {
       finalNbrPerson
     )
   }
+
   const updateCategorie = () => {
     const finalCategorie = {
       categories_recipes_id: categorie
@@ -120,6 +133,7 @@ const RecipesDetail = prevProps => {
     )
     console.log(categorie + 'apres')
   }
+
   return (
     <div className='update-recipe'>
       <form onSubmit={updateName}>
@@ -130,6 +144,19 @@ const RecipesDetail = prevProps => {
           name='name'
           placeholder={recipe.title}
           onChange={event => setName(event.target.value)}
+        />
+        <button className='update-btn' type='submit'>
+          Modifier
+        </button>
+      </form>
+      <form onSubmit={updateImg}>
+        <label>URL image : </label>
+        <input
+          type='text'
+          id='name-recipe-input'
+          name='name'
+          placeholder={recipe.url_img}
+          onChange={event => setImg(event.target.value)}
         />
         <button className='update-btn' type='submit'>
           Modifier

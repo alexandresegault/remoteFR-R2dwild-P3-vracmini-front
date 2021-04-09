@@ -10,6 +10,7 @@ import './InterfaceAddRecipes.css'
 const InterfaceAddRecipes = () => {
   const [name, setName] = useState('')
   const [step, setStep] = useState('')
+  const [img, setImg] = useState('')
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
@@ -26,6 +27,7 @@ const InterfaceAddRecipes = () => {
     const finalRecipe = {
       title: name,
       step: step,
+      url_img: img,
       cook_time: cookTime,
       ingredients: ingredients,
       person_nb: nbrPerson,
@@ -50,6 +52,13 @@ const InterfaceAddRecipes = () => {
           id='name-recipe-input'
           name='name'
           onChange={event => setName(event.target.value)}
+        />
+        <label>Url Image :</label>
+        <input
+          type='text'
+          id='name-recipe-input'
+          name='name'
+          onChange={event => setImg(event.target.value)}
         />
         <label>Etapes : </label>
         <Editor

@@ -32,10 +32,16 @@ const DetailRecipe = prevProps => {
           <div className='recipe-header'>
             <div id='title-recipe-detail'>
               <h1 className='title-recipe'>{recipe.title}</h1>
-              <img className='recipe-icons' src={img} alt='fork' />
-              <p>{recipe.person_nb}</p>
-              <img className='recipe-icons' src={img2} alt='sablier' />
-              <p>{recipe.cook_time}</p>
+              <div className='recipe-time-person'>
+                <div>
+                  <img className='recipe-icons' src={img} alt='fork' />
+                  <p>{recipe.person_nb}</p>
+                </div>
+                <div>
+                  <img className='recipe-icons' src={img2} alt='sablier' />
+                  <p>{recipe.cook_time}</p>
+                </div>
+              </div>
             </div>
             <img
               className='recipe-img'
@@ -44,22 +50,39 @@ const DetailRecipe = prevProps => {
             />
           </div>
           <div className='indication-ingredients-container'>
-            <h3 className='recipe-indication'>Il vous faut</h3>
+            <div className='indication-ingredients'>
+              <div className='title-recipe-grad'>
+                <h3 className='recipe-indication grad-yellow'>Il vous faut</h3>
+              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: ingredients }}
+                className='recipe-ingredients'
+              ></div>
+            </div>
+            <div className='indication-preparation'>
+              <div className='title-recipe-grad'>
+                <h3 className='recipe-indication grad-yellow'>
+                  Marche à suivre
+                </h3>
+              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: step }}
+                className='recipe-step'
+              ></div>
+            </div>
+          </div>
+          <div className='recipe-astuces'>
+            <div id='bar1'></div>
+            <div className='title-recipe-grad'>
+              <h3 className='recipe-indication tips-recipe grad-yellow'>
+                Trucs et astuces
+              </h3>
+            </div>
             <div
-              dangerouslySetInnerHTML={{ __html: ingredients }}
-              className='recipe-ingredients'
-            ></div>
-            <h3 className='recipe-indication'>Marche à suivre</h3>
-            <div
-              dangerouslySetInnerHTML={{ __html: step }}
-              className='recipe-step'
+              dangerouslySetInnerHTML={{ __html: tips }}
+              className='recipe-tips'
             ></div>
           </div>
-          <h3 className='recipe-indication'>Trucs et astuces</h3>
-          <div
-            dangerouslySetInnerHTML={{ __html: tips }}
-            className='recipe-tips'
-          ></div>
         </div>
       ) : (
         <p>En chargement</p>

@@ -17,13 +17,18 @@ const Recipes = prevProps => {
       .then(() => setIsLoading(true))
   }, [])
   return (
-    <div className='recipe-list'>
+    <div className='recipes-list'>
       {isLoading
         ? recipes.map((recipe, i) => (
-            <div className='recipe-object' key={i}>
-              <p>{recipe.title}</p>
-              <img src={recipe.url_img} alt={`recette ${recipe.title}`} />
+            <div className='recipes-object' key={i}>
+              <p className='recipes-title'>{recipe.title}</p>
+              <img
+                className='recipes-img'
+                src={recipe.url_img}
+                alt={`recette ${recipe.title}`}
+              />
               <Link
+                className='see-recipe'
                 key={i}
                 to={{
                   pathname: `/aux_fourneaux/recipes/detail/${recipe.id}`
