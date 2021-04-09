@@ -43,11 +43,13 @@ const Search = () => {
     ]
   }, [ask])
   return (
-    <div className='container-search'>
+    <div
+      onMouseEnter={setResult}
+      onMouseLeave={hideResult}
+      className='container-search'
+    >
       <div className='search-bar'>
         <input
-          onBlur={hideResult}
-          onFocus={setResult}
           type='search'
           id='site-search'
           name='searchBar'
