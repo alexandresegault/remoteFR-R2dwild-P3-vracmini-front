@@ -7,10 +7,15 @@ import './AuxFourneaux.css'
 
 const AuxFourneaux = prevProps => {
   const [showAliments, setShowAliments] = useState(false)
+  const [showRecipes, setShowRecipes] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [categoriesAlim, setCategoriesAlim] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [isLoading2, setIsLoading2] = useState(false)
+  const [content, setContent] = useState('')
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded2, setIsLoaded2] = useState(false)
+  const [isLoaded3, setIsLoaded3] = useState(false)
+  const [categorieRecipe, setCategorieRecipe] = useState('')
+
   const [img] = useState(
     'https://drive.google.com/file/d/1bXOU75Kts--c-LiIFLANeDrAsIoBwg5O/view?usp=sharing'
   )
@@ -18,18 +23,36 @@ const AuxFourneaux = prevProps => {
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/')
-      .then(response => setAuxFourneaux(response.data))
-      .then(() => setIsLoading(true))
+      .then(res => {
+        setAuxFourneaux(res.data)
+        setContent(res.data[0].content)
+      })
+      .then(() => setIsLoaded(true))
   }, [])
+
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
-      .then(response => setCategoriesAlim(response.data))
-      .then(() => setIsLoading2(false))
+
+      .then(res => {
+        setCategoriesAlim(res.data)
+      })
+      .then(() => setIsLoaded2(true))
   }, [])
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
+      .then(res => {
+        setCategorieRecipe(res.data)
+      })
+      .then(() => setIsLoaded3(true))
+
+  }, [])
+
   return (
     <div>
-      {isLoading ? (
+      {isLoaded ? (
         <div className='all-fourneaux'>
           <div className='left-side-menu'>
             <h1 className='title-fourneaux'>{auxFourneaux[0].title}</h1>
@@ -42,7 +65,7 @@ const AuxFourneaux = prevProps => {
                   Les curieux aliments
                 </p>
               </div>
-              {isLoading2 ? (
+              {isLoaded2 ? (
                 <div
                   className={
                     showAliments ? 'visible-aliments' : 'invisible-aliments'
@@ -63,9 +86,31 @@ const AuxFourneaux = prevProps => {
                 <div> En chargement </div>
               )}
               <div className='curieux-aliments'>
-                <span className='arrow-right'>&gt;</span>
-                <Link>Recettes en vrac</Link>
+                <span className={showRecipes ? 'arrow-down' : 'arrow-right'}>
+                  &gt;
+                </span>
+                <p onClick={() => setShowRecipes(!showRecipes)}>Les recettes</p>
               </div>
+              {isLoaded3 ? (
+                <div
+                  className={
+                    showRecipes ? 'visible-aliments' : 'invisible-aliments'
+                  }
+                >
+                  {categorieRecipe.map((cat, i) => (
+                    <Link
+                      key={i}
+                      to={{
+                        pathname: `/aux_fourneaux/recipes/${cat.id}`
+                      }}
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div> En chargement </div>
+              )}
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
                 <Link to='/aux_fourneaux/guide_quantites'>
@@ -89,7 +134,12 @@ const AuxFourneaux = prevProps => {
               src='https://drive.google.com/uc?id=1EzICHn4SvPastfOLNuuO5Ww0LtexjAwF'
               alt='coupe de légumes'
             />
-            <p className='content-fourneaux'>{auxFourneaux[0].content}</p>
+            {isLoaded ? (
+              <div
+                dangerouslySetInnerHTML={{ __html: content }}
+                className='content-fourneaux'
+              ></div>
+            ) : null}
           </div>
         </div>
       ) : (

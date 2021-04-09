@@ -66,7 +66,7 @@
 }
 
 .arrow-down {
-    transition: all 1s;
+    transition: all 0.5s;
     transform: rotate(90deg);
     font-size: 150%;
     font-weight: bold;
@@ -75,6 +75,7 @@
 .arrow-right {
   font-size: 150%;
   font-weight: bold;
+  transition: all 0.5s;
 }
 
 .curieux-aliments {

@@ -1,9 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './Recipes.css'
-
-import recettes from '../img/livre-de-recettes.png'
 
 const Recipes = prevProps => {
   const [recipes, setRecipes] = useState([])
@@ -11,53 +9,38 @@ const Recipes = prevProps => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/api/aux_fourneaux/recipes`)
-      .then(response => setRecipes(response.data))
+      .get(
+        `http://localhost:4242/api/aux_fourneaux/recipes?categories_recipes_id=${prevProps.match.params.id}`
+      )
+      .then(res => setRecipes(res.data))
+
       .then(() => setIsLoading(true))
   }, [])
-
   return (
-    <div>
-      {isLoading ? (
-        <div className='card-recipes'>
-          {recipes.map((recipe, i) => (
-            <div key={i}>
-              <div className='container-title'>
-                <h1 className='title-recipe'>{recipe.title}</h1>
-                <img className='img-recipe' src={recipe.url_img} />
-              </div>
-              <div className='container-symbols'>
-                <p>
-                  <img className='symbol' src={recettes} alt={name} />
-                  {`${recipe.person_nb} pers`}
-                </p>
-                <p>
-                  <img className='symbol' src={recettes} alt={name} />
-                  {`${recipe.cook_time} min`}
-                </p>
-                <img className='symbol' src={recettes} alt={name} />
-              </div>
-              <div className='container-recipes'>
-                <h3>Il vous faut</h3>
-                <p className='ingredients-recipes'>{recipe.ingredients}</p>
-                <h3>Marche à suivre</h3>
-                <p className='step-recipes'>{recipe.step}</p>
-              </div>
-              <p>Bon ap'</p>
-              <div className='container-tips'>
-                <div className='tips'>
-                  <h3>Trucs et astuces</h3>
-                  <p>{recipe.tips}</p>
-                </div>
-              </div>
+    <div className='recipes-list'>
+      {isLoading
+        ? recipes.map((recipe, i) => (
+            <div className='recipes-object' key={i}>
+              <p className='recipes-title'>{recipe.title}</p>
+              <img
+                className='recipes-img'
+                src={recipe.url_img}
+                alt={`recette ${recipe.title}`}
+              />
+              <Link
+                className='see-recipe'
+                key={i}
+                to={{
+                  pathname: `/aux_fourneaux/recipes/detail/${recipe.id}`
+                }}
+              >
+                En Savoir Plus
+              </Link>
+
             </div>
-          ))}
-        </div>
-      ) : (
-        <div> En chargement </div>
-      )}
+          ))
+        : null}
     </div>
   )
 }
-
 export default Recipes

@@ -15,12 +15,14 @@ const InterfaceRecipes = () => {
 
   return (
     <div className='interface-recipes'>
-      <div className='btn-container'>
+      <div className='interface-btn-container'>
         <div className='add-btn'>
           <Link to='/admin/recipes/add'>Ajouter une recette</Link>
         </div>
         <div className='add-btn'>
-          <Link to='/admin/recipes/add_categorie'>Modifier une categorie</Link>
+          <Link to='/admin/recipes/add_categorie'>
+            Modifier / Voir les catégories
+          </Link>
         </div>
       </div>
       <div className='recipes-container'>
@@ -37,7 +39,7 @@ const InterfaceRecipes = () => {
               </div>
             ))
           ) : (
-            <p>Loading</p>
+            <p>No recipes found</p>
           )
         ) : null}
       </div>

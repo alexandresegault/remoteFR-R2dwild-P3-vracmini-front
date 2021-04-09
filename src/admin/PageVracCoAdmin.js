@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-// import { Editor } from '@tinymce/tinymce-react'
-// import ApiKey from './ApiKey'
+import { Editor } from '@tinymce/tinymce-react'
+import ApiKey from './ApiKey'
 
 import axios from 'axios'
 
@@ -18,22 +18,23 @@ const PageVracCoAdmin = () => {
     })
   }, [])
 
-  const handleChangeTitle = event => {
-    event.preventDefault()
+  const handleChangeTitle = () => {
     const finalTitle = {
       title: title
     }
     axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalTitle)
   }
-  const handleChangeContent = event => {
-    event.preventDefault()
+  const handleEditorIntro = e => {
+    setContent(e.target.getContent())
+  }
+  const handleChangeContent = () => {
     const finalContent = {
       content: content
     }
     axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalContent)
   }
-  const handleChangeImg = event => {
-    event.preventDefault()
+
+  const handleChangeImg = () => {
     const finalImg = {
       url_img: imgUrl
     }
@@ -66,13 +67,31 @@ const PageVracCoAdmin = () => {
       </form>
       <form onSubmit={handleChangeContent}>
         <label>Bloc Introduction : </label>
-        <textarea
-          type='text'
-          id='content-input'
-          name='content'
-          defaultValue={vracCo.content}
-          onChange={event => setContent(event.target.value)}
-        />
+        {vracCo ? (
+          <Editor
+            apiKey={ApiKey}
+            onChange={handleEditorIntro}
+            id='tinyIntro'
+            initialValue={vracCo.content}
+            init={{
+              height: 200,
+              menubar: true,
+              quickbars_image_toolbar:
+                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'a_tinymce_plugin',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+            }}
+          />
+        ) : null}
         <button type='submit'>Modifier</button>
       </form>
     </div>
