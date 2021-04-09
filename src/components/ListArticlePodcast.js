@@ -28,8 +28,6 @@ export default function ListArticlePodcast() {
       .get(`http://localhost:4242/api/podcasts_articles?id=${activeIndex}`)
       .then(res => setList(res.data))
   }, [activeIndex])
-  console.log(activeIndex)
-  console.log(list)
   const activePodcast = () => {
     setActiveMediaType(1)
   }

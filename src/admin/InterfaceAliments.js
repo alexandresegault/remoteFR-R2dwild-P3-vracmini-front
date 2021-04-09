@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import ApiKey from './ApiKey'
 import axios from 'axios'
 import { Editor } from '@tinymce/tinymce-react'

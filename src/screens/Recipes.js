@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Recipes.css'
@@ -12,15 +13,15 @@ const Recipes = prevProps => {
     axios
       .get(`http://localhost:4242/api/aux_fourneaux/recipes`)
       .then(response => setRecipes(response.data))
-      .then(res => setIsLoading(true))
+      .then(() => setIsLoading(true))
   }, [])
 
   return (
     <div>
       {isLoading ? (
         <div className='card-recipes'>
-          {recipes.map(recipe => (
-            <div>
+          {recipes.map((recipe, i) => (
+            <div key={i}>
               <div className='container-title'>
                 <h1 className='title-recipe'>{recipe.title}</h1>
                 <img className='img-recipe' src={recipe.url_img} />
