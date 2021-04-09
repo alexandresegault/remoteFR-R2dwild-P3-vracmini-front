@@ -24,7 +24,7 @@ const Form = () => {
         },
         'user_VPjZRh5QyEXSnsw9fTRds'
       )
-      .then(res => {
+      .then(() => {
         console.log('success !')
         setName('')
         setEmail('')
@@ -32,7 +32,7 @@ const Form = () => {
         setMessage('')
       })
       .catch(
-        err =>
+        () =>
           (document.querySelector('.form-message').innerHTML =
             "Une erreur s'est produite, veuillez réessayer.")
       )
@@ -70,9 +70,7 @@ const Form = () => {
             onChange={event => setMessage(event.target.value)}
           />
         </label>
-
         <input className='button-send' type='submit' value='Envoyer' />
-
         <div className='form-message'></div>
       </form>
     </div>

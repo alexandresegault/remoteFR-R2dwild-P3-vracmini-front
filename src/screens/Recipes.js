@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -14,6 +13,7 @@ const Recipes = prevProps => {
         `http://localhost:4242/api/aux_fourneaux/recipes?categories_recipes_id=${prevProps.match.params.id}`
       )
       .then(res => setRecipes(res.data))
+
       .then(() => setIsLoading(true))
   }, [])
   return (
@@ -36,6 +36,7 @@ const Recipes = prevProps => {
               >
                 En Savoir Plus
               </Link>
+
             </div>
           ))
         : null}

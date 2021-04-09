@@ -33,6 +33,7 @@ const AuxFourneaux = prevProps => {
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_aliments')
+
       .then(res => {
         setCategoriesAlim(res.data)
       })
@@ -46,6 +47,7 @@ const AuxFourneaux = prevProps => {
         setCategorieRecipe(res.data)
       })
       .then(() => setIsLoaded3(true))
+
   }, [])
 
   return (
@@ -117,7 +119,12 @@ const AuxFourneaux = prevProps => {
               </div>
               <div className='curieux-aliments'>
                 <span className='arrow-right'>&gt;</span>
-                <Link>Guide des conversions</Link>
+                <Link
+                  className='tableau-conversion'
+                  to='/aux_fourneaux/tableau_de_conversion'
+                >
+                  Guide des conversions
+                </Link>
               </div>
             </div>
           </div>
