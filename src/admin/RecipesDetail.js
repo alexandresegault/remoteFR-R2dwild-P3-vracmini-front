@@ -17,7 +17,7 @@ const RecipesDetail = prevProps => {
   const [categorie, setCategorie] = useState(null)
   const [categorieList, setCategorieList] = useState('')
   const [tips, setTips] = useState('')
-
+  const [deleted, setDeleted] = useState(false)
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/aux_fourneaux/categories_recipes')
@@ -27,12 +27,15 @@ const RecipesDetail = prevProps => {
   const handleEditorChangeStep = e => {
     setStep(e.target.getContent())
   }
+
   const handleEditorChangeIngredients = e => {
     setIngredients(e.target.getContent())
   }
+
   const handleEditorChangeTips = e => {
     setTips(e.target.getContent())
   }
+
   useEffect(() => {
     axios
       .get(
@@ -41,6 +44,17 @@ const RecipesDetail = prevProps => {
       .then(res => setRecipe(res.data[0]))
       .then(setCategorie(recipe.categories_recipes_id))
   }, [])
+
+  const deleteRecipe = () => {
+    const validation = window.prompt('Tapez "Oui" pour confirmer')
+    if (validation == 'Oui') {
+      axios
+        .delete(
+          `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`
+        )
+        .then(setDeleted(true))
+    }
+  }
 
   const updateName = () => {
     const finalName = {
@@ -269,6 +283,15 @@ const RecipesDetail = prevProps => {
         <button className='back-page'>
           <Link to='/admin/recipes'>Voir toute les recettes</Link>
         </button>
+        {deleted ? (
+          <button className='delete-btn'>
+            <Link to='/admin/recipes'>Supprimer l'aliment</Link>
+          </button>
+        ) : (
+          <button className='delete-btn' onClick={deleteRecipe}>
+            Supprimer l'aliment
+          </button>
+        )}
       </div>
     </div>
   )
