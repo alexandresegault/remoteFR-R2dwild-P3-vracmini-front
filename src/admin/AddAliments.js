@@ -37,6 +37,7 @@ const AddAliments = () => {
   return (
     <div className='interface-add-aliments'>
       <form onSubmit={send}>
+        <h2 id='title-add-recipe'>Ajouter un aliment</h2>
         <label>Nom aliment :</label>
         <input
           type='text'
@@ -100,6 +101,7 @@ const AddAliments = () => {
           Envoyer
         </button>
       </form>
+
     </div>
   )
 }

@@ -47,7 +47,6 @@ const AuxFourneaux = prevProps => {
         setCategorieRecipe(res.data)
       })
       .then(() => setIsLoaded3(true))
-
   }, [])
 
   return (
@@ -128,12 +127,14 @@ const AuxFourneaux = prevProps => {
               </div>
             </div>
           </div>
-          <div className='right-side-content'>
+          <div className='contain-character'>
             <img
               className='img-fourneaux'
               src='https://drive.google.com/uc?id=1EzICHn4SvPastfOLNuuO5Ww0LtexjAwF'
               alt='coupe de légumes'
             />
+          </div>
+          <div className='right-side-content'>
             {isLoaded ? (
               <div
                 dangerouslySetInnerHTML={{ __html: content }}

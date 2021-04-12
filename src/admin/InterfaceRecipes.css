@@ -19,7 +19,8 @@
   border-radius: 10px;
   font-weight: bold;
   font-size: 120%;
-  background-color: rgb(87, 156, 87);
+  background-color: rgb(78, 83, 104);
+  box-shadow:1px 1px 10px  black;
 }
 .interface-btn-container a:hover {
  opacity: 0.6;
