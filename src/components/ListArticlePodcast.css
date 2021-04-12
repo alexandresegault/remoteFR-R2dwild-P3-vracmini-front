@@ -11,6 +11,7 @@
     width: 100% ;
     height: 60%;
 }
+
 .active-article{
     margin-left: 100px;
     cursor: pointer;
@@ -18,6 +19,7 @@
     height: 75px;
     border: 3px solid  #D7EAD1;
 }
+
 .active-categorie-vracnco{
     cursor: pointer;
     text-decoration: none;
@@ -28,6 +30,7 @@
     border: 3px solid  #D7EAD1;
     font-family: 'open sans condensed';
 }
+
 .active-podcast{
     margin-right: 100px;
     cursor: pointer;
@@ -35,6 +38,7 @@
     height: 75px;
     border: 3px solid  #D7EAD1;;
 }
+
 .article{
     margin-left: 100px;
     cursor: pointer;
@@ -43,6 +47,7 @@
     border: solid;
     border-color: white;
 }
+
 .categorie-vracnco{
     cursor: pointer;
     text-decoration: none;
@@ -55,6 +60,7 @@
     border-top: 2px solid black;
     font-family: 'open sans condensed';
 }
+
 .categories-vracnco{
     height:80px;
     margin-top: 15px;
@@ -63,6 +69,7 @@
     justify-content: center;
     color: black;
 }
+
 .contenu-element{
     font-family: 'open sans condensed';
     font-size: 20px;
@@ -90,6 +97,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .list-element{
     font-size: 18px;
     text-align: center;
@@ -112,6 +120,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .mediatype{
     margin-top: 80px;
     display: flex;
@@ -130,6 +139,7 @@
     border: solid;
     border-color: white;
 }
+
 .separate{
     width: 2px;
     height: 75px;
@@ -159,33 +169,42 @@
 .active-categorie-vracnco{
     font-size: 16px;
 }
+
 .categorie-vracnco{
     font-size: 16px;
 }
+
 .list-element{
     width: 80%;
     height: 100%;
     font-size: 16px;
 }
+
 .title-element{
     font-size: 24px;
 }
+
 .title-vracnco{
     font-size: 30px;
 }
+
 .texte-intro-vracnco{
     font-size: 18px;
     width: 80%;
     margin-left: 0;
 }
+
 }
+
 @media screen and (max-width: 430px){
 .active-categorie-vracnco{
     font-size: 16px;
 }
+
 .categorie-vracnco{
     font-size: 16px;
 }
+
 .list-element{
     width: 80%;
     height: 100%;

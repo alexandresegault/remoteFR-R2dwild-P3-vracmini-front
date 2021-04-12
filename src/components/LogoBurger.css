@@ -1,3 +1,11 @@
+.burger-menu-nav {
+  list-style-type: none;
+}
+
+#burger-menu {
+  display: none;
+}
+
 #logo-burger .bar1,
 #logo-burger .bar2,
 #logo-burger .bar3,
@@ -32,12 +40,4 @@
 
 #logo-burger {
   cursor: pointer;
-}
-
-.burger-menu-nav {
-  list-style-type: none;
-}
-
-#burger-menu {
-  display: none;
 }
