@@ -1,5 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
+#bar1 {
+  width:50%;
+  height:0.5px;
+  background-color: rgba(0, 0, 0, 0.37);
+  margin-top:25px;
+  margin-bottom: -10px;;
+}
+
+.indication-ingredients-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.indication-ingredients{
+  width: 40%;
+}
+
+.indication-preparation{
+  width: 50%;
+}
+
+.recipe-astuces{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+.recipe-icons{
+  width: 30px;
+}
+
 .recipe-page{
   border: 5px solid #F0D8B8;
   border-radius:10px;
@@ -12,31 +43,10 @@
   padding: 10px;
   box-shadow: 0px 0px 15px #4e4e4e65;
 }
-.recipe-ingredients p{
-  margin:0;
-}
-.title-recipe-grad {
-  display:flex;
-}
-.recipe-time-person{
-  display: flex;
-  justify-content: space-around;
-}
+
 .recipe-header{
   display: flex;
   justify-content: space-around;
-}
-.title-recipe{
-  color: #F0D8B8;
-  font-size: 46px;
-}
-.recipe-icons{
-  width: 30px;
-}
-
-.title-recipe-detail{
-  display: flex;
-  flex-direction: column;
 }
 
 .recipe-img{
@@ -49,37 +59,35 @@
   font-style: bold;
 }
 
-.recipe-astuces{
-display: flex;
-flex-direction: column;
-align-items: center;
+.recipe-ingredients p{
+  margin:0;
+}
+
+.recipe-time-person{
+  display: flex;
+  justify-content: space-around;
 }
 
 .recipe-tips{
   width: 80%;
 }
 
-.indication-ingredients-container{
-  display: flex;
-  justify-content: space-around;
-}
-
-#bar1 {
-  width:50%;
-  height:0.5px;
-  background-color: rgba(0, 0, 0, 0.37);
-  margin-top:25px;
-  margin-bottom: -10px;;
-}
-.tips-recipe {
+.tips-recipe{
   margin-bottom: 10px;
 }
-.indication-ingredients{
-  width: 40%;
+
+.title-recipe-grad {
+  display:flex;
 }
 
-.indication-preparation{
-  width: 50%;
+.title-recipe{
+  color: #F0D8B8;
+  font-size: 46px;
+}
+
+.title-recipe-detail{
+  display: flex;
+  flex-direction: column;
 }
 
 /* responsive */
@@ -91,6 +99,20 @@ align-items: center;
 }
 
 @media only screen and (max-width: 800px) {
+  
+  .indication-ingredients{
+    width: 100%;
+  }
+
+  .indication-ingredients-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .indication-preparation{
+    width: 100%;
+  }
+  
   .recipe-page{
     width: 90vw;
   }
@@ -108,19 +130,6 @@ align-items: center;
   }
 
   .recipe-tips{
-    width: 100%;
-  }
-
-  .indication-ingredients{
-    width: 100%;
-  }
-
-  .indication-ingredients-container{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .indication-preparation{
     width: 100%;
   }
 }
