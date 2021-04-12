@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { NavLink, Link } from 'react-router-dom'
 
 import './BurgerMenu.css'
@@ -40,7 +39,7 @@ const BurgerMenu = prevProps => {
             </li>
             <li className='menu-link'>
               <NavLink
-                to='/'
+                to='/vracnco'
                 activeClassName=''
                 onClick={prevProps.handleClickBurger}
               >
@@ -58,7 +57,7 @@ const BurgerMenu = prevProps => {
             </li>
             <li className='menu-link'>
               <NavLink
-                to='/'
+                to='/contact'
                 activeClassName=''
                 onClick={prevProps.handleClickBurger}
               >

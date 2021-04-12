@@ -28,7 +28,11 @@ const DetailAliment = prevProps => {
               <h3>{aliment.title}</h3>
             </div>
             <div>
-              <img src={aliment.url_img} alt={`image ${aliment.name}`} />
+              <img
+                src={aliment.url_img}
+                className='aliment-img'
+                alt={`image ${aliment.name}`}
+              />
             </div>
           </div>
           <div id='content-aliment-detail'>
