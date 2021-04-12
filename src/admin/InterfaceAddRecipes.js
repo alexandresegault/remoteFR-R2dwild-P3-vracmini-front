@@ -46,6 +46,7 @@ const InterfaceAddRecipes = () => {
   return (
     <div>
       <form onSubmit={addRecipe} id='add-recipes'>
+        <h2 id='title-add-recipes'>Ajouter une recette</h2>
         <label>Nom de la recette : </label>
         <input
           type='text'

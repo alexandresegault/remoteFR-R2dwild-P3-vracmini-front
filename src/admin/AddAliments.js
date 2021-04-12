@@ -36,6 +36,7 @@ const AddAliments = () => {
 
   return (
     <div className='interface-add-aliments'>
+      <h2 id='title-add-recipe'>Ajouter un aliment</h2>
       <label>Nom aliment :</label>
       <input
         type='text'
@@ -96,7 +97,7 @@ const AddAliments = () => {
           : null}
       </select>
       <button className='send-button' onClick={() => send()}>
-        Envoyer
+        Ajouter l'aliment
       </button>
     </div>
   )
