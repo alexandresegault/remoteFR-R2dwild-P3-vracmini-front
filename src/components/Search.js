@@ -96,7 +96,7 @@ const Search = () => {
                   <Link
                     key={i}
                     to={{
-                      pathname: `/aux_fourneaux/curieux_aliments/${alim.id}`
+                      pathname: `/aux_fourneaux/curieux_aliments/detail/${alim.id}`
                     }}
                     className='current-result'
                   >
@@ -114,7 +114,7 @@ const Search = () => {
                   <Link
                     key={i}
                     to={{
-                      pathname: `/aux_fourneaux/recipes/${recipe.id}`
+                      pathname: `/aux_fourneaux/recipes/detail/${recipe.id}`
                     }}
                     className='current-result'
                   >

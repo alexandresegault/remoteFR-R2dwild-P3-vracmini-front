@@ -66,3 +66,45 @@
   width: 40%;
   padding-right: 20px;
 }
+
+@media screen and (max-width: 750px){
+  .pots-position{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pot-quantites-intro{
+    width: 50%;
+  }
+  .text-intro-quantites{
+    font-size: 18px;
+  }
+
+  .indications-global{
+    display:flex;
+    flex-direction: column;
+  }
+  .indications-quantites{
+    padding-top: 50px;
+  }
+  .pot-x{
+    width: 40%;
+    height: 40%;
+    padding-top: 40px;
+  }
+  .name-aliments p{
+    font-size: 18px;
+  }
+
+  .indications-grammes p{
+    font-size: 18px;
+  }
+
+  .infos-indications{
+    font-size: 18px;
+  }
+
+  .invisible-info{
+    display: none;
+  }
+}

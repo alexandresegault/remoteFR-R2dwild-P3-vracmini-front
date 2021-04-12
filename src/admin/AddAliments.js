@@ -36,68 +36,72 @@ const AddAliments = () => {
 
   return (
     <div className='interface-add-aliments'>
-      <label>Nom aliment :</label>
-      <input
-        type='text'
-        id='name-categorie-input'
-        placeholder='Pois chiche'
-        name='name'
-        onChange={event => setName(event.target.value)}
-      />
-      <label>Titre :</label>
-      <input
-        type='text'
-        id='title-input'
-        placeholder='Meet Substitute'
-        name='title'
-        onChange={event => setTitle(event.target.value)}
-      />
-      <label>URL image :</label>
-      <input
-        type='text'
-        id='urlimg-input'
-        placeholder='http..'
-        name='urlimg'
-        onChange={event => setUrlImg(event.target.value)}
-      />
-      <label>Contenu :</label>
-      <div className='editor'>
-        <Editor
-          apiKey={ApiKey}
-          onChange={handleEditorChange}
-          id='thisContent'
-          init={{
-            height: 500,
-            menubar: true,
-            quickbars_image_toolbar:
-              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-            plugins: [
-              'advlist autolink lists link image',
-              'charmap print preview anchor help',
-              'searchreplace visualblocks code',
-              'a_tinymce_plugin',
-              'insertdatetime media table paste wordcount'
-            ],
-            toolbar:
-              'undo redo | formatselect | bold italic | \
+      <form onSubmit={send}>
+        <h2 id='title-add-recipe'>Ajouter un aliment</h2>
+        <label>Nom aliment :</label>
+        <input
+          type='text'
+          id='name-categorie-input'
+          placeholder='Pois chiche'
+          name='name'
+          onChange={event => setName(event.target.value)}
+        />
+        <label>Titre :</label>
+        <input
+          type='text'
+          id='title-input'
+          placeholder='Meet Substitute'
+          name='title'
+          onChange={event => setTitle(event.target.value)}
+        />
+        <label>URL image :</label>
+        <input
+          type='text'
+          id='urlimg-input'
+          placeholder='http..'
+          name='urlimg'
+          onChange={event => setUrlImg(event.target.value)}
+        />
+        <label>Contenu :</label>
+        <div className='editor'>
+          <Editor
+            apiKey={ApiKey}
+            onChange={handleEditorChange}
+            id='thisContent'
+            init={{
+              height: 500,
+              menubar: true,
+              quickbars_image_toolbar:
+                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'a_tinymce_plugin',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
               alignleft aligncenter alignright | \
               bullist numlist outdent indent | help'
-          }}
-        />
-      </div>
-      <label>Categorie de l'aliment : </label>
-      <select onChange={event => setCategorie(Number(event.target.value))}>
-        {categorieList
-          ? categorieList.map((cat, i) => (
-              <option value={cat.id} key={i}>
-                {cat.name}
-              </option>
-            ))
-          : null}
-      </select>
-      <button className='send-button' onClick={() => send()}>
-        Envoyer
-      </button>
+            }}
+          />
+        </div>
+        <label>Categorie de l'aliment : </label>
+        <select onChange={event => setCategorie(Number(event.target.value))}>
+          {categorieList
+            ? categorieList.map((cat, i) => (
+                <option value={cat.id} key={i}>
+                  {cat.name}
+                </option>
+              ))
+            : null}
+        </select>
+        <button className='send-button' type='submit'>
+          Envoyer
+        </button>
+      </form>
+
     </div>
   )
 }

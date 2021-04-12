@@ -16,7 +16,7 @@ const InterfaceAliments = () => {
 
   return (
     <div className='interface-aliments'>
-      <div className='interface-btn-container'>
+      <div className='interface-btn-container-aliments'>
         <div className='add-btn'>
           <Link to='/admin/aliments/add'>Ajouter un aliment</Link>
         </div>

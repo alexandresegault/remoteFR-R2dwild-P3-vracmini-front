@@ -27,8 +27,9 @@
  justify-content: center;
  align-items: center;
  border: 1px solid black;
- background: #464646 ;
+ background: antiquewhite ;
  font-weight: bold;
+ color: black;
 }
 .nav-pages:hover {
   opacity: 0.7;
