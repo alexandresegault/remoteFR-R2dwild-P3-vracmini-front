@@ -54,3 +54,18 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # TinyMCE
 
 We use TinyMCE to edit the contents of the website more easily.
+
+
+# Axios
+$ npm i axios
+
+# Emailjs
+$ npm i emailjs
+
+# devDependencies : 
+    "babel-eslint": "^10.1.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier-eslint": "^12.0.0"
+  
