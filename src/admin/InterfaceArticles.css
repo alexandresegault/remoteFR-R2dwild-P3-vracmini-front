@@ -60,6 +60,7 @@
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgb(109, 114, 62);
   transition: all 0.2s;
+  font-family: 'Rounded Elegance', Arial;
 }
 .podart-card button:hover {
   transition: all 0.3s;

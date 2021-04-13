@@ -40,7 +40,7 @@ const AddAliments = () => {
   return (
     <div className='interface-add-aliments'>
       <form onSubmit={send}>
-        <h2 id='title-add-recipe'>Ajouter un aliment</h2>
+        <h1 id='title-add-recipe'>Ajouter un aliment</h1>
         <label>Nom aliment :</label>
         <input
           type='text'
@@ -106,7 +106,7 @@ const AddAliments = () => {
         </select>
         <div className='add-aliment-btn-container'>
           <button className='send-button' type='submit'>
-            Envoyer
+            Ajouter aliment
           </button>
           <button className='send-button'>
             <Link to='/admin/aliments'>Voir toute les recettes</Link>

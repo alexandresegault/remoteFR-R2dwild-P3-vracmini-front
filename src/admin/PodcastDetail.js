@@ -84,6 +84,7 @@ const PodcastDetail = prevProps => {
   return (
     <div className='update-podart-page'>
       <div className='update-podart-container'>
+        <h1>Modifier le podcast</h1>
         <label>Title :</label>
         <input
           type='text'
