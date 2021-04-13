@@ -32,7 +32,7 @@ const AlimentsDetail = prevProps => {
       .get(
         `http://localhost:4242/api/aux_fourneaux/aliments/${prevProps.match.params.id}`
       )
-      .then(res => setAliment(res.data))
+      .then(res => setAliment(res.data[0]))
   }, [])
 
   const updateName = () => {
