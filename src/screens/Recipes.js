@@ -36,7 +36,6 @@ const Recipes = prevProps => {
               >
                 En Savoir Plus
               </Link>
-
             </div>
           ))
         : null}

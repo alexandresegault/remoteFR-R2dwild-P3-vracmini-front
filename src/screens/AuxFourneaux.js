@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import './AuxFourneaux.css'
 
-const AuxFourneaux = prevProps => {
+const AuxFourneaux = () => {
   const [showAliments, setShowAliments] = useState(false)
   const [showRecipes, setShowRecipes] = useState(false)
   const [auxFourneaux, setAuxFourneaux] = useState([])
