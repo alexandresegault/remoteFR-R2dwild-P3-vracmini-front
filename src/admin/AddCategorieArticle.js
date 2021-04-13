@@ -16,7 +16,7 @@ const AddCategorieArticle = () => {
   }, [])
 
   return (
-    <div classsName='categorie-article-page'>
+    <div className='categorie-article-page'>
       <button className='back-page-admin'>
         <Link to='/admin/articles'>Voir tout les articles</Link>
       </button>
