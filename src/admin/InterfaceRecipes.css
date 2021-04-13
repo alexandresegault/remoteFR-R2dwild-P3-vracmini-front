@@ -1,32 +1,31 @@
 .interface-recipes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width:100%;
 }
-.interface-btn-container {
+.interface-btn-container-recipes{
+  padding:15px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  width:100%;
-  height:100px;
 }
-.interface-btn-container a {
-  color: white;
-  text-decoration: none;
-  border:1px solid black;
-  padding: 30px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 120%;
+.interface-btn-container-recipes .add-btn {
+box-shadow: 0px 0px 10px rgb(100, 98, 98);
+  padding:25px;
+  border-radius:5px;
   background-color: rgb(78, 83, 104);
-  box-shadow:1px 1px 10px  black;
+  transition: all 0.4s;
 }
-.interface-btn-container a:hover {
- opacity: 0.6;
- transition:0.4s all;
+.interface-btn-container-recipes .add-btn:hover {
+  transition: all 0.4s;
+  background-color: rgba(103, 114, 156, 0.671);
+  cursor: pointer;
 }
-.recipes-container {
+.interface-btn-container-recipes .add-btn a {
+  color:white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Rounded Elegance', Arial;
+}
+.recipes-cards-container {
   margin-top:20px;
   margin-left: 40px;
   width:100%;
@@ -38,26 +37,32 @@
   width:350px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
-  margin: 5px;
+  box-shadow: 0px 0px 15px rgb(161, 159, 159);
+  border-radius: 5px;
+  height:170px;
+  margin: 10px;
+  font-family: 'Rounded Elegance', Arial;
+  font-weight:bold;
 }
 .recipe-card p {
-  border: 1px solid black;
+  font-size:25px;
+  font-weight:bold;
   padding: 3px 10px 3px 10px;
-  background-color: white;
 }
 .recipe-card a {
   text-decoration: none;
-  border: 1px solid black;
-  padding: 3px 10px 3px 10px;
-  color: black;
+  font-size:20px;
+  padding:8px;
+  color: white;
   background: rgb(214, 192, 68);
   border-radius: 5px;
-  
+  box-shadow: 0px 0px 10px rgb(109, 114, 62);
+  transition: all 0.2s;
 }
-.recipe-card:hover {
-  opacity: 0.6;
-  transition:0.4s all;
+.recipe-card a:hover {
+  transition: all 0.3s;
+  background-color: rgba(192, 180, 109, 0.548);
+  padding:12px;
 }

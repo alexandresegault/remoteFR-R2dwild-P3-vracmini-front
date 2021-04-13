@@ -125,6 +125,7 @@ const InterfaceAddRecipes = () => {
         />
         <label>Categorie de la recette : </label>
         <select onChange={event => setCategorie(Number(event.target.value))}>
+          <option selected>Choisir une catégorie</option>
           {categorieList
             ? categorieList.map((cat, i) => (
                 <option value={cat.id} key={i}>

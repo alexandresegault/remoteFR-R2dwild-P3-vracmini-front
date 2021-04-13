@@ -312,11 +312,11 @@ const RecipesDetail = prevProps => {
         </button>
         {deleted ? (
           <button className='delete-btn'>
-            <Link to='/admin/recipes'>Supprimer l'aliment</Link>
+            <Link to='/admin/recipes'>Supprimer la recette</Link>
           </button>
         ) : (
           <button className='delete-btn' onClick={deleteRecipe}>
-            Supprimer l'aliment
+            Supprimer la recette
           </button>
         )}
       </div>

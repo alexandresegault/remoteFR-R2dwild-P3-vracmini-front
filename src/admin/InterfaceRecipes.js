@@ -15,7 +15,7 @@ const InterfaceRecipes = () => {
 
   return (
     <div className='interface-recipes'>
-      <div className='interface-btn-container'>
+      <div className='interface-btn-container-recipes'>
         <div className='add-btn'>
           <Link to='/admin/recipes/add'>Ajouter une recette</Link>
         </div>
@@ -25,7 +25,7 @@ const InterfaceRecipes = () => {
           </Link>
         </div>
       </div>
-      <div className='recipes-container'>
+      <div className='recipes-cards-container'>
         {allRecipes ? (
           allRecipes.length !== 0 ? (
             allRecipes.map((recipe, i) => (
