@@ -8,9 +8,9 @@ import AddCategorieArticle from './AddCategorieArticle'
 import AddCategoriePodcast from './AddCategoriePodcast'
 import AddCategorieRecipe from './AddCategorieRecipe'
 import AddPodcast from './AddPodcast'
+import AddRecipes from './AddRecipes'
 import AlimentsDetail from './AlimentsDetail'
 import ArticlesDetail from './ArticlesDetail'
-import InterfaceAddRecipes from './InterfaceAddRecipes'
 import InterfaceAliments from './InterfaceAliments'
 import InterfaceArticles from './InterfaceArticles'
 import InterfacePages from './InterfacePages'
@@ -32,7 +32,7 @@ const AdminInterfaceHome = prevProps => {
       <Switch>
         <Route path='/admin/pages' component={InterfacePages} />
         <Route exact path='/admin/recipes' component={InterfaceRecipes} />
-        <Route path='/admin/recipes/add' component={InterfaceAddRecipes} />
+        <Route path='/admin/recipes/add' component={AddRecipes} />
         <Route
           path='/admin/recipes/add_categorie'
           component={AddCategorieRecipe}

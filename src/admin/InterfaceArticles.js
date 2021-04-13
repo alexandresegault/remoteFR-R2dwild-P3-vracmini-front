@@ -17,25 +17,25 @@ const InterfaceArticles = () => {
   }, [])
 
   return (
-    <div className='interface-articles'>
-      <div className='interface-articles-container'>
-        <div className='interface-articles-btn-container'>
-          <div className='add-article-btn'>
-            <Link to='/admin/articles/add'>Ajouter un article</Link>
-          </div>
-          <div>
-            <Link to='/admin/articles/categorie'>
-              Modifier / Voir les categories
-            </Link>
-          </div>
+    <div className='interface-podart-container'>
+      <div className='interface-podart-btn-container'>
+        <div className='add-btn'>
+          <Link to='/admin/articles/add'>Ajouter un article</Link>
         </div>
+        <div className='add-btn'>
+          <Link to='/admin/articles/categorie'>
+            Modifier / Voir les categories
+          </Link>
+        </div>
+      </div>
+      <div className='podart-cards-container'>
         {listArticles ? (
           listArticles.map((art, i) => {
             return (
-              <div key={i} className='art-card'>
+              <div key={i} className='podart-card'>
                 <h1>{art.title}</h1>
                 <Link to={`/admin/articles/${art.id}`}>
-                  <button>En savoir plus</button>
+                  <button>Modifier / Supprimer</button>
                 </Link>
               </div>
             )

@@ -287,11 +287,11 @@ const RecipesDetail = prevProps => {
         <label>Categorie de la recette : </label>
         {categorie !== null ? (
           <select
-            value={recipe.categories_recipes_id}
             onChange={event => {
               setCategorie(event.target.value)
             }}
           >
+            <option selected>Modifier catégorie :</option>
             {categorieList
               ? categorieList.map((cat, i) => (
                   <option value={cat.id} key={i}>

@@ -5,7 +5,7 @@ import axios from 'axios'
 import ApiKey from './ApiKey'
 import { Editor } from '@tinymce/tinymce-react'
 
-import './InterfaceAddRecipes.css'
+import './AddRecipes.css'
 
 const InterfaceAddRecipes = () => {
   const [name, setName] = useState('')
@@ -13,6 +13,7 @@ const InterfaceAddRecipes = () => {
   const [img, setImg] = useState('')
   const [cookTime, setCookTime] = useState('')
   const [ingredients, setIngredients] = useState('')
+  const [tips, setTips] = useState('')
   const [nbrPerson, setNbrPerson] = useState('')
   const [categorie, setCategorie] = useState('')
   const [categorieList, setCategorieList] = useState('')
@@ -30,6 +31,7 @@ const InterfaceAddRecipes = () => {
       url_img: img,
       cook_time: cookTime,
       ingredients: ingredients,
+      tips: tips,
       person_nb: nbrPerson,
       categories_recipes_id: categorie
     }
@@ -42,9 +44,11 @@ const InterfaceAddRecipes = () => {
   const handleEditorChangeIngredients = e => {
     setIngredients(e.target.getContent())
   }
-
+  const handleEditorChangeTips = e => {
+    setTips(e.target.getContent())
+  }
   return (
-    <div>
+    <div id='add-recipes-page'>
       <form onSubmit={addRecipe} id='add-recipes'>
         <h2 id='title-add-recipes'>Ajouter une recette</h2>
         <label>Nom de la recette : </label>
@@ -69,7 +73,29 @@ const InterfaceAddRecipes = () => {
           init={{
             height: 200,
             menubar: true,
-            placeholder: `${step}`,
+            quickbars_image_toolbar:
+              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+            plugins: [
+              'advlist autolink lists link image',
+              'charmap print preview anchor help',
+              'searchreplace visualblocks code',
+              'a_tinymce_plugin',
+              'insertdatetime media table paste wordcount'
+            ],
+            toolbar:
+              'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+          }}
+        />
+        <label>Astuce :</label>
+        <Editor
+          apiKey={ApiKey}
+          onChange={handleEditorChangeTips}
+          id='tinyTips'
+          init={{
+            height: 200,
+            menubar: true,
             quickbars_image_toolbar:
               'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
             plugins: [
@@ -96,11 +122,10 @@ const InterfaceAddRecipes = () => {
         <Editor
           apiKey={ApiKey}
           onChange={handleEditorChangeIngredients}
-          id='tinyStep'
+          id='tinyContent'
           init={{
             height: 200,
             menubar: true,
-            placeholder: `${ingredients}`,
             quickbars_image_toolbar:
               'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
             plugins: [

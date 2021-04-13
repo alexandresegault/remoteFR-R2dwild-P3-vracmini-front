@@ -167,10 +167,8 @@ const AlimentsDetail = prevProps => {
       </form>
       <form onSubmit={updateCategorie}>
         <label>Categorie de l'aliment : </label>
-        <select
-          value={aliment.categories_aliments_id}
-          onChange={event => setCategorie(event.target.value)}
-        >
+        <select onChange={event => setCategorie(event.target.value)}>
+          <option selected>Modifier catégorie :</option>
           {categorieList
             ? categorieList.map((cat, i) => (
                 <option value={cat.id} key={i}>
