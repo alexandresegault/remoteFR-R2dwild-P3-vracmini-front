@@ -4,6 +4,7 @@ import './Conversion.css'
 const Conversion = () => {
   return (
     <div>
+      <h1 className='title-conversions'>Guide des conversions</h1>
       <table className='tableau-style'>
         <thead className='entete'>
           <tr>
