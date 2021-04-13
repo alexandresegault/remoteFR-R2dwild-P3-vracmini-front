@@ -9,7 +9,7 @@
   width: 55%;
   min-width: 400px;
   box-shadow: 0 5px 50px rgba(0,0,0,0.15) ;
-  margin: 100px auto;
+  margin: auto;
 }
 
 .entete{
@@ -49,4 +49,10 @@ tbody tr:last-child td:last-child{
   border-bottom-right-radius: 1em;
   border-bottom: hidden;
   border-right: hidden;
+}
+
+.title-conversions{
+  color:  black;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 40px;
 }

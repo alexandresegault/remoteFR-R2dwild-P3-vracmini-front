@@ -6,7 +6,7 @@ import ApiKey from './ApiKey'
 import { Editor } from '@tinymce/tinymce-react'
 
 import './ArticlesDetail.css'
-const ArticlesDetail = prevProps => {
+const PodcastDetail = prevProps => {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
@@ -170,4 +170,4 @@ const ArticlesDetail = prevProps => {
   )
 }
 
-export default ArticlesDetail
+export default PodcastDetail
