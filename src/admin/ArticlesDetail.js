@@ -13,6 +13,7 @@ const ArticlesDetail = prevProps => {
   const [article, setArticle] = useState('')
   const [catArticle, setCatArticle] = useState('')
   const [categorieList, setCategorieList] = useState('')
+  const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     axios.all[
@@ -34,6 +35,16 @@ const ArticlesDetail = prevProps => {
   }, [])
   const handleEditorChangeContent = e => {
     setContent(e.target.getContent())
+  }
+  const deleteArticle = () => {
+    const validation = window.prompt('Tapez "Oui" pour confirmer')
+    if (validation == 'Oui') {
+      axios
+        .delete(
+          `http://localhost:4242/api/podcasts_articles/${prevProps.match.params.id}`
+        )
+        .then(setDeleted(true))
+    }
   }
   const updateArticle = arg => {
     switch (arg) {
@@ -146,6 +157,15 @@ const ArticlesDetail = prevProps => {
       <button>
         <Link to='/admin/articles'>Voir tout les articles</Link>
       </button>
+      {deleted ? (
+        <Link className='delete-btn' to='/admin/articles'>
+          Supprimer l'article
+        </Link>
+      ) : (
+        <button onClick={deleteArticle} className='delete-btn'>
+          Supprimer l'article
+        </button>
+      )}
     </div>
   )
 }
