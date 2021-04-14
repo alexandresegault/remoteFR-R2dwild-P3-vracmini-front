@@ -95,7 +95,7 @@ const PodcastDetail = prevProps => {
         />
         <button
           id='btn-modify-title'
-          onClick={() => updatePodcasts('btn-modify-title')}
+          onClick={() => updatePodcast('btn-modify-title')}
         >
           Modifer le titre
         </button>
@@ -109,12 +109,12 @@ const PodcastDetail = prevProps => {
         />
         <button
           id='btn-modify-img'
-          onClick={() => updatePodcasts('btn-modify-img')}
+          onClick={() => updatePodcast('btn-modify-img')}
         >
           Modifer l'image
         </button>
         <label>Contenu :</label>
-        {podcasts.content ? (
+        {podcast.content ? (
           <Editor
             apiKey={ApiKey}
             initialValue={`${podcast.content}`}
