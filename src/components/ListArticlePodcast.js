@@ -14,7 +14,9 @@ export default function ListArticlePodcast() {
   useEffect(() => {
     axios
       .get('http://localhost:4242/api/vracn_co')
-      .then(res => setVracnCo(res.data[0]))
+      .then(res => {
+        setVracnCo(res.data[0])
+      })
       .then(setIsLoading(true))
   }, [])
 
@@ -26,7 +28,9 @@ export default function ListArticlePodcast() {
   useEffect(() => {
     axios
       .get(`http://localhost:4242/api/podcasts_articles?id=${activeIndex}`)
-      .then(res => setList(res.data))
+      .then(res => {
+        setList(res.data)
+      })
   }, [activeIndex])
   const activePodcast = () => {
     setActiveMediaType(1)
@@ -55,17 +59,16 @@ export default function ListArticlePodcast() {
     return list
       .filter(e => e.isPodcast === activeMediaType)
       .map((e, index) => (
-        <Link
-          className='list-element'
-          to={`/articles_podcasts/:${e.id}`}
-          key={index}
-        >
-          <div>
-            {/* <img className='elem-image'></img> */}
-            <h1 className='title-element'>{e.title}</h1>
-            <p className='contenu-element'>{e.content}</p>
+        <div className='list-element' key={index}>
+          <h1 className='title-element'>{e.title}</h1>
+          <div className='container-podart-card'>
+            <img src={e.url_img} alt={e.title} />
+            <div
+              className='contenu-element'
+              dangerouslySetInnerHTML={{ __html: e.content }}
+            ></div>
           </div>
-        </Link>
+        </div>
       ))
   }
   const accueil = () => {
@@ -73,7 +76,10 @@ export default function ListArticlePodcast() {
       <div className='accueil-vracnco'>
         <div className='title-vracnco'>{vracnCo.title}</div>
         <img className='img-accueil' src={vracnCo.url_img}></img>
-        <div className='texte-intro-vracnco'>{vracnCo.content}</div>
+        <div
+          className='texte-intro-vracnco'
+          dangerouslySetInnerHTML={{ __html: vracnCo.content }}
+        ></div>
       </div>
     )
   }
