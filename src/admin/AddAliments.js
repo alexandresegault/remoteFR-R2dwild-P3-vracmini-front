@@ -1,8 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
-import ApiKey from './ApiKey'
-import axios from 'axios'
-import { Editor } from '@tinymce/tinymce-react'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Editor } from '@tinymce/tinymce-react'
+
+import axios from 'axios'
+
+import ApiKey from './ApiKey'
 
 import './AddAliments.css'
 
@@ -38,7 +40,7 @@ const AddAliments = () => {
   return (
     <div className='interface-add-aliments'>
       <form onSubmit={send}>
-        <h2 id='title-add-recipe'>Ajouter un aliment</h2>
+        <h1 id='title-add-recipe'>Ajouter un aliment</h1>
         <label>Nom aliment :</label>
         <input
           type='text'
@@ -89,7 +91,11 @@ const AddAliments = () => {
           />
         </div>
         <label>Categorie de l'aliment : </label>
-        <select onChange={event => setCategorie(Number(event.target.value))}>
+        <select
+          className='categorie-aliment-select'
+          onChange={event => setCategorie(Number(event.target.value))}
+        >
+          <option selected>Choisir une catégorie</option>
           {categorieList
             ? categorieList.map((cat, i) => (
                 <option value={cat.id} key={i}>
@@ -98,9 +104,14 @@ const AddAliments = () => {
               ))
             : null}
         </select>
-        <button className='send-button' type='submit'>
-          Envoyer
-        </button>
+        <div className='add-aliment-btn-container'>
+          <button className='send-button' type='submit'>
+            Ajouter aliment
+          </button>
+          <button className='send-button'>
+            <Link to='/admin/aliments'>Voir toute les recettes</Link>
+          </button>
+        </div>
       </form>
     </div>
   )

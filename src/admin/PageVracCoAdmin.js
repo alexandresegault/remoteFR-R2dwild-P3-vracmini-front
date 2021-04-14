@@ -24,9 +24,11 @@ const PageVracCoAdmin = () => {
     }
     axios.put(`http://localhost:4242/api/vracn_co/${vracCo.id}`, finalTitle)
   }
+
   const handleEditorIntro = e => {
     setContent(e.target.getContent())
   }
+
   const handleChangeContent = () => {
     const finalContent = {
       content: content
