@@ -38,7 +38,7 @@ const ArticlesDetail = prevProps => {
         .then(res => {
           setArtCategories(res.data)
         })
-        .then(res => setIsLoading(false)))
+        .then(() => setIsLoading(false)))
     ]
   }, [])
   const handleEditorChangeContent = e => {
