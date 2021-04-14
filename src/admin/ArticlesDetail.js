@@ -6,14 +6,16 @@ import ApiKey from './ApiKey'
 import { Editor } from '@tinymce/tinymce-react'
 
 import './ArticlesDetail.css'
+
 const ArticlesDetail = prevProps => {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
-  const [article, setArticle] = useState('')
-  const [catArticle, setCatArticle] = useState('')
-  const [categorieList, setCategorieList] = useState('')
+  const [article, setArticle] = useState({})
+  const [categorieList, setCategorieList] = useState([])
   const [deleted, setDeleted] = useState(false)
+  const [artCategories, setArtCategories] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     axios.all[
@@ -22,15 +24,21 @@ const ArticlesDetail = prevProps => {
           `http://localhost:4242/api/podcasts_articles/${prevProps.match.params.id}`
         )
         .then(res => {
-          console.log(res.data)
           setArticle(res.data)
         }),
       axios
         .get('http://localhost:4242/api/categories_podcasts_articles/')
         .then(res => {
-          console.log(res.data)
           setCategorieList(res.data)
-        }))
+        }),
+      axios
+        .get(
+          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`
+        )
+        .then(res => {
+          setArtCategories(res.data)
+        })
+        .then(res => setIsLoading(false)))
     ]
   }, [])
   const handleEditorChangeContent = e => {
@@ -64,14 +72,6 @@ const ArticlesDetail = prevProps => {
         axios.put(
           `http://localhost:4242/api/podcasts_articles/${prevProps.match.params.id}`,
           { url_img: urlImg }
-        )
-        break
-      case 'btn-modify-cat':
-        axios.put(
-          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`,
-          {
-            categories_podcasts_articles_id: catArticle
-          }
         )
         break
     }
@@ -138,22 +138,44 @@ const ArticlesDetail = prevProps => {
       >
         Modifer le contenu
       </button>
-      <label>Categorie de l'article :</label>
-      <select onChange={event => setCatArticle(Number(event.target.value))}>
-        {categorieList
-          ? categorieList.map((cat, i) => (
-              <option value={cat.id} key={i}>
-                {cat.name}
-              </option>
-            ))
-          : null}
-      </select>
-      <button
-        id='btn-modify-cat'
-        onClick={() => updateArticle('btn-modify-cat')}
-      >
-        Modifer la catégorie
-      </button>
+      <label>Categories de l'article :</label>
+      <div className='check-categories'>
+        {isLoading ? (
+          <div> ...loading </div>
+        ) : (
+          categorieList.map((cat, i) => {
+            return (
+              <div key={i}>
+                <input
+                  defaultChecked={
+                    artCategories.some(
+                      elem => elem.categories_podcasts_articles_id === cat.id
+                    )
+                      ? true
+                      : false
+                  }
+                  className='categorie-checkbox'
+                  type='checkbox'
+                  onChange={e => {
+                    e.target.checked
+                      ? axios.post(
+                          'http://localhost:4242/api/podcasts_articles/join',
+                          {
+                            categories_podcasts_articles_id: cat.id,
+                            podcasts_articles_id: prevProps.match.params.id
+                          }
+                        )
+                      : axios.delete(
+                          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}/${cat.id}`
+                        )
+                  }}
+                />
+                <label>{cat.name}</label>
+              </div>
+            )
+          })
+        )}
+      </div>
       <button>
         <Link to='/admin/articles'>Voir tout les articles</Link>
       </button>
