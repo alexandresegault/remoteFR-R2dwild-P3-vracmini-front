@@ -136,117 +136,43 @@ const RecipesDetail = prevProps => {
   }
 
   return (
-    <div className='update-recipe'>
-      <form onSubmit={updateName}>
-        <label>Nom de la recette : </label>
-        <input
-          type='text'
-          id='name-recipe-input'
-          name='name'
-          placeholder={recipe.title}
-          onChange={event => setName(event.target.value)}
-        />
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateImg}>
-        <label>URL image : </label>
-        <input
-          type='text'
-          id='name-recipe-input'
-          name='name'
-          placeholder={recipe.url_img}
-          onChange={event => setImg(event.target.value)}
-        />
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateStep}>
-        <label>Etapes : </label>
-        {recipe ? (
-          <Editor
-            apiKey={ApiKey}
-            onChange={handleEditorChangeStep}
-            id='tinyStep'
-            initialValue={recipe.step}
-            init={{
-              height: 200,
-              menubar: true,
-              quickbars_image_toolbar:
-                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-              plugins: [
-                'advlist autolink lists link image',
-                'charmap print preview anchor help',
-                'searchreplace visualblocks code',
-                'a_tinymce_plugin',
-                'insertdatetime media table paste wordcount'
-              ],
-              toolbar:
-                'undo redo | formatselect | bold italic | \
-              alignleft aligncenter alignright | \
-              bullist numlist outdent indent | help'
-            }}
+    <div className='update-recipe-page'>
+      <div className='update-recipe-container'>
+        <h1>Modifier la recette </h1>
+        <form onSubmit={updateName}>
+          <label>Nom de la recette : </label>
+          <input
+            type='text'
+            id='name-recipe-input'
+            name='name'
+            placeholder={recipe.title}
+            onChange={event => setName(event.target.value)}
           />
-        ) : null}
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateTips}>
-        <label>Astuce : </label>
-        {recipe ? (
-          <Editor
-            apiKey={ApiKey}
-            onChange={handleEditorChangeTips}
-            id='tinyTips'
-            initialValue={recipe.tips !== null ? recipe.tips : ''}
-            init={{
-              height: 200,
-              menubar: true,
-              quickbars_image_toolbar:
-                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-              plugins: [
-                'advlist autolink lists link image',
-                'charmap print preview anchor help',
-                'searchreplace visualblocks code',
-                'a_tinymce_plugin',
-                'insertdatetime media table paste wordcount'
-              ],
-              toolbar:
-                'undo redo | formatselect | bold italic | \
-              alignleft aligncenter alignright | \
-              bullist numlist outdent indent | help'
-            }}
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateImg}>
+          <label>URL image : </label>
+          <input
+            type='text'
+            id='name-recipe-input'
+            name='name'
+            placeholder={recipe.url_img}
+            onChange={event => setImg(event.target.value)}
           />
-        ) : null}
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateCookTime}>
-        <label>Temps préparation : </label>
-        <input
-          type='text'
-          id='cook-time-recipe-input'
-          name='cook-time'
-          placeholder={recipe.cook_time}
-          onChange={event => setCookTime(event.target.value)}
-        />
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateIngredients}>
-        <label>Ingredients : </label>
-        <div className='editor'>
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateStep}>
+          <label>Etapes : </label>
           {recipe ? (
             <Editor
               apiKey={ApiKey}
-              onChange={handleEditorChangeIngredients}
-              initialValue={recipe.ingredients}
-              id='tinyContent'
+              onChange={handleEditorChangeStep}
+              id='tinyStep'
+              initialValue={recipe.step}
               init={{
                 height: 200,
                 menubar: true,
@@ -266,60 +192,137 @@ const RecipesDetail = prevProps => {
               }}
             />
           ) : null}
-        </div>
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateNbrPerson}>
-        <label>Nbr de personnes : </label>
-        <input
-          type='text'
-          id='ingredients-recipe-input'
-          name='cook-time'
-          placeholder={recipe.person_nb}
-          onChange={event => setNbrPerson(event.target.value)}
-        />
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <form onSubmit={updateCategorie}>
-        <label>Categorie de la recette : </label>
-        {categorie !== null ? (
-          <select
-            onChange={event => {
-              setCategorie(event.target.value)
-            }}
-          >
-            <option selected>Modifier catégorie :</option>
-            {categorieList
-              ? categorieList.map((cat, i) => (
-                  <option value={cat.id} key={i}>
-                    {cat.name}
-                  </option>
-                ))
-              : null}
-          </select>
-        ) : null}
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateTips}>
+          <label>Astuce : </label>
+          {recipe ? (
+            <Editor
+              apiKey={ApiKey}
+              onChange={handleEditorChangeTips}
+              id='tinyTips'
+              initialValue={recipe.tips !== null ? recipe.tips : ''}
+              init={{
+                height: 200,
+                menubar: true,
+                quickbars_image_toolbar:
+                  'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+                plugins: [
+                  'advlist autolink lists link image',
+                  'charmap print preview anchor help',
+                  'searchreplace visualblocks code',
+                  'a_tinymce_plugin',
+                  'insertdatetime media table paste wordcount'
+                ],
+                toolbar:
+                  'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+              }}
+            />
+          ) : null}
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateCookTime}>
+          <label>Temps préparation : </label>
+          <input
+            type='text'
+            id='cook-time-recipe-input'
+            name='cook-time'
+            placeholder={recipe.cook_time}
+            onChange={event => setCookTime(event.target.value)}
+          />
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateIngredients}>
+          <label>Ingredients : </label>
+          <div className='editor'>
+            {recipe ? (
+              <Editor
+                apiKey={ApiKey}
+                onChange={handleEditorChangeIngredients}
+                initialValue={recipe.ingredients}
+                id='tinyContent'
+                init={{
+                  height: 200,
+                  menubar: true,
+                  quickbars_image_toolbar:
+                    'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+                  plugins: [
+                    'advlist autolink lists link image',
+                    'charmap print preview anchor help',
+                    'searchreplace visualblocks code',
+                    'a_tinymce_plugin',
+                    'insertdatetime media table paste wordcount'
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+                }}
+              />
+            ) : null}
+          </div>
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateNbrPerson}>
+          <label>Nbr de personnes : </label>
+          <input
+            type='text'
+            id='ingredients-recipe-input'
+            name='cook-time'
+            placeholder={recipe.person_nb}
+            onChange={event => setNbrPerson(event.target.value)}
+          />
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
+          </button>
+        </form>
+        <form onSubmit={updateCategorie}>
+          <label>Categorie de la recette : </label>
+          {categorie !== null ? (
+            <select
+              onChange={event => {
+                setCategorie(event.target.value)
+              }}
+            >
+              <option selected>Modifier catégorie :</option>
+              {categorieList
+                ? categorieList.map((cat, i) => (
+                    <option value={cat.id} key={i}>
+                      {cat.name}
+                    </option>
+                  ))
+                : null}
+            </select>
+          ) : null}
 
-        <button className='update-btn' type='submit'>
-          Modifier
-        </button>
-      </form>
-      <div className='btn-container'>
-        <button className='back-page'>
-          <Link to='/admin/recipes'>Voir toute les recettes</Link>
-        </button>
-        {deleted ? (
-          <button className='delete-btn'>
-            <Link to='/admin/recipes'>Supprimer la recette</Link>
+          <button className='update-recipe-btn' type='submit'>
+            Modifier
           </button>
-        ) : (
-          <button className='delete-btn' onClick={deleteRecipe}>
-            Supprimer la recette
+        </form>
+        <div className='recipe-btn-container'>
+          <button className='back-recipe-page'>
+            <Link to='/admin/recipes'>Voir toute les recettes</Link>
           </button>
-        )}
+          {deleted ? (
+            <button className='delete-recipe-btn'>
+              <Link to='/admin/recipes'>Supprimer la recette</Link>
+            </button>
+          ) : (
+            <button className='delete-recipe-btn' onClick={deleteRecipe}>
+              Supprimer la recette
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

@@ -44,58 +44,60 @@ const PageVracCoAdmin = () => {
   }
 
   return (
-    <div className='content-page-vrac-co'>
-      <form onSubmit={handleChangeTitle}>
-        <label>Titre de la Page : </label>
-        <input
-          type='text'
-          id='title-page-input'
-          name='title'
-          placeholder={vracCo.title}
-          onChange={event => setTitle(event.target.value)}
-        />
-        <button type='submit'>Modifier</button>
-      </form>
-      <form onSubmit={handleChangeImg}>
-        <label>Url Image : </label>
-        <input
-          type='text'
-          id='img-url-input'
-          name='url_img'
-          placeholder={vracCo.url_img}
-          onChange={event => setImgUrl(event.target.value)}
-        />
-        <button type='submit'>Modifier</button>
-      </form>
-      <form onSubmit={handleChangeContent}>
-        <label>Bloc Introduction : </label>
-        {vracCo ? (
-          <Editor
-            apiKey={ApiKey}
-            onChange={handleEditorIntro}
-            id='tinyIntro'
-            initialValue={vracCo.content}
-            init={{
-              height: 200,
-              menubar: true,
-              quickbars_image_toolbar:
-                'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-              plugins: [
-                'advlist autolink lists link image',
-                'charmap print preview anchor help',
-                'searchreplace visualblocks code',
-                'a_tinymce_plugin',
-                'insertdatetime media table paste wordcount'
-              ],
-              toolbar:
-                'undo redo | formatselect | bold italic | \
+    <div className='vrac-co-page'>
+      <div className='vrac-co-container'>
+        <form onSubmit={handleChangeTitle}>
+          <label>Titre de la Page : </label>
+          <input
+            type='text'
+            id='title-page-input'
+            name='title'
+            placeholder={vracCo.title}
+            onChange={event => setTitle(event.target.value)}
+          />
+          <button type='submit'>Modifier</button>
+        </form>
+        <form onSubmit={handleChangeImg}>
+          <label>Url Image : </label>
+          <input
+            type='text'
+            id='img-url-input'
+            name='url_img'
+            placeholder={vracCo.url_img}
+            onChange={event => setImgUrl(event.target.value)}
+          />
+          <button type='submit'>Modifier</button>
+        </form>
+        <form onSubmit={handleChangeContent}>
+          <label>Bloc Introduction : </label>
+          {vracCo ? (
+            <Editor
+              apiKey={ApiKey}
+              onChange={handleEditorIntro}
+              id='tinyIntro'
+              initialValue={vracCo.content}
+              init={{
+                height: 200,
+                menubar: true,
+                quickbars_image_toolbar:
+                  'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
+                plugins: [
+                  'advlist autolink lists link image',
+                  'charmap print preview anchor help',
+                  'searchreplace visualblocks code',
+                  'a_tinymce_plugin',
+                  'insertdatetime media table paste wordcount'
+                ],
+                toolbar:
+                  'undo redo | formatselect | bold italic | \
               alignleft aligncenter alignright | \
               bullist numlist outdent indent | help'
-            }}
-          />
-        ) : null}
-        <button type='submit'>Modifier</button>
-      </form>
+              }}
+            />
+          ) : null}
+          <button type='submit'>Modifier</button>
+        </form>
+      </div>
     </div>
   )
 }
