@@ -147,6 +147,7 @@ const ArticlesDetail = prevProps => {
             return (
               <div key={i}>
                 <input
+                  id={cat.name}
                   defaultChecked={
                     artCategories.some(
                       elem => elem.categories_podcasts_articles_id === cat.id
@@ -170,7 +171,7 @@ const ArticlesDetail = prevProps => {
                         )
                   }}
                 />
-                <label>{cat.name}</label>
+                <label htmlFor={cat.name}>{cat.name}</label>
               </div>
             )
           })

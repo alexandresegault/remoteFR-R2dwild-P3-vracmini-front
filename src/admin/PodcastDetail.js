@@ -5,15 +5,17 @@ import axios from 'axios'
 import ApiKey from './ApiKey'
 import { Editor } from '@tinymce/tinymce-react'
 
-import './ArticlesDetail.css'
+import './PodcastDetail.css'
+
 const PodcastDetail = prevProps => {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
-  const [article, setArticle] = useState('')
-  const [catArticle, setCatArticle] = useState('')
+  const [podcasts, setPodcasts] = useState('')
+  const [podCategories, setPodCategories] = useState('')
   const [categorieList, setCategorieList] = useState('')
   const [deleted, setDeleted] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     axios.all[
@@ -23,20 +25,28 @@ const PodcastDetail = prevProps => {
         )
         .then(res => {
           console.log(res.data)
-          setArticle(res.data)
+          setPodcasts(res.data)
         }),
       axios
         .get('http://localhost:4242/api/categories_podcasts_articles/')
         .then(res => {
           console.log(res.data)
           setCategorieList(res.data)
-        }))
+        }),
+      axios
+        .get(
+          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`
+        )
+        .then(res => {
+          setPodCategories(res.data)
+        })
+        .then(() => setIsLoading(false)))
     ]
   }, [])
   const handleEditorChangeContent = e => {
     setContent(e.target.getContent())
   }
-  const deleteArticle = () => {
+  const deletePodcasts = () => {
     const validation = window.prompt('Tapez "Oui" pour confirmer')
     if (validation == 'Oui') {
       axios
@@ -46,7 +56,7 @@ const PodcastDetail = prevProps => {
         .then(setDeleted(true))
     }
   }
-  const updateArticle = arg => {
+  const updatePodcasts = arg => {
     switch (arg) {
       case 'btn-modify-title':
         axios.put(
@@ -66,29 +76,21 @@ const PodcastDetail = prevProps => {
           { url_img: urlImg }
         )
         break
-      case 'btn-modify-cat':
-        axios.put(
-          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`,
-          {
-            categories_podcasts_articles_id: catArticle
-          }
-        )
-        break
     }
   }
   return (
-    <div className='add-articles-container'>
+    <div className='modify-podcast-container'>
       <label>Title :</label>
       <input
         type='text'
         id='title-input'
         name='title'
-        defaultValue={article.title}
+        defaultValue={podcasts.title}
         onChange={event => setTitle(event.target.value)}
       />
       <button
         id='btn-modify-title'
-        onClick={() => updateArticle('btn-modify-title')}
+        onClick={() => updatePodcasts('btn-modify-title')}
       >
         Modifer le titre
       </button>
@@ -96,21 +98,21 @@ const PodcastDetail = prevProps => {
       <input
         type='text'
         id='urlimg-input'
-        defaultValue={article.url_img}
+        defaultValue={podcasts.url_img}
         name='urlimg'
         onChange={event => setUrlImg(event.target.value)}
       />
       <button
         id='btn-modify-img'
-        onClick={() => updateArticle('btn-modify-img')}
+        onClick={() => updatePodcasts('btn-modify-img')}
       >
         Modifer l'image
       </button>
       <label>Contenu :</label>
-      {article.content ? (
+      {podcasts.content ? (
         <Editor
           apiKey={ApiKey}
-          initialValue={`${article.content}`}
+          initialValue={`${podcasts.content}`}
           onChange={handleEditorChangeContent}
           id='tinyContent'
           init={{
@@ -134,36 +136,59 @@ const PodcastDetail = prevProps => {
       ) : null}
       <button
         id='btn-modify-content'
-        onClick={() => updateArticle('btn-modify-content')}
+        onClick={() => updatePodcasts('btn-modify-content')}
       >
         Modifer le contenu
       </button>
-      <label>Categorie de l'article :</label>
-      <select onChange={event => setCatArticle(Number(event.target.value))}>
-        {categorieList
-          ? categorieList.map((cat, i) => (
-              <option value={cat.id} key={i}>
-                {cat.name}
-              </option>
-            ))
-          : null}
-      </select>
-      <button
-        id='btn-modify-cat'
-        onClick={() => updateArticle('btn-modify-cat')}
-      >
-        Modifer la catégorie
-      </button>
+      <label>Categorie du podcasts :</label>
+      <div className='check-categories'>
+        {isLoading ? (
+          <div> ...loading </div>
+        ) : (
+          categorieList.map((cat, i) => {
+            return (
+              <div key={i}>
+                <input
+                  id={cat.name}
+                  defaultChecked={
+                    podCategories.some(
+                      elem => elem.categories_podcasts_articles_id === cat.id
+                    )
+                      ? true
+                      : false
+                  }
+                  className='categorie-checkbox'
+                  type='checkbox'
+                  onChange={e => {
+                    e.target.checked
+                      ? axios.post(
+                          'http://localhost:4242/api/podcasts_articles/join',
+                          {
+                            categories_podcasts_articles_id: cat.id,
+                            podcasts_articles_id: prevProps.match.params.id
+                          }
+                        )
+                      : axios.delete(
+                          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}/${cat.id}`
+                        )
+                  }}
+                />
+                <label htmlFor={cat.name}>{cat.name}</label>
+              </div>
+            )
+          })
+        )}
+      </div>
       <button>
-        <Link to='/admin/articles'>Voir tout les articles</Link>
+        <Link to='/admin/podcasts'>Voir tout les podcasts</Link>
       </button>
       {deleted ? (
-        <Link className='delete-btn' to='/admin/articles'>
-          Supprimer l'article
+        <Link className='delete-btn' to='/admin/podcasts'>
+          Supprimer l'podcasts
         </Link>
       ) : (
-        <button onClick={deleteArticle} className='delete-btn'>
-          Supprimer l'article
+        <button onClick={deletePodcasts} className='delete-btn'>
+          Supprimer l'podcasts
         </button>
       )}
     </div>
