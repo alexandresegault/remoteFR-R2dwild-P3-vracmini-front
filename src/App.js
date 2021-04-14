@@ -12,6 +12,7 @@ import Home from './screens/Home'
 import Recipes from './screens/Recipes'
 import GuideQuantites from './screens/GuideQuantites'
 import Conversion from './screens/Conversion'
+import Login from './components/Login'
 
 import './App.css'
 import Contact from './screens/Contact'
@@ -55,6 +56,7 @@ function App() {
           path='/aux_fourneaux/tableau_de_conversion'
           component={Conversion}
         ></Route>
+        <Route path='/login' component={Login} />
       </Switch>
     </div>
   )
