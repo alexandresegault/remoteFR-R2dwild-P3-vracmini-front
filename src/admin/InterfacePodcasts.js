@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-import './InterfacePodcasts.css'
+import './InterfaceArticles.css'
 
 const InterfacePodcasts = () => {
   const [listPodcasts, setListPodcasts] = useState([])
@@ -16,25 +16,25 @@ const InterfacePodcasts = () => {
   }, [])
 
   return (
-    <div className='interface-podcasts'>
-      <div className='interface-podcasts-container'>
-        <div className='interface-podcasts-btn-container'>
-          <div className='add-article-btn'>
-            <Link to='/admin/podcasts/add'>Ajouter un podcast</Link>
-          </div>
-          <div>
-            <Link to='/admin/podcasts/categorie'>
-              Modifier / Voir les categories
-            </Link>
-          </div>
+    <div className='interface-podart-container'>
+      <div className='interface-podart-btn-container'>
+        <div className='add-btn'>
+          <Link to='/admin/podcasts/add'>Ajouter un podcast</Link>
         </div>
+        <div className='add-btn'>
+          <Link to='/admin/podcasts/categorie'>
+            Modifier / Voir les categories
+          </Link>
+        </div>
+      </div>
+      <div className='podart-cards-container'>
         {listPodcasts ? (
           listPodcasts.map((art, i) => {
             return (
-              <div key={i} className='art-card'>
+              <div key={i} className='podart-card'>
                 <h1>{art.title}</h1>
                 <Link to={`/admin/podcasts/${art.id}`}>
-                  <button>En savoir plus</button>
+                  <button>Modifier / Supprimer</button>
                 </Link>
               </div>
             )
