@@ -11,8 +11,8 @@ const AddPodcast = () => {
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
   const [content, setContent] = useState('')
-  const [categorieList, setCategorieList] = useState('')
-  const [catPodcast, setCatPodcast] = useState('')
+  const [categorieList, setCategorieList] = useState([])
+  const [catPodcast, setCatPodcast] = useState([])
 
   useEffect(() => {
     axios
@@ -34,7 +34,17 @@ const AddPodcast = () => {
   const handleEditorChangeContent = e => {
     setContent(e.target.getContent())
   }
-
+  const addCategorie = arg => {
+    let arr = catPodcast
+    arr.push(arg)
+    setCatPodcast(arr)
+    console.log(catPodcast)
+  }
+  const delCategorie = arg => {
+    let arr = catPodcast.filter(e => e !== arg)
+    setCatPodcast(arr)
+    console.log(catPodcast)
+  }
   return (
     <div className='add-podart-page'>
       <div className='add-podart-container'>
@@ -79,16 +89,27 @@ const AddPodcast = () => {
             }}
           />
           <label>Categorie du podcast : </label>
-          <select onChange={event => setCatPodcast(Number(event.target.value))}>
-            <option selected>Choisir une catégorie : </option>
+          <div className='check-categories'>
             {categorieList
-              ? categorieList.map((cat, i) => (
-                  <option value={cat.id} key={i}>
-                    {cat.name}
-                  </option>
-                ))
+              ? categorieList.map((cat, i) => {
+                  return (
+                    <div key={i}>
+                      <input
+                        id={cat.name}
+                        className='categorie-checkbox'
+                        type='checkbox'
+                        onClick={e => {
+                          e.target.checked
+                            ? addCategorie(cat.id)
+                            : delCategorie(cat.id)
+                        }}
+                      />
+                      <label htmlFor={cat.name}>{cat.name}</label>
+                    </div>
+                  )
+                })
               : null}
-          </select>
+          </div>
           <div className='podart-add-btn-container'>
             <button type='submit'>Ajouter Podcast</button>
             <button>

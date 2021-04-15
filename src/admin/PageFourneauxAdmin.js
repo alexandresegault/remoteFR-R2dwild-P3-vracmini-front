@@ -13,7 +13,6 @@ const PageFourneauxAdmin = () => {
   useEffect(() => {
     axios.get('http://localhost:4242/api/aux_fourneaux').then(response => {
       setFourneaux(response.data[0])
-      console.log(fourneaux)
     })
   }, [])
 

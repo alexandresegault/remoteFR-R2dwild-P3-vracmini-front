@@ -9,7 +9,6 @@ const InterfaceRecipes = () => {
   useEffect(() => {
     axios.get('http://localhost:4242/api/aux_fourneaux/recipes').then(res => {
       setAllRecipes(res.data)
-      console.log(allRecipes)
     })
   }, [])
 

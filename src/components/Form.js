@@ -25,7 +25,6 @@ const Form = () => {
         'user_VPjZRh5QyEXSnsw9fTRds'
       )
       .then(() => {
-        console.log('success !')
         setName('')
         setEmail('')
         setObjet('')

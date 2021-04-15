@@ -12,7 +12,6 @@ const InterfaceArticles = () => {
       .get('http://localhost:4242/api/podcasts_articles/article')
       .then(res => {
         setListArticles(res.data)
-        console.log('premier' + res.data)
       })
   }, [])
 
