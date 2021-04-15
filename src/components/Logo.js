@@ -1,14 +1,15 @@
 import React from 'react'
 
-import fb from '../img/logofb.png'
-import twitter from '../img/twitter.png'
-import instagram from '../img/insta.png'
+import fb from '../img/facebook.jpg'
+import instagram from '../img/insta.jpg'
+import twitter from '../img/twitter.jpg'
+
 import './Logo.css'
 
 const Logo = () => {
   const urlFacebook = 'http://www.facebook.com'
-  const urlTwitter = ''
   const urlInstagram = ''
+  const urlTwitter = ''
 
   return (
     <div className='logos'>
@@ -16,10 +17,10 @@ const Logo = () => {
         <img className='logo' src={fb} alt='facebook' />
       </a>
       <a href={urlTwitter} target='blank'>
-        <img className='logo' src={twitter} alt='twitter' />
+        <img className='logo' src={instagram} alt='twitter' />
       </a>
       <a href={urlInstagram} target='blank'>
-        <img className='logo' src={instagram} alt='instagram' />
+        <img className='logo' src={twitter} alt='instagram' />
       </a>
     </div>
   )

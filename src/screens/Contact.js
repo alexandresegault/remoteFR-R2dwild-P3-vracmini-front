@@ -1,15 +1,18 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+
+import axios from 'axios'
+
 import Form from '../components/Form.js'
 import Logo from '../components/Logo.js'
 import Woman from '../img/personnage.jpg'
 
 import './Contact.css'
 
-export default function Contact() {
+const Contact = () => {
   return (
     <div className='container-contact'>
-      <div className='img-woman'>
-        <img src={Woman} />
+      <div>
+        <img className='img-woman' src={Woman} />
       </div>
       <div className='container-intro-contact'>
         <h1>Contact</h1>
@@ -24,3 +27,5 @@ export default function Contact() {
     </div>
   )
 }
+
+export default Contact
