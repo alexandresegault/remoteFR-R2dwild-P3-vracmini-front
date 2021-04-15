@@ -10,7 +10,6 @@ const InterfaceAliments = () => {
   useEffect(() => {
     axios.get('http://localhost:4242/api/aux_fourneaux/aliments').then(res => {
       setAllAliments(res.data)
-      console.log(allAliments)
     })
   }, [])
 

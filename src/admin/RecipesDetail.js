@@ -132,7 +132,6 @@ const RecipesDetail = prevProps => {
       `http://localhost:4242/api/aux_fourneaux/recipes/${prevProps.match.params.id}`,
       finalCategorie
     )
-    console.log(categorie + 'apres')
   }
 
   return (
