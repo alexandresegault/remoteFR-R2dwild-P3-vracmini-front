@@ -138,6 +138,7 @@ const ArticlesDetail = prevProps => {
           />
         ) : null}
         <button
+          className='update-podart-btn'
           id='btn-modify-content'
           onClick={() => updateArticle('btn-modify-content')}
         >

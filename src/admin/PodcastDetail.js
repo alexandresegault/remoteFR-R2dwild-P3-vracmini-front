@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -94,6 +95,7 @@ const PodcastDetail = prevProps => {
           onChange={event => setTitle(event.target.value)}
         />
         <button
+          className='update-podart-btn'
           id='btn-modify-title'
           onClick={() => updatePodcast('btn-modify-title')}
         >
@@ -108,6 +110,7 @@ const PodcastDetail = prevProps => {
           onChange={event => setUrlImg(event.target.value)}
         />
         <button
+          className='update-podart-btn'
           id='btn-modify-img'
           onClick={() => updatePodcast('btn-modify-img')}
         >
@@ -140,6 +143,7 @@ const PodcastDetail = prevProps => {
           />
         ) : null}
         <button
+          className='update-podart-btn'
           id='btn-modify-content'
           onClick={() => updatePodcast('btn-modify-content')}
         >
