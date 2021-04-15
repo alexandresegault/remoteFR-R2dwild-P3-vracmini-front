@@ -1,25 +1,83 @@
-.menu-list, #menu-page  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  
-    list-style-type: none;
-  }
-  .menu-list a {
-      text-decoration: none;
-  }
-  #menu-page {
-    position: absolute;
-    left: -110%;
-    width: 100vw;
-    height: 110vh;
-    z-index: 1000;
-    background: #ffffff;
-  }
-  .visible-menu {
-    animation: 0.5s slideRight ease-in forwards;
-    transition-delay: 0;
-  }
-  .invisible-menu {
-    animation: 1s slideLeft ease-out forwards;
-    transition-delay: 0;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.buttons-users{
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size:25px;
+}
+.buttons-users a {
+  margin:20px;
+}
+.burger-connexion{
+  text-decoration: none;
+  padding: 10px;
+  background: #8dad84b4;
+  border-radius: 10px;
+  color:white;
+  font-weight: bold;
+  text-shadow:0px 0px 1px rgb(255, 255, 255);
+  letter-spacing: 1px;;
+}
+
+.burger-inscription{
+  text-decoration: none;
+  padding: 5px;
+  color:black;
+  font-weight: bold;
+}
+
+.invisible-menu {
+  animation: 0.7s slideLeft ease-out forwards;
+  transition-delay: 0;
+}
+
+.menu-global{
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu-link{
+  padding-bottom: 15px;
+  color: black;
+}
+
+.menu-link a{
+  text-decoration: none;
+  color:black;
+  transition:all 0.2s;
+  margin-bottom:5px;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  align-items: left;  
+  list-style-type: none; 
+}
+
+#menu-page {
+  padding-top: 100px;
+  position: absolute;
+  left: -110%;
+  width: 100vw;
+  height: 150vh;
+  z-index: 1000;
+  background: #fffefe;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+}
+  
+.visible-menu {
+  animation: 0.5s slideRight ease-in forwards;
+  transition-delay: 0;
+}
+
+.woman-burger{
+  width: 80px;
+  height: 400px;
+}

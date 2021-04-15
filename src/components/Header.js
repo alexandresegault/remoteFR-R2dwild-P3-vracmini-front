@@ -89,8 +89,8 @@ const Header = () => {
               handleClickBurger={handleClickBurger}
             />
           </div>
-          <Link to='/admin'>
-            <img src={user} alt='' className='user-logo' />
+          <Link to='/login'>
+            <img src={user} alt='connexion user' className='user-logo' />
           </Link>
         </div>
       </div>

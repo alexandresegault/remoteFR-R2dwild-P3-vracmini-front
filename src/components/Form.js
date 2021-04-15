@@ -25,15 +25,14 @@ const Form = () => {
         },
         'user_VPjZRh5QyEXSnsw9fTRds'
       )
-      .then(res => {
-        console.log('success !')
+      .then(() => {
         setName('')
         setEmail('')
         setObjet('')
         setMessage('')
       })
       .catch(
-        err =>
+        () =>
           (document.querySelector('.form-message').innerHTML =
             "Une erreur s'est produite, veuillez réessayer.")
       )
@@ -71,7 +70,6 @@ const Form = () => {
           />
           <input className='button-send' type='submit' value='Envoyer' />
         </label>
-
         <div className='form-message'></div>
       </form>
     </div>

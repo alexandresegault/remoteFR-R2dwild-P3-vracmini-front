@@ -1,43 +1,49 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import axios from 'axios'
+
 import './InterfaceAliments.css'
-import { Editor } from '@tinymce/tinymce-react'
-import { useState } from 'react'
-import ApiKey from './ApiKey'
 
 const InterfaceAliments = () => {
-  const [text, setText] = useState(null)
-  const handleEditorChange = e => {
-    setText(e.target.getContent())
-    console.log(text)
-  }
+  const [allAliments, setAllAliments] = useState('')
+  useEffect(() => {
+    axios.get('http://localhost:4242/api/aux_fourneaux/aliments').then(res => {
+      setAllAliments(res.data)
+    })
+  }, [])
 
   return (
     <div className='interface-aliments'>
-      <div>
-        <Editor
-          apiKey={ApiKey}
-          onChange={handleEditorChange}
-          id='thisContent'
-          init={{
-            height: 500,
-            placeholder: 'Quentin kaiser est petit',
-            menubar: true,
-            quickbars_image_toolbar:
-              'alignleft aligncenter alignright | rotateleft rotateright | imageoptions',
-            plugins: [
-              'advlist autolink lists link image',
-              'charmap print preview anchor help',
-              'searchreplace visualblocks code',
-              'a_tinymce_plugin',
-              'insertdatetime media table paste wordcount'
-            ],
-            toolbar:
-              'undo redo | formatselect | bold italic | \
-              alignleft aligncenter alignright | \
-              bullist numlist outdent indent | help'
-          }}
-        />
+      <div className='interface-btn-container-aliments'>
+        <div className='add-btn'>
+          <Link to='/admin/aliments/add'>Ajouter un aliment</Link>
+        </div>
+        <div className='add-btn'>
+          <Link to='/admin/aliments/add_categorie'>
+            Modifier / Voir les catégories
+          </Link>
+        </div>
       </div>
-      <p>{text}</p>
+
+      <div className='aliments-cards-container'>
+        {allAliments ? (
+          allAliments.length !== 0 ? (
+            allAliments.map((alim, i) => (
+              <div key={i} className='aliment-card'>
+                <p key={i}>{alim.name}</p>
+                <div>
+                  <Link to={`/admin/aliments/${alim.id}`}>
+                    Modifier / Supprimer
+                  </Link>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No aliments found</p>
+          )
+        ) : null}
+      </div>
     </div>
   )
 }

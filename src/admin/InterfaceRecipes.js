@@ -9,30 +9,27 @@ const InterfaceRecipes = () => {
   useEffect(() => {
     axios.get('http://localhost:4242/api/aux_fourneaux/recipes').then(res => {
       setAllRecipes(res.data)
-      console.log(allRecipes)
     })
   }, [])
-  const deleteRecipe = () => {
-    console.log('deleteRecipe')
-  }
+
   return (
     <div className='interface-recipes'>
-      <div className='btn-container'>
+      <div className='interface-btn-container-recipes'>
         <div className='add-btn'>
           <Link to='/admin/recipes/add'>Ajouter une recette</Link>
         </div>
         <div className='add-btn'>
           <Link to='/admin/recipes/add_categorie'>
-            Ajouter / Modifier / Supprimer une categorie
+            Modifier / Voir les catégories
           </Link>
         </div>
       </div>
-      <div className='recipes-container'>
+      <div className='recipes-cards-container'>
         {allRecipes ? (
           allRecipes.length !== 0 ? (
             allRecipes.map((recipe, i) => (
               <div key={i} className='recipe-card'>
-                <p key={i}>{recipe.name}</p>
+                <p key={i}>{recipe.title}</p>
                 <div>
                   <Link to={`/admin/recipes/${recipe.id}`}>
                     Modifier / Supprimer
@@ -41,7 +38,7 @@ const InterfaceRecipes = () => {
               </div>
             ))
           ) : (
-            <p>Loading</p>
+            <p>No recipes found</p>
           )
         ) : null}
       </div>
