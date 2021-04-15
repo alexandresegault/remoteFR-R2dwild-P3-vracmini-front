@@ -29,6 +29,7 @@ font-family: 'Open Sans Condensed', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 50px;
 }
 
 @media screen and (max-width:500px){
