@@ -27,7 +27,6 @@ const AddCategorieRecipe = () => {
                 key={i}
                 onMouseEnter={() => {
                   setId(cat.id)
-                  console.log(id)
                 }}
                 onChange={e => setNewName(e.target.value)}
               />

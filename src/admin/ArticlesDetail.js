@@ -148,7 +148,7 @@ const ArticlesDetail = prevProps => {
         <div className='check-categories'>
           {isLoading ? (
             <div> ...loading </div>
-          ) : (
+          ) : categorieList ? (
             categorieList.map((cat, i) => {
               return (
                 <div key={i}>
@@ -181,7 +181,7 @@ const ArticlesDetail = prevProps => {
                 </div>
               )
             })
-          )}
+          ) : null}
         </div>
       </div>
       <div className='update-podart-btn-container'>

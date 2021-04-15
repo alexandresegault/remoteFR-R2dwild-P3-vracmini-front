@@ -39,12 +39,10 @@ const AddArticles = () => {
     let arr = catArticle
     arr.push(arg)
     setCatArticle(arr)
-    console.log(catArticle)
   }
   const delCategorie = arg => {
     let arr = catArticle.filter(e => e !== arg)
     setCatArticle(arr)
-    console.log(catArticle)
   }
   return (
     <div className='add-podart-page'>
@@ -90,26 +88,26 @@ const AddArticles = () => {
             }}
           />
           <label>Categorie de l'article : </label>
-          <label>Categorie du podcasts :</label>
           <div className='check-categories'>
-            {categorieList.map((cat, i) => {
-              console.log(catArticle)
-              return (
-                <div key={i}>
-                  <input
-                    id={cat.name}
-                    className='categorie-checkbox'
-                    type='checkbox'
-                    onClick={e => {
-                      e.target.checked
-                        ? addCategorie(cat.id)
-                        : delCategorie(cat.id)
-                    }}
-                  />
-                  <label htmlFor={cat.name}>{cat.name}</label>
-                </div>
-              )
-            })}
+            {categorieList
+              ? categorieList.map((cat, i) => {
+                  return (
+                    <div key={i}>
+                      <input
+                        id={cat.name}
+                        className='categorie-checkbox'
+                        type='checkbox'
+                        onClick={e => {
+                          e.target.checked
+                            ? addCategorie(cat.id)
+                            : delCategorie(cat.id)
+                        }}
+                      />
+                      <label htmlFor={cat.name}>{cat.name}</label>
+                    </div>
+                  )
+                })
+              : null}
           </div>
           <div className='podart-add-btn-container'>
             <button type='submit'>Ajouter Article</button>
