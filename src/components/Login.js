@@ -1,15 +1,13 @@
-import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+
+import axios from 'axios'
+
 import './Login.css'
+
 import img from '../img/mail.png'
 import padlock from '../img/padlock.png'
 
-const Login = prevProps => {
-  // useEffect(() => {
-  //   prevProps.setDisplayHeader(false)
-  // }, [])
-
+const Login = () => {
   let history = useHistory()
   const onSubmit = e => {
     e.preventDefault()
@@ -26,21 +24,6 @@ const Login = prevProps => {
         console.log('token', localStorage.getItem('token'))
       })
   }
-
-  // const protectedRoute = () => {
-  //   const token = localStorage.getItem('token')
-  //   axios({
-  //     method: 'POST',
-  //     url: 'http://localhost:3030/auth/protected',
-  //     headers: {
-  //       Authorization: `Bearer ${token}`
-  //     }
-  //   }).then(res => {
-  //     console.log(res)
-  //     //reste a ajouter les redirection si  token valide
-  //     history.push('/admin/')
-  //   })
-  // }
 
   return (
     <div className='page-login-container'>
