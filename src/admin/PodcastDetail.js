@@ -12,9 +12,10 @@ const PodcastDetail = prevProps => {
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
   const [podcast, setPodcast] = useState('')
-  const [catPodcast, setCatPodcast] = useState('')
+  const [podCategories, setPodCategories] = useState('')
   const [categorieList, setCategorieList] = useState('')
   const [deleted, setDeleted] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     axios.all[
@@ -31,7 +32,15 @@ const PodcastDetail = prevProps => {
         .then(res => {
           console.log(res.data)
           setCategorieList(res.data)
-        }))
+        }),
+      axios
+        .get(
+          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`
+        )
+        .then(res => {
+          setPodCategories(res.data)
+        })
+        .then(() => setIsLoading(false)))
     ]
   }, [])
 
@@ -70,21 +79,12 @@ const PodcastDetail = prevProps => {
           { url_img: urlImg }
         )
         break
-      case 'btn-modify-cat':
-        axios.put(
-          `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`,
-          {
-            categories_podcasts_articles_id: catPodcast
-          }
-        )
-        break
     }
   }
 
   return (
     <div className='update-podart-page'>
       <div className='update-podart-container'>
-        <h1>Modifier le podcast</h1>
         <label>Title :</label>
         <input
           type='text'
@@ -95,7 +95,6 @@ const PodcastDetail = prevProps => {
         />
         <button
           id='btn-modify-title'
-          className='update-podart-btn'
           onClick={() => updatePodcast('btn-modify-title')}
         >
           Modifer le titre
@@ -110,7 +109,6 @@ const PodcastDetail = prevProps => {
         />
         <button
           id='btn-modify-img'
-          className='update-podart-btn'
           onClick={() => updatePodcast('btn-modify-img')}
         >
           Modifer l'image
@@ -143,43 +141,63 @@ const PodcastDetail = prevProps => {
         ) : null}
         <button
           id='btn-modify-content'
-          className='update-podart-btn'
           onClick={() => updatePodcast('btn-modify-content')}
         >
           Modifer le contenu
         </button>
-        <label>Categorie du Podcast :</label>
-        <select onChange={event => setCatPodcast(Number(event.target.value))}>
-          <option selected>Modifier catégorie : </option>
-          {categorieList
-            ? categorieList.map((cat, i) => (
-                <option value={cat.id} key={i}>
-                  {cat.name}
-                </option>
-              ))
-            : null}
-        </select>
-        <button
-          id='btn-modify-cat'
-          className='update-podart-btn'
-          onClick={() => updatePodcast('btn-modify-cat')}
-        >
-          Modifer la catégorie
-        </button>
-        <div className='update-podart-btn-container'>
-          <button className='return-page-admin'>
-            <Link to='/admin/podcasts'>Voir tout les Podcasts</Link>
-          </button>
-          {deleted ? (
-            <Link className='delete-podart-btn' to='/admin/podcasts'>
-              Supprimer le Podcast
-            </Link>
+        <label>Categorie du podcasts :</label>
+        <div className='check-categories'>
+          {isLoading ? (
+            <div> ...loading </div>
           ) : (
-            <button onClick={deletePodcast} className='delete-podart-btn'>
-              Supprimer le Podcast
-            </button>
+            categorieList.map((cat, i) => {
+              return (
+                <div key={i}>
+                  <input
+                    id={cat.name}
+                    defaultChecked={
+                      podCategories.some(
+                        elem => elem.categories_podcasts_articles_id === cat.id
+                      )
+                        ? true
+                        : false
+                    }
+                    className='categorie-checkbox'
+                    type='checkbox'
+                    onChange={e => {
+                      e.target.checked
+                        ? axios.post(
+                            'http://localhost:4242/api/podcasts_articles/join',
+                            {
+                              categories_podcasts_articles_id: cat.id,
+                              podcasts_articles_id: prevProps.match.params.id
+                            }
+                          )
+                        : axios.delete(
+                            `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}/${cat.id}`
+                          )
+                    }}
+                  />
+                  <label htmlFor={cat.name}>{cat.name}</label>
+                </div>
+              )
+            })
           )}
         </div>
+      </div>
+      <div className='update-podart-btn-container'>
+        <button className='return-page-admin'>
+          <Link to='/admin/podcasts'>Voir tout les Podcasts</Link>
+        </button>
+        {deleted ? (
+          <Link className='delete-podart-btn' to='/admin/podcasts'>
+            Supprimer le Podcast
+          </Link>
+        ) : (
+          <button onClick={deletePodcast} className='delete-podart-btn'>
+            Supprimer le Podcast
+          </button>
+        )}
       </div>
     </div>
   )
