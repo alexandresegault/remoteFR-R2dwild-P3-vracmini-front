@@ -3,19 +3,30 @@
 .buttons-users{
   padding-top: 50px;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size:25px;
 }
-
+.buttons-users a {
+  margin:20px;
+}
 .burger-connexion{
   text-decoration: none;
   padding: 10px;
-  background: #D7EAD1;
+  background: #8dad84b4;
   border-radius: 10px;
+  color:white;
+  font-weight: bold;
+  text-shadow:0px 0px 1px rgb(255, 255, 255);
+  letter-spacing: 1px;;
 }
 
 .burger-inscription{
   text-decoration: none;
   padding: 5px;
+  color:black;
+  font-weight: bold;
 }
 
 .invisible-menu {
@@ -35,6 +46,14 @@
 
 .menu-link a{
   text-decoration: none;
+  color:black;
+  transition:all 0.2s;
+  margin-bottom:5px;
+}
+.menu-link a:active {
+  text-decoration: line-through;
+  font-size:23px;
+  transition:all 0.2s;
 }
 
 .menu-list {
