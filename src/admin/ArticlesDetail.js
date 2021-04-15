@@ -183,20 +183,20 @@ const ArticlesDetail = prevProps => {
             })
           ) : null}
         </div>
-      </div>
-      <div className='update-podart-btn-container'>
-        <button className='return-page-admin'>
-          <Link to='/admin/articles'>Voir tout les articles</Link>
-        </button>
-        {deleted ? (
-          <Link className='delete-podart-btn' to='/admin/articles'>
-            Supprimer l'article
-          </Link>
-        ) : (
-          <button onClick={deleteArticle} className='delete-podart-btn'>
-            Supprimer l'article
+        <div className='update-podart-btn-container'>
+          <button className='return-page-admin'>
+            <Link to='/admin/articles'>Voir tout les articles</Link>
           </button>
-        )}
+          {deleted ? (
+            <Link className='delete-podart-btn' to='/admin/articles'>
+              Supprimer l'article
+            </Link>
+          ) : (
+            <button onClick={deleteArticle} className='delete-podart-btn'>
+              Supprimer l'article
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )
