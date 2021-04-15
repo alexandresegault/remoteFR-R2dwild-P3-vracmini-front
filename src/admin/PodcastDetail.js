@@ -186,20 +186,20 @@ const PodcastDetail = prevProps => {
             })
           ) : null}
         </div>
-      </div>
-      <div className='update-podart-btn-container'>
-        <button className='return-page-admin'>
-          <Link to='/admin/podcasts'>Voir tout les Podcasts</Link>
-        </button>
-        {deleted ? (
-          <Link className='delete-podart-btn' to='/admin/podcasts'>
-            Supprimer le Podcast
-          </Link>
-        ) : (
-          <button onClick={deletePodcast} className='delete-podart-btn'>
-            Supprimer le Podcast
+        <div className='update-podart-btn-container'>
+          <button className='return-page-admin'>
+            <Link to='/admin/podcasts'>Voir tout les Podcasts</Link>
           </button>
-        )}
+          {deleted ? (
+            <Link className='delete-podart-btn' to='/admin/podcasts'>
+              Supprimer le Podcast
+            </Link>
+          ) : (
+            <button onClick={deletePodcast} className='delete-podart-btn'>
+              Supprimer le Podcast
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )
