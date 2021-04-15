@@ -78,7 +78,9 @@ const BurgerMenu = prevProps => {
         </div>
         <div className='buttons-users'>
           <Link className='burger-inscription'>S'inscrire</Link>
-          <Link to='/login' className='burger-connexion'>Se connecter</Link>
+          <Link to='/login' className='burger-connexion'>
+            Se connecter
+          </Link>
         </div>
       </div>
     </div>
