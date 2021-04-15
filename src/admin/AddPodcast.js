@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -8,12 +7,12 @@ import { Editor } from '@tinymce/tinymce-react'
 import ApiKey from './ApiKey'
 import './AddArticles.css'
 
-const AddArticles = () => {
+const AddPodcast = () => {
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
   const [content, setContent] = useState('')
   const [categorieList, setCategorieList] = useState('')
-  const [catArticle, setCatArticle] = useState('')
+  const [catPodcast, setCatPodcast] = useState('')
 
   useEffect(() => {
     axios
@@ -21,13 +20,13 @@ const AddArticles = () => {
       .then(res => setCategorieList(res.data))
   }, [])
 
-  const addArticle = () => {
+  const addPodcast = () => {
     let finalArticle = {
       title: title,
       url_img: urlImg,
       content: content,
-      isPodcast: 0,
-      categories_podcasts_articles_id: catArticle
+      isPodcast: 1,
+      categories_podcasts_articles_id: catPodcast
     }
     axios.post('http://localhost:4242/api/podcasts_articles', finalArticle)
   }
@@ -39,8 +38,8 @@ const AddArticles = () => {
   return (
     <div className='add-podart-page'>
       <div className='add-podart-container'>
-        <h1>Ajouter un article</h1>
-        <form onSubmit={addArticle}>
+        <h1>Ajouter un Podcast</h1>
+        <form onSubmit={addPodcast}>
           <label>Title :</label>
           <input
             type='text'
@@ -79,8 +78,8 @@ const AddArticles = () => {
               bullist numlist outdent indent | help'
             }}
           />
-          <label>Categorie de l'article : </label>
-          <select onChange={event => setCatArticle(Number(event.target.value))}>
+          <label>Categorie du podcast : </label>
+          <select onChange={event => setCatPodcast(Number(event.target.value))}>
             <option selected>Choisir une catégorie : </option>
             {categorieList
               ? categorieList.map((cat, i) => (
@@ -91,9 +90,9 @@ const AddArticles = () => {
               : null}
           </select>
           <div className='podart-add-btn-container'>
-            <button type='submit'>Ajouter Article</button>
+            <button type='submit'>Ajouter Podcast</button>
             <button>
-              <Link to='/admin/articles'>Voir tout les articles</Link>
+              <Link to='/admin/podcasts'>Voir tout les podcasts</Link>
             </button>
           </div>
         </form>
@@ -102,4 +101,4 @@ const AddArticles = () => {
   )
 }
 
-export default AddArticles
+export default AddPodcast

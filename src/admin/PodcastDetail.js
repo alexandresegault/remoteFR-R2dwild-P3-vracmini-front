@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -8,14 +7,14 @@ import { Editor } from '@tinymce/tinymce-react'
 
 import './ArticlesDetail.css'
 
-const ArticlesDetail = prevProps => {
+const PodcastDetail = prevProps => {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const [urlImg, setUrlImg] = useState('')
-  const [article, setArticle] = useState({})
-  const [categorieList, setCategorieList] = useState([])
+  const [podcast, setPodcast] = useState('')
+  const [podCategories, setPodCategories] = useState('')
+  const [categorieList, setCategorieList] = useState('')
   const [deleted, setDeleted] = useState(false)
-  const [artCategories, setArtCategories] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -25,11 +24,13 @@ const ArticlesDetail = prevProps => {
           `http://localhost:4242/api/podcasts_articles/${prevProps.match.params.id}`
         )
         .then(res => {
-          setArticle(res.data)
+          console.log(res.data)
+          setPodcast(res.data)
         }),
       axios
         .get('http://localhost:4242/api/categories_podcasts_articles/')
         .then(res => {
+          console.log(res.data)
           setCategorieList(res.data)
         }),
       axios
@@ -37,15 +38,17 @@ const ArticlesDetail = prevProps => {
           `http://localhost:4242/api/podcasts_articles/join/${prevProps.match.params.id}`
         )
         .then(res => {
-          setArtCategories(res.data)
+          setPodCategories(res.data)
         })
         .then(() => setIsLoading(false)))
     ]
   }, [])
+
   const handleEditorChangeContent = e => {
     setContent(e.target.getContent())
   }
-  const deleteArticle = () => {
+
+  const deletePodcast = () => {
     const validation = window.prompt('Tapez "Oui" pour confirmer')
     if (validation == 'Oui') {
       axios
@@ -55,7 +58,8 @@ const ArticlesDetail = prevProps => {
         .then(setDeleted(true))
     }
   }
-  const updateArticle = arg => {
+
+  const updatePodcast = arg => {
     switch (arg) {
       case 'btn-modify-title':
         axios.put(
@@ -77,22 +81,21 @@ const ArticlesDetail = prevProps => {
         break
     }
   }
+
   return (
     <div className='update-podart-page'>
       <div className='update-podart-container'>
-        <h1>Modifier l'article</h1>
         <label>Title :</label>
         <input
           type='text'
           id='title-input'
           name='title'
-          defaultValue={article.title}
+          defaultValue={podcast.title}
           onChange={event => setTitle(event.target.value)}
         />
         <button
-          className='update-podart-btn'
           id='btn-modify-title'
-          onClick={() => updateArticle('btn-modify-title')}
+          onClick={() => updatePodcast('btn-modify-title')}
         >
           Modifer le titre
         </button>
@@ -100,22 +103,21 @@ const ArticlesDetail = prevProps => {
         <input
           type='text'
           id='urlimg-input'
-          defaultValue={article.url_img}
+          defaultValue={podcast.url_img}
           name='urlimg'
           onChange={event => setUrlImg(event.target.value)}
         />
         <button
           id='btn-modify-img'
-          className='update-podart-btn'
-          onClick={() => updateArticle('btn-modify-img')}
+          onClick={() => updatePodcast('btn-modify-img')}
         >
           Modifer l'image
         </button>
         <label>Contenu :</label>
-        {article.content ? (
+        {podcast.content ? (
           <Editor
             apiKey={ApiKey}
-            initialValue={`${article.content}`}
+            initialValue={`${podcast.content}`}
             onChange={handleEditorChangeContent}
             id='tinyContent'
             init={{
@@ -139,11 +141,11 @@ const ArticlesDetail = prevProps => {
         ) : null}
         <button
           id='btn-modify-content'
-          onClick={() => updateArticle('btn-modify-content')}
+          onClick={() => updatePodcast('btn-modify-content')}
         >
           Modifer le contenu
         </button>
-        <label>Categories de l'article :</label>
+        <label>Categorie du podcasts :</label>
         <div className='check-categories'>
           {isLoading ? (
             <div> ...loading </div>
@@ -154,7 +156,7 @@ const ArticlesDetail = prevProps => {
                   <input
                     id={cat.name}
                     defaultChecked={
-                      artCategories.some(
+                      podCategories.some(
                         elem => elem.categories_podcasts_articles_id === cat.id
                       )
                         ? true
@@ -185,15 +187,15 @@ const ArticlesDetail = prevProps => {
       </div>
       <div className='update-podart-btn-container'>
         <button className='return-page-admin'>
-          <Link to='/admin/articles'>Voir tout les articles</Link>
+          <Link to='/admin/podcasts'>Voir tout les Podcasts</Link>
         </button>
         {deleted ? (
-          <Link className='delete-podart-btn' to='/admin/articles'>
-            Supprimer l'article
+          <Link className='delete-podart-btn' to='/admin/podcasts'>
+            Supprimer le Podcast
           </Link>
         ) : (
-          <button onClick={deleteArticle} className='delete-podart-btn'>
-            Supprimer l'article
+          <button onClick={deletePodcast} className='delete-podart-btn'>
+            Supprimer le Podcast
           </button>
         )}
       </div>
@@ -201,4 +203,4 @@ const ArticlesDetail = prevProps => {
   )
 }
 
-export default ArticlesDetail
+export default PodcastDetail

@@ -27,11 +27,11 @@ const InterfaceAliments = () => {
         </div>
       </div>
 
-      <div className='recipes-container'>
+      <div className='aliments-cards-container'>
         {allAliments ? (
           allAliments.length !== 0 ? (
             allAliments.map((alim, i) => (
-              <div key={i} className='recipe-card'>
+              <div key={i} className='aliment-card'>
                 <p key={i}>{alim.name}</p>
                 <div>
                   <Link to={`/admin/aliments/${alim.id}`}>

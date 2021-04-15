@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import './AddCategorieArticle.css'
 
-const AddCategorieArticle = () => {
+const AddCategoriePodcast = () => {
   const [listCategorie, setListCategorie] = useState('')
   const [id, setId] = useState('')
   const [newName, setNewName] = useState('')
@@ -18,7 +18,7 @@ const AddCategorieArticle = () => {
   return (
     <div className='categorie-article-page'>
       <button className='back-page-admin'>
-        <Link to='/admin/articles'>Voir tout les articles</Link>
+        <Link to='/admin/podcasts'>Voir tout les podcasts</Link>
       </button>
       <div className='all-categories-container'>
         {listCategorie.length !== 0 ? (
@@ -55,4 +55,4 @@ const AddCategorieArticle = () => {
   )
 }
 
-export default AddCategorieArticle
+export default AddCategoriePodcast

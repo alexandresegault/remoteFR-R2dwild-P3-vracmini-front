@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import './AddCategorieAliment.css'
 
 const AddCategorieAliment = () => {
   const [categorie, setCategorie] = useState('')
@@ -14,15 +13,14 @@ const AddCategorieAliment = () => {
       .then(res => setCategorie(res.data))
   }, [])
   return (
-    <div className='categorie-aliments'>
-      <button>
+    <div className='categorie-page-admin'>
+      <button className='back-page-admin'>
         <Link to='/admin/aliments'>Voir tout les aliments</Link>
       </button>
-      <div className='all-categories'>
+      <div className='all-categories-container'>
         {categorie.length !== 0 ? (
           categorie.map((cat, i) => (
-            <div className='categorie-card' key={i}>
-              <p>{cat.id}</p>
+            <div className='categories-card-aliments-recipes' key={i}>
               <input
                 defaultValue={cat.name}
                 key={i}
