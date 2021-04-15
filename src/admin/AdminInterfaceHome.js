@@ -20,6 +20,7 @@ import RecipesDetail from './RecipesDetail'
 import './AdminInterfaceHome.css'
 
 const AdminInterfaceHome = prevProps => {
+  
   useEffect(() => {
     prevProps.setDisplayHeader(false)
   }, [])

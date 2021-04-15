@@ -1,5 +1,5 @@
 import Vracnco from './screens/Vracnco'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import AdminInterfaceHome from './admin/AdminInterfaceHome.js'
@@ -56,7 +56,9 @@ function App() {
           path='/aux_fourneaux/tableau_de_conversion'
           component={Conversion}
         ></Route>
-        <Route path='/login' component={Login} />
+        <Route path='/login'>
+          <Login setDisplayHeader={setDisplayHeader} />
+        </Route>
       </Switch>
     </div>
   )
