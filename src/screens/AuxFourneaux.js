@@ -11,14 +11,11 @@ const AuxFourneaux = () => {
   const [auxFourneaux, setAuxFourneaux] = useState([])
   const [categoriesAlim, setCategoriesAlim] = useState([])
   const [content, setContent] = useState('')
+  const [img, setImg] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)
   const [isLoaded2, setIsLoaded2] = useState(false)
   const [isLoaded3, setIsLoaded3] = useState(false)
   const [categorieRecipe, setCategorieRecipe] = useState('')
-
-  const [img] = useState(
-    'https://drive.google.com/file/d/1bXOU75Kts--c-LiIFLANeDrAsIoBwg5O/view?usp=sharing'
-  )
 
   useEffect(() => {
     axios
@@ -26,6 +23,7 @@ const AuxFourneaux = () => {
       .then(res => {
         setAuxFourneaux(res.data)
         setContent(res.data[0].content)
+        setImg(res.data[0].url_img)
       })
       .then(() => setIsLoaded(true))
   }, [])
@@ -128,11 +126,7 @@ const AuxFourneaux = () => {
             </div>
           </div>
           <div className='contain-character'>
-            <img
-              className='img-fourneaux'
-              src='https://drive.google.com/uc?id=1EzICHn4SvPastfOLNuuO5Ww0LtexjAwF'
-              alt='coupe de légumes'
-            />
+            <img className='img-fourneaux' src={img} alt='coupe de légumes' />
           </div>
           <div className='right-side-content'>
             {isLoaded ? (
@@ -141,6 +135,19 @@ const AuxFourneaux = () => {
                 className='content-fourneaux'
               ></div>
             ) : null}
+          </div>
+          <div className='right-content-character-mini'>
+            <div className='contain-character-mini'>
+              <img className='img-fourneaux' src={img} alt='coupe de légumes' />
+            </div>
+            <div className='right-side-content-mini'>
+              {isLoaded ? (
+                <div
+                  dangerouslySetInnerHTML={{ __html: content }}
+                  className='content-fourneaux'
+                ></div>
+              ) : null}
+            </div>
           </div>
         </div>
       ) : (

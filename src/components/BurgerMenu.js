@@ -12,26 +12,26 @@ const BurgerMenu = prevProps => {
           <ul className='menu-list'>
             <li className='menu-link'>
               <NavLink
-                to='/'
                 activeClassName='active-burger-link'
+                to='/'
                 onClick={prevProps.handleClickBurger}
               >
                 L'histoire... EN VRAC
               </NavLink>
             </li>
             <li className='menu-link'>
-              <NavLink
-                to='/'
-                activeClassName='active-burger-link'
-                onClick={prevProps.handleClickBurger}
-              >
-                Ensemble, VRAC'ONS!
+              <NavLink to='/' onClick={prevProps.handleClickBurger}>
+                Ensemble, VRAC'ONS !
               </NavLink>
             </li>
             <li className='menu-link'>
               <NavLink
+                activeStyle={{
+                  fontWeight: 'bold',
+                  color: '#F0D8B8',
+                  fontSize: '24px'
+                }}
                 to='/aux_fourneaux'
-                activeClassName='active-burger-link'
                 onClick={prevProps.handleClickBurger}
               >
                 Aux Fourneaux
@@ -40,7 +40,11 @@ const BurgerMenu = prevProps => {
             <li className='menu-link'>
               <NavLink
                 to='/vracnco'
-                activeClassName='active-burger-link'
+                activeStyle={{
+                  fontWeight: 'bold',
+                  color: '#F0D8B8',
+                  fontSize: '24px'
+                }}
                 onClick={prevProps.handleClickBurger}
               >
                 VRAC'n Co
@@ -58,18 +62,18 @@ const BurgerMenu = prevProps => {
             <li className='menu-link'>
               <NavLink
                 to='/contact'
-                activeClassName='active-burger-link'
+                activeStyle={{
+                  fontWeight: 'bold',
+                  color: '#F0D8B8',
+                  fontSize: '24px'
+                }}
                 onClick={prevProps.handleClickBurger}
               >
                 Contact
               </NavLink>
             </li>
             <li className='menu-link'>
-              <NavLink
-                to='/'
-                activeClassName='active-link'
-                onClick={prevProps.handleClickBurger}
-              >
+              <NavLink to='/' onClick={prevProps.handleClickBurger}>
                 E-shop
               </NavLink>
             </li>
@@ -79,13 +83,13 @@ const BurgerMenu = prevProps => {
           <Link to='' className='burger-inscription'>
             S'inscrire
           </Link>
-          <NavLink
+          <Link
             onClick={prevProps.handleClickBurger}
             to='/login'
             className='burger-connexion'
           >
             Se connecter
-          </NavLink>
+          </Link>
         </div>
       </div>
     </div>
