@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+
 import emailjs from 'emailjs-com'
-// init('user_VPjZRh5QyEXSnsw9fTRds')
+
 import './Form.css'
 
 const Form = () => {
@@ -65,11 +66,10 @@ const Form = () => {
             type='text'
             placeholder='Message'
             value={message}
-            style={{ height: 100 }}
             onChange={event => setMessage(event.target.value)}
           />
+          <input className='button-send' type='submit' value='Envoyer' />
         </label>
-        <input className='button-send' type='submit' value='Envoyer' />
         <div className='form-message'></div>
       </form>
     </div>
