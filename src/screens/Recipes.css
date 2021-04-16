@@ -1,7 +1,7 @@
 .recipes-list{
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .recipes-object{
@@ -12,7 +12,7 @@
   align-items: center;
   font-family: 'Open Sans Condensed', sans-serif;
   padding: 20px;
-  margin: 20px;
+  margin: 50px;
   box-shadow: 0px 0px 15px #4e4e4e65;
 }
 
