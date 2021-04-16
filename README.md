@@ -55,7 +55,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 We use TinyMCE to edit the contents of the website more easily.
 
-
 # Axios
 $ npm i axios
 
