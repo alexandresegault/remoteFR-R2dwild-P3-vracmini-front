@@ -26,7 +26,7 @@ transition: all 0.5s;
 }
 
 .content-fourneaux{
-  padding-top: 30px;
+  padding-top: 20px;
   width: 250px;
   text-align: left;
   font-size: 20px;
@@ -35,9 +35,12 @@ transition: all 0.5s;
 
 .curieux-aliments {
   cursor: pointer;
-
   display: flex;
   font-weight: bold;
+  color: black;
+}
+
+.curieux-aliments a{
   color: black;
 }
 
@@ -97,8 +100,9 @@ margin-top:55px;
   font-size: 18px;
 }
 
-.visible-aliments :link{
+.visible-aliments a{
   padding: 2px;
+  color: black;
 }
 .right-content-character-mini{
   display:none;
